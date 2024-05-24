@@ -158,7 +158,7 @@ MR imaging was performed on a 3.0 Tesla General Electric Discovery MR750 scanner
 
 |                          | T1w          | T2w          | pcASL                                                               | SWI                                               |
 |------------|------------|------------|----------------------|---------------|
-| Sequence                 | 3D FSPGR     | 3D CUBE      | Multi-shot 3D \\\\ fast spin-echo                                   | 3D spoiled GRE flow-compensated                   |
+| Sequence                 | 3D FSPGR     | 3D CUBE      | Multi-shot 3D fast spin-echo                                        | 3D spoiled GRE flow-compensated                   |
 | Phase-encoding direction | Coronal      | Sagittal     | Axial                                                               | Axial                                             |
 | TR (ms)                  | 7.74         | 2,300        | 4,680                                                               | 30.9                                              |
 | TE (ms)                  | 2.97         | 66.29        | 10.55                                                               | 5.24                                              |
