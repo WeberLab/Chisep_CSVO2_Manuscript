@@ -1,17 +1,22 @@
 project:
   type: manuscript
+  render: 
+    - "*.qmd"
+    - "!pyvenv_csvo/"
 
 execute:
   freeze: auto
 
 format:
-  html:
-    toc: true
-    comments:
-      hypothesis: true
-  docx: default
-  jats: default
-  agu-pdf: default
+  # html:
+  #   toc: true
+  #   comments:
+  #     hypothesis: true
+  # docx: default
+  # jats: default
+  nature-pdf: 
+    journal: "sn-nature"
+    keep-tex: true
 
 
 
