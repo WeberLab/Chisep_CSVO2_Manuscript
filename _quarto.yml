@@ -9,14 +9,18 @@ execute:
 
 format:
   html:
+    embed-resources: true
     toc: true
     comments:
       hypothesis: true
-  # docx: default
-  # jats: default
-  nature-pdf: 
+      
+  docx: default
+  jats: default
+  
+  nature-pdf:
     journal: "sn-nature"
     keep-tex: true
 
-
+filters:
+  - parse-latex
 

@@ -109,7 +109,8 @@ date: last-modified
 bibliography: [ Gavin_Thesis_Ref.bib ]
 citation:
   container-title: Unpublished
-number-sections: true
+number-sections: false
+notebook-links: false
 ---
 
 ```{r setup, include=FALSE}
@@ -135,9 +136,14 @@ theme_set( theme_minimal() ) # ggplot theme
 library(broom) # for nice summaries
 library(knitr) # 
 library(kableExtra) # more tables options. Can cause problems
+library(Rmpfr)
 # library(reticulate) # incorporate Python
 # use_virtualenv('./pythonvenv', required = TRUE) # load pythong venv from path
 # library(neurobase)
+```
+
+```{r}
+load("notebooks/results.RData")
 ```
 
 # Introduction {#sec-intro}
@@ -150,40 +156,103 @@ The study was approved by the Clinical Research Ethics Board at the University o
 
 ## Study population
 
-Participant data comes from a previous study. Participants consisted of preterm neonates born between 25- and 31-weeks gestational age (GA) who were admitted to the level III NICU at BC Women’s Hospital. Recruitment took place over a span of one year, from February 2021 to January 2022, facilitated by a dedicated research nurse. Parents of eligible infants were approached by the research nurse prior to discharge from the NICU to explain the study objectives and seek their consent for participation. Infants meeting the criteria for inclusion were scanned for the study if they had already been discharged from the NICU, were in stable condition, and had reached a term equivalent age of 37 to 44 weeks GA. However, certain exclusion criteria were applied to ensure the homogeneity and integrity of the study sample. Infants were excluded if there was clinical evidence of a congenital malformation or syndrome, a TORCH infection, or ultrasound evidence of large parenchymal hemorrhagic infarction (\>2 cm, Grade 4 intraventricular hemorrhage).
+Participant data comes from a previous study [@zhu-etal-cmro2]. Participants consisted of preterm neonates born between 25- and 31-weeks gestational age (GA) who were admitted to the level III NICU at BC Women’s Hospital. Recruitment took place over a span of one year, from February 2021 to January 2022, facilitated by a dedicated research nurse. Parents of eligible infants were approached by the research nurse prior to discharge from the NICU to explain the study objectives and seek their consent for participation. Infants meeting the criteria for inclusion were scanned for the study if they had already been discharged from the NICU, were in stable condition, and had reached a term equivalent age of 37 to 44 weeks GA. However, certain exclusion criteria were applied to ensure the homogeneity and integrity of the study sample. Infants were excluded if there was clinical evidence of a congenital malformation or syndrome, a TORCH infection, or ultrasound evidence of large parenchymal hemorrhagic infarction (\>2 cm, Grade 4 intraventricular hemorrhage).
 
 ## Image acquisition
 
-MR imaging was performed on a 3.0 Tesla General Electric Discovery MR750 scanner (scanner software version DV26.0_R03) equipped with a SREE Medical Systems single-channel neonatal head coil (@tbl-mri). The scans were conducted at the BC Children’s MRI Research Facility. Prior to the scanning procedure, subjects were carefully prepared by a research nurse. Swaddling and feeding were used to ensure the comfort and cooperation of the subjects during the scan. Importantly, no sedatives or invasive markers were utilized throughout the procedure. Subjects were placed within a specially designed SREE Medical Systems MRI compatible incubator, which facilitated both safety and motion minimization. Molded foam was strategically positioned around the head and body within the incubator to further restrict subject movement. To protect against potential hearing damage, ear plugs were employed during the scanning process. Additionally, a pulse oximeter was affixed to the subject’s foot to monitor arterial oxygen saturation and heart rate throughout the scan.
+MR imaging was performed on a 3.0 Tesla General Electric Discovery MR750 scanner (scanner software version DV26.0_R03) equipped with a SREE Medical Systems single-channel neonatal head coil (Table \ref{tbl-mri}). The scans were conducted at the BC Children’s MRI Research Facility. Prior to the scanning procedure, subjects were carefully prepared by a research nurse. Swaddling and feeding were used to ensure the comfort and cooperation of the subjects during the scan. Importantly, no sedatives or invasive markers were utilized throughout the procedure. Subjects were placed within a specially designed SREE Medical Systems MRI compatible incubator, which facilitated both safety and motion minimization. Molded foam was strategically positioned around the head and body within the incubator to further restrict subject movement. To protect against potential hearing damage, ear plugs were employed during the scanning process. Additionally, a pulse oximeter was affixed to the subject’s foot to monitor arterial oxygen saturation and heart rate throughout the scan.
 
-|                          | T1w          | T2w          | pcASL                                                               | SWI                                               |
-|--------------|--------------|--------------|-----------------|--------------|
-| Sequence                 | 3D FSPGR     | 3D CUBE      | Multi-shot 3D fast spin-echo                                        | 3D spoiled GRE flow-compensated                   |
-| Phase-encoding direction | Coronal      | Sagittal     | Axial                                                               | Axial                                             |
-| TR (ms)                  | 7.74         | 2,300        | 4,680                                                               | 30.9                                              |
-| TE (ms)                  | 2.97         | 66.29        | 10.55                                                               | 5.24                                              |
-| Flip angle               | 12$^{\circ}$ | 90$^{\circ}$ | 111$^{\circ}$                                                       | 20$^{\circ}$                                      |
-| FOV (cm)                 | 20           | 20           | 24                                                                  | 25                                                |
-| Acquisition Matrix       | 512 x 512    | 256 x 256    | 128 x 128                                                           | 256 x 256                                         |
-| In-plane resolution (mm) | 0.39 x 0.39  | 0.78 x 0.78  | 1.875 x 1.875                                                       | 0.977 x 0.977                                     |
-| Slice thickness (mm)     | 1            | 1            | 4                                                                   | 2, reconstructed to 1 mm with zero filling (ZIP2) |
-| Number of slices         | 126          | 106          | 50                                                                  | 92                                                |
-| Additional parameters    | n/a          | n/a          | 1,450 ms label period; 2,025 ms pulse lable; 24 control-label pairs | n/a                                               |
-| Scan duration            | 4 min 39 s   | 5 min 1 s    | 5 min 26 s                                                          | 5 min 29 s                                        |
+```{=tex}
+\begin{table}[h]
+  \caption{Technical parameters for MR imaging pulse sequences}\label{tbl-mri}%
+    \centering
+    \begin{tabular*}{\textwidth}{@{}lllll@{}}
+    \toprule
+        ~ & T1w & T2w & pcASL & SWI \\ \midrule
+        Sequence & 3D FSPGR & 3D CUBE & \makecell[tl]{Multi-shot 3D fast \\ spin-echo} & \makecell[tl]{3D spoiled GRE \\ flow-compensated} \\ 
+        \makecell[tl]{Phase-encoding \\ direction} & Coronal & Sagittal & Axial & Axial \\ 
+        TR (ms) & 7.74 & 2,300 & 4,680 & 30.9 \\ 
+        TE (ms) & 2.97 & 66.29 & 10.55 & 5.24 \\ 
+        Flip angle & 12$^{\circ}$ & 90$^{\circ}$ & 111$^{\circ}$ & 20$^{\circ}$ \\ 
+        FOV (cm) & 20 & 20 & 24 & 25 \\ 
+        Acquisition Matrix & 512 x 512 & 256 x 256 & 128 x 128 & 256 x 256 \\ 
+        \makecell[tl]{In-plane resolution \\ (mm)} & 0.39 x 0.39 & 0.78 x 0.78 & 1.875 x 1.875 & 0.977 x 0.977 \\ 
+        \makecell[tl]{Slice thickness \\ (mm)} & 1 & 1 & 4 & \makecell[tl]{2, reconstructed \\ to 1 with zero \\ filling (ZIP2)} \\ 
+        Number of slices & 126 & 106 & 50 & 92 \\ 
+        Additional parameters & n/a & n/a & \makecell[tl]{1,450 ms label period; \\ 2,025 ms pulse lable; \\ 24 control-label pairs} & n/a \\ 
+        Scan duration & 4 min 39 s & 5 min 1 s & 5 min 26 s & 5 min 29 s \\ \botrule
+    \end{tabular*}
+    \footnotetext{T1w = T1-weighted; T2w = T2-weighted; pcASL = pseudo-continuous arterial spin labelling; SWI = susceptibility weighted imaging; FSPG = fast spoiled gradient echo; CUBE = General Electric name of sequence, not an acronym; GRE = gradient echo; ZIP2 = through-plane zero filling interpolation}
+\end{table}
+```
+The MRI scan protocol comprised of the following sequences: a T1-weighted scan, a T2-weighted scan, a pseudo-continuous arterial spin labeling (ASL) scan, a multi-echo susceptibility-weighted imaging scan, and a diffusion-weighted imaging (DWI) spin-echo echo planar imaging (EPI) sequence. The DWI sequence was not used for the present study.
 
-: Technical parameters for MR imaging protocol. {#tbl-mri}
+## Image analysis
 
-The MRI scan protocol comprised several sequences, including a T1-weighted scan, a T2-weighted scan, a pseudo-continuous arterial spin labeling (ASL) scan, a multi-echo susceptibility-weighted imaging scan, and a diffusion-weighted imaging (DWI) spin-echo echo planar imaging (EPI) sequence.
-
-{{< embed notebooks/Figures.ipynb#fig-sample >}}
-
-See @fig-graph
+The raw DICOM files acquired from the scanning procedure were converted to NIfTI (Neuroimaging Informatics Technology Initiative) format using Chris Rorden’s \texttt{dcmniix} tool. SWI magnitude data files were then used to create subject-specific brain masks that would not erode the SSS during QSM processing, an issue faced by our group in the past [@liFirstStepNeuroimaging2016]. A step-by-step summary of the pipeline used is shown in @fig-sample.
 
 {{< embed notebooks/Figures.ipynb#fig-graph >}}
 
+First, the fifth echo SWI magnitude file was processed using FSL’s (v. 6.0.7.3) [@woolrichBayesianAnalysisNeuroimaging2009] \texttt{fslroi}, \texttt{fslmaths}, and \texttt{bet} [@smithFastRobustAutomated2002] to create a preliminary brain mask, similar to our previous efforts, which does not contain the SSS. \texttt{Fslroi} was used to isolate the fifth echo of the magnitude data, which was then squared using Fslmaths and the option \texttt{-sqr}. Squaring the magnitude image was found to dramatically improve subsequent brain extraction. The resulting image was then used to create the preliminary brain mask using bet with the options \texttt{-m} and \texttt{-R}. The former flag generated a binary brain mask, while the latter performed a more robust brain centre estimation. The brain mask was then dilated by 7 voxels using \texttt{Fslmaths} and the options \texttt{-kernel boxv} and \texttt{-dilM} in order for the dilated mask to contain the SSS (along with unwanted tissue as well). This mask was then used, along with the phase images, in a MATLAB script for QSM calculation from Christian Kames [@kamesRapidTwostepDipole2018] to produce a preliminary QSM image that contained the SSS, albeit with fairly low signal-to-noise ratio and other unwanted tissue. Given the high contrast in voxel intensity between the SSS and surrounding tissue, the select by intensity tool in \texttt{FSLeyes} [@mccarthyFSLeyes2023] was then used to segment the SSS from the QSM image and create a 3D mask of the selected region. Using \texttt{fslmaths} and the options \texttt{-add} and \texttt{-bin}, the SSS mask was then combined with the original brain mask of the fifth echo. This resulted in a brain mask that contained only brain and SSS signal. Finally, this mask was used in a final QSM post-processing step to create a QSM image that includes the SSS while maintaining a high signal-to-noise ratio, making it suitable to obtain accurate susceptibility values. 
+
+STI Suite (v. 3.0) [@liIntegratedLaplacianBased2014], was used to process the final QSM images as it produced the cleanest images without eroding the SSS. The finalized brain mask and the last three echoes of the magnitude and phase images were used in STI Suite along with the following parameters: 0.9766 x 0.9766 x 1 mm$^{3}$ voxel size, 5 ms TE1, 5.3 ms $\Delta$TE, and 77.4 ms sum TE, B0 strength = 3, and B0 direction = [0, 0, 1]. The 3D GRE data option was selected for the phase processing stage, and STAR-QSM was selected for the QSM stage. Finally, the `select by intensity' tool in \texttt{FSLeyes} was then used to semi-automatically make vascular masks of the SSS and CCV from each subject’s QSM image. The vascular masks were used to calculate the mean susceptibility of each subject’s SSS and CCV from their QSM image with \texttt{fslstats}. 
+
+To isolate the paramagnetic component of subjects’ QSM data, the χ-separation toolbox28 from the Laboratory for Imaging Science and Technology was used. Each subject’s magnitude and phase SWI data were used along with the following parameters: 0.9766 x 0.9766 x 1 mm$^{3}$ voxel size; TE (s) = [0.005, 0.0102, 0.0155, 0.0207, 0.026]; delta TE (s) = 0.0052; B0 strength = 3; B0 direction = [0, 0, 1]. The mean susceptibility of each subject’s SSS and CCV in their paramagnetic maps was calculated with the same vascular masks used for the QSM images. Sample images showing the magnitude, final QSM, and final paramagnetic component images are shown in @fig-sample. 
+
+{{< embed notebooks/Figures.ipynb#fig-sample >}}
+
+Once the mean susceptibility values of the SSS and CCV were obtained from the subjects’ QSM images and paramagnetic maps, venous oxygen saturation (SvO2) was calculated with the following equation [@bergInvestigatingEffectFlow2021]:
+
+$$
+SvO_{2} = 1 - \frac{\Delta \chi _{blood} - (\Delta \chi _{oxy} * Hct)}{\Delta \chi _{do} * Hct}
+$$ {#eq-svo}
+
+where $\Delta \chi _{blood}$ is the vessel’s measured susceptibility, $\Delta \chi _{oxy}$ is the constant representing the susceptibility changes of oxygenated blood relation to water, $\Delta \chi _{do}$ is the difference in susceptibility between oxygenated and deoxygenated blood, and Hct is the subject’s hematocrit. $\Delta \chi _{oxy}$ was -0.21 * 4$\pi$ ppm as per @portnoyHumanUmbilicalCord2018 and [@sedlacikObtainingBloodOxygenation2007], while $\Delta \chi _{do}$ was -0.03 * 4$\pi$ ppm as per [@weisskoffMRISusceptometryImagebased1992]. Subjects’ Hct for the day of the scan was calculated using a four-parameter Weibull function with previously measured values while still in the NICU.
+
+## Statistical analysis
+
+Statistical analysis of the acquired data was performed using R and RStudio (v. 2023.09.1 Build 494) [@rcoreteamLanguageEnvironmentStatistical2022; @rstudioteamRStudioIntegratedDevelopment]. A Wilcoxon signed-rank test was used to determine if a significant difference (p <0.05) existed between the vessel-specific SvO2 values determined through QSM and those determined from the paramagnetic maps processed with $\chi$-separation. This was also performed for the raw $\chi$ values obtained through both methods.
+
 # Results {#sec-results}
 
-[@ahmedDiamagneticComponentMap2023a]
+A total sample size of 19 infants were scanned, with a mean gestational age of 28.8 weeks (SD, 1.7) and a mean birth weight of 1276.1 grams (SD, 294.9). A comprehensive summary of neonatal characteristics, including additional demographic and clinical data, is provided in Table \ref{tbl-chistats} for reference.
+
+```{=latex}
+\begin{table*}[h]
+  \caption{Technical parameters for MR imaging pulse sequences}\label{tbl-chistats}%
+    \centering
+    \begin{tabular*}{\textwidth}{@{}llllll@{}}
+    \toprule
+        Region & Measure & QSM & \makecell[tl]{Paramagnetic \\ map} & p-value & 95\% CI \\ \midrule
+        \multirow{ 2}{*}{SSS} & Chi (ppm) & `r round(mean(newdata$Gavin_SSS_Chi),2)` \pm `r round(sd(newdata$Gavin_SSS_Chi),2)` & `r round(mean(newdata$Chisep_SSS_Chi),2)` \pm `r round(sd(newdata$Chisep_SSS_Chi),2)` & `r signif(SSSChi.t$p.value,3)` & `r round(SSSChi.t$conf.low,2)`, `r round(SSSChi.t$conf.high,2)`\\
+        & SvO$_{2}$(\%) & `r round(mean(newdata$Gavin_SSSVein_CSvO2*100),2)` \pm `r round(sd(newdata$Gavin_SSSVein_CSvO2*100),2)` & `r round(mean(newdata$Chisep_SSSVein_CSvO2*100),2)` \pm `r round(sd(newdata$Chisep_SSSVein_CSvO2*100),2)` & `r signif(SSSSvO2.t$p.value,3)` & `r round(SSSSvO2.t$conf.low*100,2)`, `r round(SSSSvO2.t$conf.high*100,2)`\\
+        \multirow{ 2}{*}{CCV} & Chi (ppm) & `r round(mean(newdata$Gavin_IntVein_Chi),2)` \pm `r round(sd(newdata$Gavin_IntVein_Chi),2)` & `r round(mean(newdata$Chisep_IntVein_Chi),2)` \pm `r round(sd(newdata$Chisep_IntVein_Chi),2)` & `r signif(CCVChi.t$p.value,3)` & `r round(CCVChi.t$conf.low,2)`, `r round(CCVChi.t$conf.high,2)`\\
+        & SvO$_{2}$(\%) & `r round(mean(newdata$Gavin_IntVein_CSvO2*100),2)` \pm `r round(sd(newdata$Gavin_IntVein_CSvO2*100),2)` & `r round(mean(newdata$Chisep_IntVein_CSvO2*100),2)` \pm `r round(sd(newdata$Chisep_IntVein_CSvO2*100),2)` & `r signif(CCVSvO2.t$p.value,3)` & `r round(CCVSvO2.t$conf.low*100,2)`, `r round(CCVSvO2.t$conf.high*100,2)`\\
+        \botrule
+    \end{tabular*}
+    \footnotetext{}
+\end{table*}
+```
+
+
+<!-- ::: {#tbl-1} -->
+
+<!-- ```{=latex} -->
+<!-- % Or whatever actual you want, includegraphics, whatever.  -->
+<!-- % (_not_ \begin{table}, just the content of it) -->
+<!-- \begin{tabular}{lll} -->
+<!-- \end{tabular} -->
+<!-- ``` -->
+
+<!-- This is a table caption. -->
+
+<!-- ::: -->
+
+<!-- See @tbl-1 -->
+
+See @fig-regionplot
+
+{{< embed notebooks/gavin_thesis_markdown.qmd#fig-regionplot >}}
 
 # Conclusion {#sec-conclusion}
 
