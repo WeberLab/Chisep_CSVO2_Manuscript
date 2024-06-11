@@ -1,7 +1,7 @@
 project:
   type: manuscript
   render: 
-    - "index.qmd"
+    - "*.qmd"
     - "!pyvenv_csvo/"
 
 execute:

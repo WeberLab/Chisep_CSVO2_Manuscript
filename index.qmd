@@ -180,20 +180,20 @@ MR imaging was performed on a 3.0 Tesla General Electric Discovery MR750 scanner
 
 ::: {#tbl-mri}
 ```{=latex}
-    \begin{tabular*}{\textwidth}{@{}lllll@{}}
+    \begin{tabular*}{\textwidth}{@{}p{2.5cm}llp{2.5cm}p{2.5cm}@{}}
     \toprule
         ~ & T1w & T2w & pcASL & SWI \\ \midrule
-        Sequence & 3D FSPGR & 3D CUBE & \makecell[tl]{Multi-shot 3D fast \\ spin-echo} & \makecell[tl]{3D spoiled GRE \\ flow-compensated} \\
-        \makecell[tl]{Phase-encoding \\ direction} & Coronal & Sagittal & Axial & Axial \\
+        Sequence & 3D FSPGR & 3D CUBE & Multi-shot 3D fast spin-echo & 3D spoiled GRE flow-compensated \\
+        Phase-encoding direction & Coronal & Sagittal & Axial & Axial \\
         TR (ms) & 7.74 & 2,300 & 4,680 & 30.9 \\
         TE (ms) & 2.97 & 66.29 & 10.55 & 5.24 \\
         Flip angle & 12$^{\circ}$ & 90$^{\circ}$ & 111$^{\circ}$ & 20$^{\circ}$ \\
         FOV (cm) & 20 & 20 & 24 & 25 \\
         Acquisition matrix & 512 x 512 & 256 x 256 & 128 x 128 & 256 x 256 \\
-        \makecell[tl]{In-plane resolution \\ (mm)} & 0.39 x 0.39 & 0.78 x 0.78 & 1.875 x 1.875 & 0.977 x 0.977 \\
-        \makecell[tl]{Slice thickness \\ (mm)} & 1 & 1 & 4 & \makecell[tl]{2, reconstructed \\ to 1 with zero \\ filling (ZIP2)} \\
+        In-plane resolution (mm) & 0.39 x 0.39 & 0.78 x 0.78 & 1.875 x 1.875 & 0.977 x 0.977 \\
+        Slice thickness (mm) & 1 & 1 & 4 & 2, reconstructed to 1 with zero filling (ZIP2) \\
         Number of slices & 126 & 106 & 50 & 92 \\
-        Additional parameters & n/a & n/a & \makecell[tl]{1,450 ms label period; \\ 2,025 ms pulse label; \\ 24 control-label pairs} & n/a \\
+        Additional parameters & n/a & n/a & 1,450 ms label period; 2,025 ms pulse label; 24 control-label pairs & n/a \\
         Scan duration & 4 min 39 s & 5 min 1 s & 5 min 26 s & 5 min 29 s \\ \botrule
     \end{tabular*}
     \footnotetext{T1w = T1-weighted; T2w = T2-weighted; pcASL = pseudo-continuous arterial spin labelling; SWI = susceptibility weighted imaging; FSPG = fast spoiled gradient echo; CUBE = General Electric name of sequence, not an acronym; GRE = gradient echo; ZIP2 = through-plane zero filling interpolation}
@@ -259,9 +259,9 @@ The mean SvO~2~ values for the SSS and the CCV were found to be `r rndmean(newda
 
 ::: {#tbl-chistats}
 ```{=latex}
-    \begin{tabular}{@{}llllll@{}}
+    \begin{tabular}{@{}lllp{2cm}ll@{}}
     \toprule
-        Region & Measure & QSM & \makecell[tl]{Paramagnetic \\ map} & p-value & 95\% CI \\ \midrule
+        Region & Measure & QSM & Paramagnetic map & p-value & 95\% CI \\ \midrule
         \multirow{ 2}{*}{SSS} & Chi (ppm)     & `r round(mean(newdata$Gavin_SSS_Chi),2)` \pm `r round(sd(newdata$Gavin_SSS_Chi),2)`                     & `r round(mean(newdata$Chisep_SSS_Chi),2)` \pm `r round(sd(newdata$Chisep_SSS_Chi),2)`                     & `r signif(SSSChi.t$p.value,3)`                        & `r round(SSSChi.t$conf.low,2)`, `r round(SSSChi.t$conf.high,2)`           \\
                               & SvO$_{2}$(\%) & `r round(mean(newdata$Gavin_SSSVein_CSvO2*100),2)` \pm `r round(sd(newdata$Gavin_SSSVein_CSvO2*100),2)` & `r round(mean(newdata$Chisep_SSSVein_CSvO2*100),2)` \pm `r round(sd(newdata$Chisep_SSSVein_CSvO2*100),2)` & `r signif(SSSSvO2.t$p.value,3)` & `r round(SSSSvO2.t$conf.low*100,2)`, `r round(SSSSvO2.t$conf.high*100,2)` \\
         \multirow{ 2}{*}{CCV} & Chi (ppm)     & `r round(mean(newdata$Gavin_IntVein_Chi),2)` \pm `r round(sd(newdata$Gavin_IntVein_Chi),2)`             & `r round(mean(newdata$Chisep_IntVein_Chi),2)` \pm `r round(sd(newdata$Chisep_IntVein_Chi),2)`             & `r signif(CCVChi.t$p.value,3)`                        & `r round(CCVChi.t$conf.low,2)`, `r round(CCVChi.t$conf.high,2)`           \\
