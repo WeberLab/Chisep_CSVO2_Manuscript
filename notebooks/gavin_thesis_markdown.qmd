@@ -23,6 +23,18 @@ Load main dataframe (change directory as needed)
 *note: columns titled with with "Gavin_x_x" contain QSM data
 ```{r}
 newdata <- read.csv("newdata.csv")
+
+signif="***"
+notsig="n.s."
+
+sigfunc <- function(pval) {
+if (pval < 0.05){
+  label = signif
+} else {
+    label = notsig
+}
+  return (label)
+}
 ```
 
 Dataframes for figures
@@ -82,24 +94,6 @@ comp_CCV_SvO2 <- data.frame(
 )
 ```
 
-Wilcox test for p-values and 95% CI - table 3.2
-```{r}
-#SSS Chi
-wilcox.test(newdata$Gavin_SSS_Chi, newdata$Chisep_SSS_Chi,
-            paired = TRUE, conf.int = TRUE)
-
-#SSS SvO2
-wilcox.test(newdata$Gavin_SSSVein_CSvO2, newdata$Chisep_SSSVein_CSvO2,
-            paired = TRUE, conf.int = TRUE)
-
-#CCV Chi
-wilcox.test(newdata$Gavin_IntVein_Chi, newdata$Chisep_IntVein_Chi, paired = TRUE,
-            conf.int = TRUE)
-
-#CCV SvO2
-wilcox.test(newdata$Gavin_IntVein_CSvO2, newdata$Chisep_IntVein_CSvO2,
-            paired = TRUE, conf.int = TRUE)
-```
 
 ```{r}
 #SSS Chi
@@ -119,149 +113,100 @@ CCVSvO2.t <- tidy(t.test(newdata$Gavin_IntVein_CSvO2, newdata$Chisep_IntVein_CSv
             paired = TRUE, conf.int = TRUE))
 ```
 
-
 Figure 3.1
-*note: "****" in panels were added outside of R
 ```{r}
 #| echo = FALSE
+label = sigfunc(SSSChi.t$p.value)
 m1 <- ggwithinstats(
   data = comp_CCV_chi,
   x = Method,
   y = Chi,
+  ylab = "Chi (ppm)",
   results.subtitle = FALSE,
-  title = "(A)",
-  subtitle = "Central Cerebral Veins",
-  type = "nonparametric",
+  type = "p",
+  pairwise.display = "all",
+  bf.message = FALSE,
   centrality.plotting = FALSE,
-  point.path.args = list(linewidth = 0.25, linetype = "solid")
-)
+  point.path.args = list(linewidth = 0.25, linetype = "solid")) +
+  ggplot2::annotate("text", x=1.5, y=(max(comp_CCV_chi$Chi)*1.05), size=4, label = label)
 
+label = sigfunc(SSSSvO2.t$p.value)
 m2 <- ggwithinstats( 
   data = comp_SSS_chi,
   x = Method,
   y = Measured.Susceptibility, 
-  ylab = "Chi",
+  ylab = "Chi (ppm)",
   results.subtitle = FALSE,
-  title = "",
-  subtitle = "Superior Sagittal Sinus",
-  type = "nonparametric", 
+  type = "p",
+  pairwise.display = "all",
+  bf.message = FALSE,
   centrality.plotting = FALSE,
-  point.path.args = list(linewidth = 0.25, linetype = "solid")
-)
+  point.path.args = list(linewidth = 0.25, linetype = "solid")) +
+  ggplot2::annotate("text", x=1.5, y=(max(comp_SSS_chi$Measured.Susceptibility)*1.05), size=4, label = label )
 
+label = sigfunc(CCVChi.t$p.value)
 m3 <- ggwithinstats(
   data = comp_CCV_SvO2,
   x = Method,
   y = Oxygen.Saturation,
-  ylab = "SvO2",
+  ylab = "SvO2 (%)",
   results.subtitle = FALSE,
-  title = "(B)",
-  subtitle = "Central Cerebral Veins",
-  type = "nonparametric",
+  type = "p",
+  pairwise.display = "all",
+  bf.message = FALSE,
   centrality.plotting = FALSE,
-  point.path.args = list(linewidth = 0.25, linetype = "solid")
-)
+  point.path.args = list(linewidth = 0.25, linetype = "solid") ) +
+  ggplot2::annotate("text", x=1.5, y=(max(comp_CCV_SvO2$Oxygen.Saturation)*1.05), size=4, label = label )
 
+label = sigfunc(CCVSvO2.t$p.value)
 m4 <- ggwithinstats(
   data = comp_SSS_SvO2,
   x = Method,
   y = Oxygen.Saturation,
-  pairwise.display = "all",
-  ylab = "SvO2",
+  ylab = "SvO2 (%)",
   results.subtitle = FALSE,
-  title = "",
-  subtitle = "Superior Sagittal Sinus",
-  type = "nonparametric",
-  centrality.plotting = FALSE,
-  point.path.args = list(linewidth = 0.25, linetype = "solid")
-)
-
-combine_plots(
-  plotlist = list(m1, m2, m3, m4),
-  plotgrid.args = list(nrow = 2)
-)
-```
-
-Figure 3.2
-*note: "****" in panels (a) and (b) were added outside of R
-```{r}
-#| echo = FALSE
-p1 <- ggwithinstats(
-  data = comp_legit_starfsl,
-  x = Vein,
-  y = Chi,
+  type = "p",
   pairwise.display = "all",
-  results.subtitle = FALSE,
-  xlab = "Region",
-  ylab = "Chi",
-  title = "(A)",
-  type = "nonparametric",
+  bf.message = FALSE,
   centrality.plotting = FALSE,
-  point.path.args = list(linewidth = 0.25, linetype = "solid"),
-  point.args = list(color = "#D95F02") 
-)
-
-p2 <- ggwithinstats(
-  data = comp_SSS_IntVein_CSvO2,
-  x = Vein,
-  y = CSvO2,
-  pairwise.display = "all",
-  results.subtitle = FALSE,
-  xlab = "Region",
-  ylab = "SvO2",
-  title = "(B)",
-  type = "nonparametric",
-  centrality.plotting = FALSE,
-  point.path.args = list(linewidth = 0.25, linetype = "solid"),
-  point.args = list(color = "#D95F02")
-)
-
-
-p3 <- ggwithinstats(                     #boxplot of chi comparison between regions
-  data = comp_chisep_chi,
-  x = Vein,
-  y = Chi, 
-  pairwise.display = "all",
-  results.subtitle = FALSE,
-  xlab = "Region",
-  ylab = "Chi",
-  title = "(C)",
-  subtitle = "                                                n.s.",
-  type = "nonparametric", 
-  centrality.plotting = FALSE,
-  point.path.args = list(linewidth = 0.25, linetype = "solid"),
-  point.args = list(color = "#1B9E77")
-)
-
-
-p4 <- ggwithinstats(                    #boxplot of svo2 comparison between regions
-  data = comp_chisep_CSvO2,
-  x = Vein,
-  y = CSvO2, 
-  pairwise.display = "all",
-  results.subtitle = FALSE,
-  xlab = "Region",
-  ylab = "SvO2",
-  title = "(D)",
-  subtitle = "                                                n.s.",
-  type = "nonparametric",
-  centrality.plotting = FALSE,
-  point.path.args = list(linewidth = 0.25, linetype = "solid"),
-  point.args = list(color = "#1B9E77")
-)
-
-
-combine_plots(
-  plotlist = list(p1, p2, p3, p4),
-  plotgrid.args = list(nrow = 2)
-)
+  point.path.args = list(linewidth = 0.25, linetype = "solid") ) +
+  ggplot2::annotate("text", x=1.5, y=(max(comp_SSS_SvO2$Oxygen.Saturation)*1.05), size=4, label = label )
+(patch1 <- (m1 + m2)/(m3 + m4) + 
+  plot_annotation(tag_levels = 'A') & 
+  theme(plot.tag = element_text(size = 10)))
 ```
 
 ```{r}
-save.image('results.RData')
+#| label: fig-methodplot
+#| fig-width: 8
+#| fig-height: 5
+#| fig-cap: "Vein-specific susceptibility and oxygen saturation values by method. (A, B) contains violin plots comparing subject χ (ppm) acquired from QSM (A) and its paramagnetic component (B); (C, D) contains violin plots comparing subject SvO2 (%) acquired from QSM (C) and its paramagnetic component (D). Raw data points from paramagnetic maps are shown as filled green circles and raw data points from QSM are shown as filled orange circles. Each line connects the raw data points of a single subject. (***) indicates P<0.05."
+patch1
+```
+
+# Region analysis: Chi and CSvO2
+
+```{r}
+#SSS Chi
+RegionQSMChi.t <- tidy(t.test(newdata$Gavin_IntVein_Chi, newdata$Gavin_SSS_Chi, 
+            paired = TRUE, conf.int = TRUE))
+
+#SSS SvO2
+RegionQSMSvO2.t <- tidy(t.test(newdata$Gavin_IntVein_CSvO2, newdata$Gavin_SSSVein_CSvO2,
+            paired = TRUE, conf.int = TRUE))
+
+#CCV Chi
+RegionChisepChi.t <- tidy(t.test(newdata$Chisep_IntVein_Chi, newdata$Chisep_SSS_Chi, paired = TRUE,
+            conf.int = TRUE))
+
+#CCV SvO2
+RegionChisepSvO2.t <- tidy(t.test(newdata$Chisep_IntVein_CSvO2, newdata$Chisep_SSSVein_CSvO2,
+            paired = TRUE, conf.int = TRUE))
 ```
 
 ```{r}
+
+label = sigfunc(RegionQSMChi.t$p.value)
  p1 <- ggwithinstats(
   data = comp_legit_starfsl,
   x = Vein,
@@ -271,12 +216,13 @@ save.image('results.RData')
   pairwise.display = "all",
   bf.message = FALSE,
   xlab = "Region",
-  ylab = "Chi",
+  ylab = "Chi (ppm)",
   centrality.plotting = FALSE,
   point.path.args = list(linewidth = 0.25, linetype = "solid"),
   point.args = list(color = "#D95F02")) + 
-  ggplot2::annotate("text", x=1.5, y=(max(comp_legit_starfsl$Chi)*1.05), size=4, label = "***")
+  ggplot2::annotate("text", x=1.5, y=(max(comp_legit_starfsl$Chi)*1.05), size=4, label = label)
 
+label = sigfunc(RegionQSMSvO2.t$p.value)
 p2 <- ggwithinstats(
   data = comp_SSS_IntVein_CSvO2,
   x = Vein,
@@ -286,14 +232,14 @@ p2 <- ggwithinstats(
   pairwise.display = "all",
   bf.message = FALSE,
   xlab = "Region",
-  ylab = "SvO2",
+  ylab = "SvO2 (%)",
   centrality.plotting = FALSE,
   point.path.args = list(linewidth = 0.25, linetype = "solid"),
   point.args = list(color = "#D95F02")
 ) + 
-  ggplot2::annotate("text", x=1.5, y=(max(comp_SSS_IntVein_CSvO2$CSvO2)*1.05), size=4, label = "***")
+  ggplot2::annotate("text", x=1.5, y=(max(comp_SSS_IntVein_CSvO2$CSvO2)*1.05), size=4, label = label)
 
-
+label = sigfunc(RegionChisepChi.t$p.value)
 p3 <- ggwithinstats(                     #boxplot of chi comparison between regions
   data = comp_chisep_chi,
   x = Vein,
@@ -302,14 +248,14 @@ p3 <- ggwithinstats(                     #boxplot of chi comparison between regi
   pairwise.display = "all",
   bf.message = FALSE,
   xlab = "Region",
-  ylab = "Chi",
+  ylab = "Chi (ppm)",
   centrality.plotting = FALSE,
   point.path.args = list(linewidth = 0.25, linetype = "solid"),
   point.args = list(color = "#1B9E77")
 ) +
-  ggplot2::annotate("text", x=1.5, y=(max(comp_chisep_chi$Chi))*1.05, size=4, label = "n.s.")
+  ggplot2::annotate("text", x=1.5, y=(max(comp_chisep_chi$Chi))*1.05, size=4, label = label)
 
-
+label = sigfunc(RegionChisepSvO2.t$p.value)
 p4 <- ggwithinstats(                    #boxplot of svo2 comparison between regions
   data = comp_chisep_CSvO2,
   x = Vein,
@@ -318,24 +264,28 @@ p4 <- ggwithinstats(                    #boxplot of svo2 comparison between regi
   pairwise.display = "all",
   bf.message = FALSE,
   xlab = "Region",
-  ylab = "SvO2",
+  ylab = "SvO2 (%)",
   type = "nonparametric",
   centrality.plotting = FALSE,
   point.path.args = list(linewidth = 0.25, linetype = "solid"),
   point.args = list(color = "#1B9E77")
 ) +
-  ggplot2::annotate("text", x=1.5, y=(max(comp_chisep_CSvO2$CSvO2)*1.05), size=4, label = "n.s.")
+  ggplot2::annotate("text", x=1.5, y=(max(comp_chisep_CSvO2$CSvO2)*1.05), size=4, label = label)
 
-(patch1 <- (p1 + p2)/(p3 + p4))
-# patch1
-# ggsave('figure.png', patch1)
+(patch2 <- (p1 + p2)/(p3 + p4) + 
+  plot_annotation(tag_levels = 'A') & 
+  theme(plot.tag = element_text(size = 10)))
 ```
 
 ```{r}
 #| label: fig-regionplot
 #| fig-width: 8
 #| fig-height: 5
-#| fig-cap: "rmarkdown test figure"
-patch1
+#| fig-cap: "Inter-venous comparisons of susceptibility and oxygen saturation. Violin plots comparing (A, C) χ (ppm) and (B, D) SvO2 (%) between the CCV and the SSS. Panels (A) and (B) used data acquired from QSM, and its raw data points are shown as filled orange circles. Panels (C) and (D) used data acquired from paramagnetic maps, and its raw data points are shown as filled green circles. Each line connects the raw data points of a single subject. (***) indicates p<0.05; (n.s.) indicates no significant difference."
+patch2
 ```
 
+
+```{r}
+save.image('results.RData')
+```

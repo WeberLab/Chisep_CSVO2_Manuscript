@@ -1,0 +1,125 @@
+```{r}
+#| label: tbl-mri
+#| tbl-cap: Technical parameters for MR imaging pulse sequences
+library(read.so)
+prms.tbl <- read.md('
+|                          | T1w         | T2w         | pcASL                                                                    | SWI                                            |
+|--------------------------|-------------|-------------|--------------------------------------------------------------------------|------------------------------------------------|
+|         Sequence         | 3D FSPGR    | 3D CUBE     | Multi-shot 3D fast spin-echo                                             | 3D spoiled GRE flow-compensated                |
+| Phase-encoding direction | Coronal     | Sagittal    | Axial                                                                    | Axial                                          |
+| TR (ms)                  | 7.74        | 2,300       | 4,680                                                                    | 30.9                                           |
+| TE (ms)                  | 2.97        | 66.29       | 10.55                                                                    | 5.24                                           |
+| Flip angle               | 12          | 90          | 111                                                                      | 20                                             |
+| FOV (cm)                 | 20          | 20          | 24                                                                       | 25                                             |
+| Acquisition matrix       | 512 x 512   | 256 x 256   | 128 x 128                                                                | 256 x 256                                      |
+| In-plane resolution (mm) | 0.39 x 0.39 | 0.78 x 0.78 | 1.875 x 1.875                                                            | 0.977 x 0.977                                  |
+| Slice thickness (mm)     | 1           | 1           | 4                                                                        | 2, reconstructed to 1 with zero filling (ZIP2) |
+| Number of slices         | 126         | 106         | 50                                                                       | 92                                             |
+| Additional parameters    | n/a         | n/a         | 1,450 ms label period;<br> 2,025 ms pulse label;<br> 24 control-label pairs | n/a                                            |
+| Scan duration            | 4 min 39 s  | 5 min 1 s   | 5 min 26 s                                                               | 5 min 29 s                                     |
+')
+kbl(prms.tbl, "html", escape = F) |> footnote(general="T1w = T1-weighted; T2w = T2-weighted; pcASL = pseudo-continuous arterial spin labelling; SWI = susceptibility weighted imaging; FSPG = fast spoiled gradient echo; CUBE = General Electric name of sequence, not an acronym; GRE = gradient echo; ZIP2 = through-plane zero filling interpolation", footnote_as_chunk = T, threeparttable = T) 
+```
+
+::: {#tbl-mri}
+```{=html}
+<table align="left">
+  <thead>
+  <tr>
+    <th></th>
+    <th>T1w</th>
+    <th>T2w</th>
+    <th>pcASL</th>
+    <th>SWI</th>
+  </tr></thead>
+<tbody>
+  <tr>
+    <td>Sequence</td>
+    <td>3D FSPGR</td>
+    <td>3D CUBE</td>
+    <td>Multi-shot 3D fast spin-echo</td>
+    <td>3D spoiled GRE flow-compensated</td>
+  </tr>
+  <tr>
+    <td>Phase-encoding direction</td>
+    <td>Coronal<br></td>
+    <td>Sagittal</td>
+    <td>Axial</td>
+    <td>Axial</td>
+  </tr>
+  <tr>
+    <td>TR (ms)</td>
+    <td>7.74</td>
+    <td>2,300</td>
+    <td>4,680</td>
+    <td>30.9</td>
+  </tr>
+  <tr>
+    <td>TE (ms)</td>
+    <td>2.97</td>
+    <td>66.29</td>
+    <td>10.55</td>
+    <td>5.24</td>
+  </tr>
+  <tr>
+    <td>Flip angle</td>
+    <td>12 &deg;</td>
+    <td>90 &deg;</td>
+    <td>111 &deg;</td>
+    <td>20 &deg;</td>
+  </tr>
+  <tr>
+    <td>FOV (cm)</td>
+    <td>20</td>
+    <td>20</td>
+    <td>24</td>
+    <td>25</td>
+  </tr>
+  <tr>
+    <td>Acquisition matrix</td>
+    <td>512 x 512</td>
+    <td>256 x 256</td>
+    <td>128 x 128</td>
+    <td>256 x 256</td>
+  </tr>
+  <tr>
+    <td>In-plane resolution (mm)</td>
+    <td>0.39 x 0.39</td>
+    <td>0.78 x 0.78</td>
+    <td>1.875 x 1.875</td>
+    <td>0.977 x 0.977</td>
+  </tr>
+  <tr>
+    <td>Slice thickness (mm)</td>
+    <td>1</td>
+    <td>1</td>
+    <td>4</td>
+    <td>2, reconstructed to 1 with zero filling (ZIP2)</td>
+  </tr>
+  <tr>
+    <td>Number of slices</td>
+    <td>126</td>
+    <td>106</td>
+    <td>50</td>
+    <td>92</td>
+  </tr>
+  <tr>
+    <td>Additional parameters</td>
+    <td>n/a</td>
+    <td>n/a</td>
+    <td>1,450 ms label period; <br> 2,025 ms pulse label; <br> 24 control-label pairs</td>
+    <td>n/a</td>
+  </tr>
+  <tr>
+    <td>Scan duration</td>
+    <td>4 min 39 s</td>
+    <td>5 min 1 s</td>
+    <td>5 min 26 s</td>
+    <td>5 min 29 s</td>
+  </tr>
+</tbody>
+<tfoot><tr><td colspan="5">T1w = T1-weighted; T2w = T2-weighted; pcASL = pseudo-continuous arterial spin labelling; SWI = susceptibility weighted imaging; FSPG = fast spoiled gradient echo; CUBE = General Electric name of sequence, not an acronym; GRE = gradient echo; ZIP2 = through-plane zero filling interpolation.</tr></td></tfoot>
+</table>
+```
+Technical parameters for MR imaging pulse sequences
+:::
