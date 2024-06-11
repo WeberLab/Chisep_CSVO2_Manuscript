@@ -15,7 +15,7 @@ prms.tbl <- read.md('
 | In-plane resolution (mm) | 0.39 x 0.39 | 0.78 x 0.78 | 1.875 x 1.875                                                            | 0.977 x 0.977                                  |
 | Slice thickness (mm)     | 1           | 1           | 4                                                                        | 2, reconstructed to 1 with zero filling (ZIP2) |
 | Number of slices         | 126         | 106         | 50                                                                       | 92                                             |
-| Additional parameters    | n/a         | n/a         | 1,450 ms label period;<br> 2,025 ms pulse label;<br> 24 control-label pairs | n/a                                            |
+| Additional parameters    | n/a         | n/a         | 1,450 ms label period;<br> 2,025 ms pulse label;<br> 24 control-label pairsmu | n/a                                            |
 | Scan duration            | 4 min 39 s  | 5 min 1 s   | 5 min 26 s                                                               | 5 min 29 s                                     |
 ')
 kbl(prms.tbl, "html", escape = F) |> footnote(general="T1w = T1-weighted; T2w = T2-weighted; pcASL = pseudo-continuous arterial spin labelling; SWI = susceptibility weighted imaging; FSPG = fast spoiled gradient echo; CUBE = General Electric name of sequence, not an acronym; GRE = gradient echo; ZIP2 = through-plane zero filling interpolation", footnote_as_chunk = T, threeparttable = T) 
@@ -182,4 +182,41 @@ Demographic and clinical characteristic of the study sample.
 ```
 Summary of acquired physiological parameters. Mean ± SD is shown for chi and SvO~2~ values. The P-value and 95% confidence interval (CI) were obtained through the comparison of values between QSM and paramagnetic maps; (n=19).
 :::
+
+```{r}
+#| label: tbl-test
+#| tbl-cap: "Some caption"
+# library(flextable)
+library(knitr)
+library(kableExtra)
+library(gt)
+library(tidyverse)
+
+data_frame = data.frame(Scan = character(), T1w = character(), T2w = character(), stringsAsFactors = FALSE)
+data_frame[1,] <- c("Flip angle", "12\U00B0", "12\U00B0")
+data_frame[2,] <- c("Additional Parameters", "n/a", "1,450 ms label period;\n 2,025 ms pulse label;\n 24 control-label pairs")
+
+if (knitr::is_latex_output()) {
+colnames(data_frame)[1] <- ""
+data_frame[2,] <- linebreak(data_frame[2,])
+data_frame |>
+  kbl(format = "latex",
+    booktabs = TRUE,
+    longtable = TRUE,
+    linesep = "",
+    align = "l",
+    escape = FALSE) |>
+    kable_styling(position = "center", latex_options = "hold_position", full_width = FALSE) |>
+    footnote(general_title = "", 
+           footnote_as_chunk = TRUE,
+           threeparttable = TRUE,
+           general = "Relatively long footnote that I would like to span a couple of lines. Relatively long footnote that I would like to span a couple of lines.")
+} else {
+data_frame |> 
+    mutate(across(everything(), ~ str_replace_all(., "\n", "<br>"))) |> 
+    gt(rowname_col = "Scan") |> tab_footnote("some note") |>
+    fmt_markdown(columns = TRUE)
+}
+
+```
 

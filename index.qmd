@@ -137,6 +137,7 @@ library(broom) # for nice summaries
 library(knitr) # 
 library(kableExtra) # more tables options. Can cause problems
 library(Rmpfr)
+library(gt)
 # library(reticulate) # incorporate Python
 # use_virtualenv('./pythonvenv', required = TRUE) # load pythong venv from path
 # library(neurobase)
@@ -147,6 +148,7 @@ load("notebooks/results.RData")
 ```
 
 ```{r}
+# function to make rounding means and sd easier
 rndmean <- function(clm) {
   return(round(mean(clm),2))
 }
@@ -178,28 +180,52 @@ Participant data comes from a previous study [@zhu-etal-cmro2]. Participants con
 
 MR imaging was performed on a 3.0 Tesla General Electric Discovery MR750 scanner (scanner software version DV26.0_R03) equipped with a SREE Medical Systems single-channel neonatal head coil (@tbl-mri). The scans were conducted at the BC Children’s MRI Research Facility. Prior to the scanning procedure, subjects were carefully prepared by a research nurse. Swaddling and feeding were used to ensure the comfort and cooperation of the subjects during the scan. Importantly, no sedatives or invasive markers were utilized throughout the procedure. Subjects were placed within a specially designed SREE Medical Systems MRI compatible incubator, which facilitated both safety and motion minimization. Molded foam was strategically positioned around the head and body within the incubator to further restrict subject movement. To protect against potential hearing damage, ear plugs were employed during the scanning process. Additionally, a pulse oximeter was affixed to the subject’s foot to monitor arterial oxygen saturation and heart rate throughout the scan.
 
-::: {#tbl-mri}
-```{=latex}
-    \begin{tabular*}{\textwidth}{@{}p{2.5cm}llp{2.5cm}p{2.5cm}@{}}
-    \toprule
-        ~ & T1w & T2w & pcASL & SWI \\ \midrule
-        Sequence & 3D FSPGR & 3D CUBE & Multi-shot 3D fast spin-echo & 3D spoiled GRE flow-compensated \\
-        Phase-encoding direction & Coronal & Sagittal & Axial & Axial \\
-        TR (ms) & 7.74 & 2,300 & 4,680 & 30.9 \\
-        TE (ms) & 2.97 & 66.29 & 10.55 & 5.24 \\
-        Flip angle & 12$^{\circ}$ & 90$^{\circ}$ & 111$^{\circ}$ & 20$^{\circ}$ \\
-        FOV (cm) & 20 & 20 & 24 & 25 \\
-        Acquisition matrix & 512 x 512 & 256 x 256 & 128 x 128 & 256 x 256 \\
-        In-plane resolution (mm) & 0.39 x 0.39 & 0.78 x 0.78 & 1.875 x 1.875 & 0.977 x 0.977 \\
-        Slice thickness (mm) & 1 & 1 & 4 & 2, reconstructed to 1 with zero filling (ZIP2) \\
-        Number of slices & 126 & 106 & 50 & 92 \\
-        Additional parameters & n/a & n/a & 1,450 ms label period; 2,025 ms pulse label; 24 control-label pairs & n/a \\
-        Scan duration & 4 min 39 s & 5 min 1 s & 5 min 26 s & 5 min 29 s \\ \botrule
-    \end{tabular*}
-    \footnotetext{T1w = T1-weighted; T2w = T2-weighted; pcASL = pseudo-continuous arterial spin labelling; SWI = susceptibility weighted imaging; FSPG = fast spoiled gradient echo; CUBE = General Electric name of sequence, not an acronym; GRE = gradient echo; ZIP2 = through-plane zero filling interpolation}
+
+```{r}
+#| label: tbl-mri
+#| tbl-cap: "Technical parameters for MR imaging pulse sequences"
+df <- data.frame(Scan = character(), T1w = character(), T2w = character(), pcASL = character(), SWI = character(), stringsAsFactors = FALSE)
+df[1,] <- c("Sequence", "3D FSPGR", "3D CUBE", "Multi-shot 3D fast spin-echo", "3D spoiled GRE flow-compensated")
+df[2,] <- c("Phase-encoding direction", "Coronal", "Sagittal", "Axial", "Axial")
+df[3,] <- c("TR (ms)", "7.74", "2,300", "4,680", "30.9")
+df[4,] <- c("TE (ms)", "2.97", "66.29", "10.55", "5.24")
+df[5,] <- c("Flip angle", "12\U00B0", "90\U00B0", "111\U00B0", "20\U00B0")
+df[6,] <- c("FOV (cm)", "20", "20", "24", "25")
+df[7,] <- c("Acquisition matrix", "512 x 512", "256 x 256", "128 x 128", "256 x 256")
+df[8,] <- c("In-plane resolution (mm)", "0.39 x 0.39", "0.78 x 0.78", "1.875 x 1.875", "0.977 x 0.977")
+df[9,] <- c("Slice thickness (mm)", "1", "1", "4", "2, reconstructed to 1 with zero filling (ZIP2)")
+df[10,] <- c("Number of slices", "126", "106", "50", "92")
+df[11,] <- c("Additional parameters", "n/a", "n/a", "1,450 ms label period;\n 2,025 ms pulse label;\n 24 control-label pairs", "n/a")
+df[12,] <- c("Scan duration", "4 min 39 s", "5 min 1 s", "5 min 26 s", "5 min 29 s")
+
+footnotetext="T1w = T1-weighted; T2w = T2-weighted; pcASL = pseudo-continuous arterial spin labelling; SWI = susceptibility weighted imaging; FSPG = fast spoiled gradient echo; CUBE = General Electric name of sequence, not an acronym; GRE = gradient echo; ZIP2 = through-plane zero filling interpolation"
+
+if (knitr::is_latex_output()) {
+colnames(df)[1] <- ""
+df[11,] <- linebreak(df[11,])
+df |>
+  kbl(format = "latex",
+    booktabs = TRUE,
+    longtable = TRUE,
+    linesep = "",
+    align = "l",
+    escape = FALSE) |>
+    kable_styling(font_size = 8, position = "center", latex_options = c("hold_position", "scale_down"), full_width = FALSE) |>
+    footnote(general_title = "", 
+           footnote_as_chunk = TRUE,
+           threeparttable = TRUE,
+           general = footnotetext) |>
+    column_spec(1, width="8em") |>
+    column_spec(4, width="9em") |>
+    column_spec(5, width="9em")
+} else {
+df |> 
+    mutate(across(everything(), ~ str_replace_all(., "\n", "<br>"))) |> 
+    gt(rowname_col = "Scan") |> tab_footnote(footnotetext) |>
+    fmt_markdown(columns = TRUE) |>
+    tab_options(quarto.disable_processing = TRUE)
+}
 ```
-Technical parameters for MR imaging pulse sequences
-:::
 
 The MRI scan protocol comprised of the following sequences: a T1-weighted scan, a T2-weighted scan, a pseudo-continuous arterial spin labeling (ASL) scan, a multi-echo susceptibility-weighted imaging scan, and a diffusion-weighted imaging (DWI) spin-echo echo planar imaging (EPI) sequence. The DWI sequence was not used for the present study.
 
@@ -235,43 +261,85 @@ Statistical analysis of the acquired data was performed using R and RStudio (v. 
 
 A total sample size of `r length(newdata$Subject)` infants were scanned, with a mean ($\pm$ standard deviation) gestational age of `r round(mean(newdata$GA),2)` $\pm$ `r round(sd(newdata$GA),2)` weeks and a mean birth weight of `r round(mean(newdata$BW),2)` $\pm$ `r round(sd(newdata$BW),2)` grams. A comprehensive summary of neonatal characteristics, including additional demographic and clinical data, is provided in @tbl-dem for reference.
 
-::: {#tbl-dem}
-```{=latex}
-\begin{tabular}{@{}ll@{}}
-    \toprule
-Variable & Subject Data (n=19) \\
-  \midrule
-Gestational age, weeks (mean $\pm$ SD)                       & `r round(mean(newdata$GA),2)` $\pm$ `r round(sd(newdata$GA),2)`                                                     \\
-Corrected gestational age on scan day, weeks (mean $\pm$ SD) & `r round(mean(newdata$CGAonScanDay),2)` $\pm$ `r round(sd(newdata$CGAonScanDay),2)`                                 \\
-Number of male neonates (%)                                  & `r sum(newdata$Sex == "M")` (`r round(sum(newdata$Sex == "M")/length(newdata$Sex)*100,2)`)                          \\
-Birth weight, g (mean $\pm$ SD)                              & `r round(mean(newdata$BW),2)` $\pm$ `r round(sd(newdata$BW),2)`                                                     \\
-Weight on scan day, g (mean $\pm$ SD)                        & `r round(mean(newdata$Weight.on.Scan.Day..kg.*1000),2)` $\pm$ `r round(sd(newdata$Weight.on.Scan.Day..kg.*1000),2)` \\
-Days spent in NICU (median, IQR)                             & `r median(newdata$Total_Days_NICU)`, `r IQR(newdata$Total_Days_NICU)`                                               \\
-Days on ventilation (median, IQR)                            & `r median(newdata$Total_Days_Ventilation)`, `r IQR(newdata$Total_Days_Ventilation)`                                 \\
-\botrule
-\end{tabular}
-\footnotetext{SD = standard deviation; IQR = inter quartile range}
+```{r}
+#| label: tbl-dem
+#| tbl-cap: Demographic and clinical characteristic of the study sample.
+
+df <- data.frame(Variable = character(), "Subject" = character(), stringsAsFactors = FALSE)
+df[1,] <- c("Gestational age, weeks (mean \U00B1 SD)", paste0(rndmean(newdata$GA), " \U00B1 ", rndsd(newdata$GA)))
+df[2,] <- c("Corrected gestational age on scan day, weeks (mean \U00B1 SD) ", paste0(rndmean(newdata$CGAonScanDay), " \U00B1 ", rndsd(newdata$CGAonScanDay)))
+df[3,] <- c("Number of male neonates (\\%)", paste0(sum(newdata$Sex == "M"), " (", (round(sum(newdata$Sex == "M")/length(newdata$Sex)*100,2)), ")"))
+df[4,] <- c("Birth weight, g (mean \U00B1 SD)", paste0(rndmean(newdata$BW), " \U00B1 ", rndsd(newdata$BW)))
+df[5,] <- c("Weight on scan day, g (mean \U00B1 SD)", paste0(rndmean(newdata$Weight.on.Scan.Day..kg.*1000), " \U00B1 ", rndsd(newdata$Weight.on.Scan.Day..kg.*1000)))
+df[6,] <- c("Days spent in NICU (median, IQR)", paste0(median(newdata$Total_Days_NICU), ", ", IQR(newdata$Total_Days_NICU)))
+df[7,] <- c("Days on ventilation (median, IQR)", paste0(median(newdata$Total_Days_Ventilation), ", ", IQR(newdata$Total_Days_Ventilation)))
+df <- df |> rename("Subject data (n = 19)" = Subject)
+footnotetext="SD = standard deviation; IQR = inter quartile range"
+
+if (knitr::is_latex_output()) {
+df |>
+  kbl(format = "latex",
+    booktabs = TRUE,
+    longtable = TRUE,
+    linesep = "",
+    align = "lc",
+    escape = FALSE) |>
+    kable_styling(font_size = 9, position = "center", latex_options = c("hold_position", "scale_down"), full_width = FALSE) |>
+    footnote(general_title = "", 
+           footnote_as_chunk = TRUE,
+           threeparttable = TRUE,
+           general = footnotetext)
+} else {
+df |> 
+    mutate(across(everything(), ~ str_replace_all(., "\n", "<br>"))) |> 
+    gt() |> 
+    cols_align(align = "center", columns = c("Subject data (n = 19)")) |>
+    tab_footnote(footnotetext) |>
+    fmt_markdown(columns = TRUE) |>
+    tab_options(quarto.disable_processing = TRUE)
+}
 ```
-Demographic and clinical characteristic of the study sample.
-:::
 
 The mean SvO~2~ values for the SSS and the CCV were found to be `r rndmean(newdata$Gavin_SSSVein_CSvO2)` $\pm$ `r rndsd(newdata$Gavin_SSSVein_CSvO2)` and `r rndmean(newdata$Gavin_IntVein_CSvO2)` $\pm$  `r rndsd(newdata$Gavin_IntVein_CSvO2)` ppm, respectively, when determined from the QSM data. When determined from the paramagnetic map, the mean SvO~2~ values for the SSS and the CCV were found to be `r rndmean(newdata$Chisep_SSSVein_CSvO2)` $\pm$ `r rndsd(newdata$Chisep_IntVein_CSvO2)` %, respectively. A summary of the measured physiological parameters, including the chi values used to calculate SvO~2~, can found in @tbl-chistats.
 
-::: {#tbl-chistats}
-```{=latex}
-    \begin{tabular}{@{}lllp{2cm}ll@{}}
-    \toprule
-        Region & Measure & QSM & Paramagnetic map & p-value & 95\% CI \\ \midrule
-        \multirow{ 2}{*}{SSS} & Chi (ppm)     & `r round(mean(newdata$Gavin_SSS_Chi),2)` \pm `r round(sd(newdata$Gavin_SSS_Chi),2)`                     & `r round(mean(newdata$Chisep_SSS_Chi),2)` \pm `r round(sd(newdata$Chisep_SSS_Chi),2)`                     & `r signif(SSSChi.t$p.value,3)`                        & `r round(SSSChi.t$conf.low,2)`, `r round(SSSChi.t$conf.high,2)`           \\
-                              & SvO$_{2}$(\%) & `r round(mean(newdata$Gavin_SSSVein_CSvO2*100),2)` \pm `r round(sd(newdata$Gavin_SSSVein_CSvO2*100),2)` & `r round(mean(newdata$Chisep_SSSVein_CSvO2*100),2)` \pm `r round(sd(newdata$Chisep_SSSVein_CSvO2*100),2)` & `r signif(SSSSvO2.t$p.value,3)` & `r round(SSSSvO2.t$conf.low*100,2)`, `r round(SSSSvO2.t$conf.high*100,2)` \\
-        \multirow{ 2}{*}{CCV} & Chi (ppm)     & `r round(mean(newdata$Gavin_IntVein_Chi),2)` \pm `r round(sd(newdata$Gavin_IntVein_Chi),2)`             & `r round(mean(newdata$Chisep_IntVein_Chi),2)` \pm `r round(sd(newdata$Chisep_IntVein_Chi),2)`             & `r signif(CCVChi.t$p.value,3)`                        & `r round(CCVChi.t$conf.low,2)`, `r round(CCVChi.t$conf.high,2)`           \\
-                              & SvO$_{2}$(\%) & `r round(mean(newdata$Gavin_IntVein_CSvO2*100),2)` \pm `r round(sd(newdata$Gavin_IntVein_CSvO2*100),2)` & `r round(mean(newdata$Chisep_IntVein_CSvO2*100),2)` \pm `r round(sd(newdata$Chisep_IntVein_CSvO2*100),2)` & `r signif(CCVSvO2.t$p.value,3)` & `r round(CCVSvO2.t$conf.low*100,2)`, `r round(CCVSvO2.t$conf.high*100,2)` \\
-        \botrule
-    \end{tabular}
-    \footnotetext{QSM = quantitative susceptibility mapping; CI = confidence interval; SSS = superior sagitall sinus; CCV = central cerebral vein}
+```{r}
+#| label: tbl-chistats
+#| tbl-cap: Summary of acquired physiological parameters. Mean $\pm$ SD is shown for chi and SvO~2~ values. The P-value and 95% confidence interval (CI) were obtained through the comparison of values between QSM and paramagnetic maps; (n=19).
+
+df <- data.frame(Region = character(), Measure = character(), QSM = character(), pmap = character(), pvalue = character(), CI = character(), stringsAsFactors = FALSE)
+
+df[1,] <- c("SSS", "Chi (ppm)", paste0(rndmean(newdata$Gavin_SSS_Chi), " \U00B1 ", rndsd(newdata$Gavin_SSS_Chi)), paste0(rndmean(newdata$Chisep_SSS_Chi), " \U00B1 ", rndsd(newdata$Chisep_SSS_Chi)), signif(SSSChi.t$p.value,3), paste0(round(SSSChi.t$conf.low,2), ", ", round(SSSChi.t$conf.high,2)))
+df[2,] <- c("SSS", "SvO\U2082 (\\%)", paste0(rndmean(newdata$Gavin_SSSVein_CSvO2*100), " \U00B1 ", rndsd(newdata$Gavin_SSSVein_CSvO2*100)), paste0(rndmean(newdata$Chisep_SSSVein_CSvO2*100), " \U00B1 ", rndsd(newdata$Chisep_SSSVein_CSvO2*100)), signif(SSSSvO2.t$p.value,3), paste0(round(SSSSvO2.t$conf.low,2), ", ", round(SSSSvO2.t$conf.high,2)))
+df[3,] <- c("CCV", "Chi (ppm)", paste0(rndmean(newdata$Gavin_IntVein_Chi), " \U00B1 ", rndsd(newdata$Gavin_IntVein_Chi)), paste0(rndmean(newdata$Chisep_IntVein_Chi), " \U00B1 ", rndsd(newdata$Chisep_IntVein_Chi)), signif(CCVChi.t$p.value,3), paste0(round(CCVChi.t$conf.low,2), ", ", round(CCVChi.t$conf.high,2)))
+df[4,] <- c("CCV", "SvO\U2082 (\\%)", paste0(rndmean(newdata$Gavin_IntVein_CSvO2*100), " \U00B1 ", rndsd(newdata$Gavin_IntVein_CSvO2*100)), paste0(rndmean(newdata$Chisep_IntVein_CSvO2*100), " \U00B1 ", rndsd(newdata$Chisep_IntVein_CSvO2*100)), signif(CCVSvO2.t$p.value,3), paste0(round(CCVSvO2.t$conf.low,2), ", ", round(CCVSvO2.t$conf.high,2)))
+
+df <- df |> rename("Paramagnetic map" = pmap, "p-value" = pvalue, "95\U0025 CI" = CI)
+
+footnotetext="QSM = quantitative susceptibility mapping; CI = confidence interval; SSS = superior sagitall sinus; CCV = central cerebral vein"
+
+if (knitr::is_latex_output()) {
+df |>
+  kbl(format = "latex",
+    booktabs = TRUE,
+    longtable = TRUE,
+    linesep = "",
+    align = "llcccc",
+    escape = FALSE) |>
+    kable_styling(font_size = 9, position = "center", latex_options = c("hold_position", "scale_down"), full_width = FALSE) |>
+    footnote(general_title = "", 
+           footnote_as_chunk = TRUE,
+           threeparttable = TRUE,
+           general = footnotetext)
+} else {
+df |> 
+    mutate(across(everything(), ~ str_replace_all(., "\n", "<br>"))) |> 
+    gt() |> 
+    cols_align(align = "center", columns = c("QSM", "Paramagnetic map", "p-value", "95\U0025 CI")) |>
+    tab_footnote(footnotetext) |>
+    fmt_markdown(columns = TRUE) |>
+    tab_options(quarto.disable_processing = TRUE)
+}
 ```
-Summary of acquired physiological parameters. Mean ± SD is shown for chi and SvO~2~ values. The P-value and 95% confidence interval (CI) were obtained through the comparison of values between QSM and paramagnetic maps; (n=19).
-:::
 
 Region-specific $\chi$ and SvO~2~ values acquired from QSM were compared to values acquired from paramagnetic maps. In both the SSS and CCV, it was found that a significant difference existed between values acquired ($\chi$ and SvO~2~) from QSM and paramagnetic maps (p < 0.05). A boxplot showing the comparisons made is shown in @fig-methodplot.
 
