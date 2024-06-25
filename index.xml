@@ -317,7 +317,7 @@ studies.</p>
     (<xref alt="X. Li et al. 2016" rid="ref-liFirstStepNeuroimaging2016" ref-type="bibr">X.
     Li et al. 2016</xref>). A step-by-step summary of the pipeline used
     is shown in
-    <xref alt="Figure 2" rid="fig-sample">Figure 2</xref>.</p>
+    <xref alt="Figure 1" rid="fig-graph">Figure 1</xref>.</p>
     <fig id="fig-graph">
       <caption><p>Figure 1: Pipeline for generating subject-specific
       brain masks that include the superior sagittal sinus (SSS).
@@ -947,7 +947,7 @@ studies.</p>
 </ref-list>
 </back>
 
-<sub-article article-type="notebook" id="nb-8-nb-article">
+<sub-article article-type="notebook" id="nb-11-nb-article">
 <front-stub>
 <title-group>
 <article-title>The Application of Magnetic Susceptibility Separation for
@@ -1202,7 +1202,8 @@ Attaching package: 'Rmpfr'</preformat>
 </boxed-text>
 <code language="r script">library(gt)
 # library(reticulate) # incorporate Python
-# use_virtualenv('./pythonvenv', required = TRUE) # load pythong venv from path
+# use_virtualenv('./pyvenv_csvo', required = TRUE) # load pythong venv from path
+
 # library(neurobase)</code>
 </sec>
 <sec specific-use="notebook-content">
@@ -1359,7 +1360,7 @@ df |&gt;
     (<xref alt="X. Li et al. 2016" rid="ref-liFirstStepNeuroimaging2016-nb-article" ref-type="bibr">X.
     Li et al. 2016</xref>). A step-by-step summary of the pipeline used
     is shown in
-    <xref alt="Figure 2" rid="fig-sample-nb-article">Figure 2</xref>.</p>
+    <xref alt="Figure 1" rid="fig-graph-nb-article">Figure 1</xref>.</p>
     <sec id="cell-fig-graph-nb-article" specific-use="notebook-content">
     <code language="python"># Create a new graph
 graph = graphviz.Graph(engine='neato')
@@ -2219,7 +2220,7 @@ df |&gt;
 
 
 </sub-article>
-<sub-article article-type="notebook" id="nb-4-nb-1">
+<sub-article article-type="notebook" id="nb-7-nb-1">
 <front-stub>
 <title-group>
 <article-title>gavin_thesis_R</article-title>
@@ -2551,6 +2552,490 @@ p4 &lt;- ggwithinstats(                    #boxplot of svo2 comparison between r
   <code language="r script">save.image('results.RData')
   </code>
   </sec>
+</sec>
+</body>
+
+
+
+<back>
+</back>
+
+
+</sub-article>
+<sub-article article-type="notebook" id="nb-3-nb-2">
+<front-stub>
+<title-group>
+<article-title>Python Figures</article-title>
+</title-group>
+</front-stub>
+
+<body>
+<sec id="cell-6a38c751-cf17-42fb-ae38-2039caca4fed-nb-2" specific-use="notebook-content">
+<code language="python">import nilearn as nl # nilearn for loading nifti
+import os
+import matplotlib.pyplot as plt
+import matplotlib.ticker as ticker
+import numpy as np
+import nibabel as nib # nibable: loading nifti
+from nilearn import plotting # nilearn plotting
+from matplotlib.colors import ListedColormap # custom colormaps
+import graphviz # graph
+from PIL import Image # image resizing</code>
+</sec>
+<sec id="cell-2df0bc53-f7ef-4bcb-8a21-90e60bd23489-nb-2" specific-use="notebook-content">
+<code language="python">figpath='/home/weberam2/Dropbox/AssistantProf_BCCHRI/Projects/Gavin_CSVO2/Quarto_Chisep_CSVO2_Manuscript/images/'</code>
+</sec>
+<sec id="cell-3747a1d4-a7bb-45d0-b601-40aed93431da-nb-2" specific-use="notebook-content">
+<code language="python">def apply_slice_cut_to_nifti(nii_gz_path, slice_cut):
+    &quot;&quot;&quot;
+    Load a NIfTI image, apply a slice cut to extract a subregion, and return a new NIfTI image.
+
+    Parameters:
+    - nii_gz_path (str): Path to the input NIfTI (.nii.gz) file.
+    - slice_cut (list): Slice cut specification in the form [slice_x, slice_y, slice_z].
+
+    Returns:
+    - nibabel.Nifti1Image: New NIfTI image object containing the extracted subregion.
+    &quot;&quot;&quot;
+    # Load the NIfTI image
+    nii_img = nib.load(nii_gz_path)
+    nii_data = nii_img.get_fdata()
+
+    # Extract the subregion using the slice cut
+    slice_x, slice_y, slice_z = slice_cut
+    subregion_data = nii_data[slice_x, slice_y, slice_z]
+
+    # Create a new NIfTI image with the extracted subregion and original affine matrix
+    subregion_img = nib.Nifti1Image(subregion_data, nii_img.affine)
+
+    return subregion_img</code>
+</sec>
+<sec id="bfbeecb1-d8c9-4309-a613-7f2b8e380f72-nb-2" specific-use="notebook-content">
+<code language="python">basepath='/home/weberam2/Dropbox/AssistantProf_BCCHRI/Projects/Gavin_CSVO2/Data/'</code>
+</sec>
+<sec id="cell-3f0bf5a6-c798-4129-9364-d496712d89a9-nb-2" specific-use="notebook-content">
+<code language="python">slice_cut = [slice(60, 190), slice(50, 200), slice(None)]  # Define the slice cut [x, y, z]</code>
+</sec>
+<sec id="cell-98e3f693-5c59-4f22-a221-0775886aa4fc-nb-2" specific-use="notebook-content">
+<code language="python">
+
+nii_gz_relpath = 'QSM_SSS/qsm/sub-AMWCER18/mag_echo1.nii.gz'
+nii_gz_path = basepath + nii_gz_relpath
+
+mag = apply_slice_cut_to_nifti(nii_gz_path, slice_cut)
+
+#plotting.plot_anat(anat_img=mag) #testing</code>
+</sec>
+<sec id="cell-62406a97-bd7e-419b-91e3-e7c2e8432d7a-nb-2" specific-use="notebook-content">
+<code language="python">nii_gz_relpath = 'QSM_SSS/calc_chi/sub-AMWCER18/STISuite_Last3Echos/S001_QSM_star.nii.gz'
+nii_gz_path = basepath + nii_gz_relpath
+
+qsm = apply_slice_cut_to_nifti(nii_gz_path, slice_cut)</code>
+</sec>
+<sec id="da238fc5-33e2-4400-9de7-2c451d7d7724-nb-2" specific-use="notebook-content">
+<code language="python">nii_gz_relpath = 'Chi_sep/sub-AMWCER18/x_pos_SA_finalmask.nii'
+nii_gz_path = basepath + nii_gz_relpath
+
+parachi = apply_slice_cut_to_nifti(nii_gz_path, slice_cut)</code>
+</sec>
+<sec id="cell-fig-sample-nb-2" specific-use="notebook-content">
+<code language="python">cut_coords_qsm = (64,42,51)
+
+# Set the number of rows and columns for the subplot grid
+num_rows = 3
+num_cols = 1
+
+figsize=(10, 12)
+fig = plt.figure(figsize=figsize)
+gs = fig.add_gridspec(nrows=num_rows, ncols=num_cols, height_ratios=[1, 1, 1])
+# Add subplots based on gridspec
+ax1 = fig.add_subplot(gs[0,0])  # First subplot (top row)
+ax2 = fig.add_subplot(gs[1,0])  # Second subplot (bottom row)
+ax3 = fig.add_subplot(gs[2,0])  # Third subplot (bottom row, first column)
+
+vmin, vmax = np.percentile(mag.get_fdata(), (2, 99.9))
+plotting.plot_anat(anat_img=mag,
+                      black_bg = False,
+                      draw_cross=False, 
+                      vmin=vmin, vmax=vmax, 
+                      annotate=True, axes=ax1,
+                  colorbar = False,
+                  )
+
+plotting.plot_anat(anat_img=qsm,
+                   black_bg = False,
+                      draw_cross=False, 
+                      vmin=-0.2, vmax=0.2, 
+                      annotate=True, axes=ax2,
+                   colorbar= True,
+                   cut_coords=cut_coords_qsm
+                  )
+
+plotting.plot_anat(anat_img=parachi,
+                   black_bg = False,
+                      draw_cross=False, 
+                      vmin=0, vmax=0.2, 
+                      annotate=True, axes=ax3,
+                   colorbar= True,
+                   cut_coords=cut_coords_qsm
+                  )
+fontsize=16
+xoffset=-0.05
+yoffset=1.05
+# Add label &quot;A&quot; to the first subplot
+ax1.text(xoffset, yoffset, 'A', transform=ax1.transAxes,
+             fontsize=fontsize, fontweight='bold', va='top', ha='right')
+
+ax2.text(xoffset, yoffset, 'B', transform=ax2.transAxes,
+             fontsize=fontsize, fontweight='bold', va='top', ha='right')
+
+ax3.text(xoffset, yoffset, 'C', transform=ax3.transAxes,
+         fontsize=fontsize, fontweight='bold', va='top', ha='right') 
+
+plt.savefig(figpath + &quot;SampleImages.png&quot;, dpi=300, bbox_inches=&quot;tight&quot;)
+
+plt.show()
+</code>
+<boxed-text>
+  <fig id="fig-sample-nb-2">
+    <caption><p>Figure 1: An example of subject imaging data. A sample
+    sagittal, coronal, and axial slice is displayed for each image. (a)
+    The 1st echo of the magnitude susceptibility weighted imaging
+    sequence; (b) the final quantitative susceptibility mapping image;
+    and (c) the paramagnetic component isolated from the quantitative
+    susceptibility map. The bars in (b) and (c) indicates the range of
+    susceptibility <inline-formula><alternatives>
+    <tex-math><![CDATA[\chi]]></tex-math>
+    <mml:math display="inline" xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mi>χ</mml:mi></mml:math></alternatives></inline-formula>
+    values.</p></caption>
+    <graphic mimetype="image" mime-subtype="png" xlink:href="Figures_files/figure-jats/fig-sample-output-1.png" />
+  </fig>
+</boxed-text>
+</sec>
+<sec id="cell-57c2188a-4d20-4837-a35e-7d0b97f0b90c-nb-2" specific-use="notebook-content">
+<code language="python">def plot_and_save_nifti_slice(nii_gz_path, slice_cut, single_slice_cut, figsize, out_path, cmap):
+    &quot;&quot;&quot;
+    Load a NIfTI image, apply slice cuts, extract a single slice, plot the slice, and save as a PNG file.
+
+    Parameters:
+    - nii_gz_path (str): Path to the input NIfTI (.nii.gz) file.
+    - slice_cut (list): Slice cut specification in the form [slice_x, slice_y, slice_z].
+    - single_slice_cut (tuple): Single slice specification for extraction (e.g., [54, :, :]).
+    - figsize (tuple): Figure size in inches (width, height).
+    - mask_path (str): Path to save the PNG file.
+    - cmap (str or matplotlib.colors.Colormap): Colormap for the plot.
+
+    Returns:
+    - str: Path to the saved PNG file.
+    &quot;&quot;&quot;
+    # Load the NIfTI image
+    nii_img = nib.load(nii_gz_path)
+    nii_data = nii_img.get_fdata()
+
+    # Apply slice cuts to extract a subregion
+    if len(slice_cut) == 3:  # For 3D data [slice_x, slice_y, slice_z]
+        subregion_data = nii_data[slice_cut[0], slice_cut[1], slice_cut[2]]
+    elif len(slice_cut) == 4:  # For 4D data [slice_x, slice_y, slice_z, slice_t]
+        subregion_data = nii_data[slice_cut[0], slice_cut[1], slice_cut[2], slice_cut[3]]
+
+    # Extract a single slice
+    single_slice_data = subregion_data[single_slice_cut]
+
+    # Create a new figure with the specified figsize
+    plt.figure(figsize=figsize)
+
+    # Display the single slice with the specified colormap
+    plt.imshow(single_slice_data.T, cmap=cmap, origin='lower')
+
+    # Remove x-axis and y-axis ticks
+    plt.xticks([])
+    plt.yticks([])
+
+    # Save the plot as a PNG file
+    plt.savefig(out_path, dpi=300, bbox_inches=&quot;tight&quot;, pad_inches=0)
+
+    # Show the plot (optional)
+    plt.show()
+
+    # Return the path to the saved PNG file
+    return out_path</code>
+</sec>
+<sec id="cell-04a7f85e-b4c8-4a5c-a854-86c91fb9c751-nb-2" specific-use="notebook-content">
+<code language="python"># nii_gz_relpath = 'QSM_SSS/calc_chi/sub-AMWCER18/STISuite_Last3Echos/mag_echo5.nii.gz'
+# nii_gz_path = basepath + nii_gz_relpath
+
+# magechofive_path=&quot;magecho5.png&quot;
+# out_path=figpath + initialmask_path
+
+# plot_and_save_nifti_slice(nii_gz_path, slice_cut, single_slice_cut, figsize, out_path, cmap)</code>
+</sec>
+<sec id="cell-9b1880f9-aa97-4191-a577-1630aa709486-nb-2" specific-use="notebook-content">
+<code language="python">basepath</code>
+<boxed-text>
+  <preformat>'/home/weberam2/Dropbox/AssistantProf_BCCHRI/Projects/Gavin_CSVO2/Data/'</preformat>
+</boxed-text>
+</sec>
+<sec id="cell-38236b99-cb70-4b78-8eed-ae0df81b164e-nb-2" specific-use="notebook-content">
+<code language="python">nii_gz_relpath = 'QSM_SSS/calc_chi/sub-AMWCER18/STISuite_Last3Echos/mag_echo5.nii.gz'
+nii_gz_path = basepath + nii_gz_relpath
+
+single_slice_cut = (62, slice(None), slice(None))
+figsize=(8, 8)
+cmap= 'gray'
+
+magechofive_path=&quot;magecho5.png&quot;
+out_path=figpath + magechofive_path
+
+plot_and_save_nifti_slice(nii_gz_path, slice_cut, single_slice_cut, figsize, out_path, cmap)</code>
+<boxed-text>
+  <graphic mimetype="image" mime-subtype="png" xlink:href="Figures_files/figure-jats/cell-14-output-1.png" />
+</boxed-text>
+<boxed-text>
+  <preformat>'/home/weberam2/Dropbox/AssistantProf_BCCHRI/Projects/Gavin_CSVO2/Quarto_Chisep_CSVO2_Manuscript/images/magecho5.png'</preformat>
+</boxed-text>
+</sec>
+<sec id="cell-96f9f444-d96d-4fbe-a384-048460911695-nb-2" specific-use="notebook-content">
+<code language="python">nii_gz_relpath = 'QSM_SSS/calc_chi/sub-AMWCER18/STISuite_Last3Echos/mag_echo5_sqr_brain_mask.nii.gz'
+nii_gz_path = basepath + nii_gz_relpath
+
+initialmask_path=&quot;InitialMask.png&quot;
+out_path=figpath + initialmask_path
+
+plot_and_save_nifti_slice(nii_gz_path, slice_cut, single_slice_cut, figsize, out_path, cmap)</code>
+<boxed-text>
+  <graphic mimetype="image" mime-subtype="png" xlink:href="Figures_files/figure-jats/cell-15-output-1.png" />
+</boxed-text>
+<boxed-text>
+  <preformat>'/home/weberam2/Dropbox/AssistantProf_BCCHRI/Projects/Gavin_CSVO2/Quarto_Chisep_CSVO2_Manuscript/images/InitialMask.png'</preformat>
+</boxed-text>
+</sec>
+<sec id="cell-972242c6-d0bf-46b4-ad60-36b3e935ecd3-nb-2" specific-use="notebook-content">
+<code language="python">nii_gz_relpath = 'QSM_SSS/calc_chi/sub-AMWCER18/STISuite_Last3Echos/dil7_echo5mask.nii.gz'
+nii_gz_path = basepath + nii_gz_relpath
+
+dilatedmask_path=&quot;DilatedMask.png&quot;
+out_path=figpath + dilatedmask_path
+
+plot_and_save_nifti_slice(nii_gz_path, slice_cut, single_slice_cut, figsize, out_path, cmap)</code>
+<boxed-text>
+  <graphic mimetype="image" mime-subtype="png" xlink:href="Figures_files/figure-jats/cell-16-output-1.png" />
+</boxed-text>
+<boxed-text>
+  <preformat>'/home/weberam2/Dropbox/AssistantProf_BCCHRI/Projects/Gavin_CSVO2/Quarto_Chisep_CSVO2_Manuscript/images/DilatedMask.png'</preformat>
+</boxed-text>
+</sec>
+<sec id="cell-879be4fa-9a09-4064-8b8f-8890b6268365-nb-2" specific-use="notebook-content">
+<code language="python">fourD_slice_cut = [slice(60, 190), slice(50, 200), slice(None), 1]
+nii_gz_relpath = 'QSM_SSS/calc_chi/sub-AMWCER18/STISuite_Last3Echos/chi_dil7_echo5.nii.gz'
+nii_gz_path = basepath + nii_gz_relpath
+
+chidil_path=&quot;ChiDilated.png&quot;
+out_path=figpath + chidil_path
+
+plot_and_save_nifti_slice(nii_gz_path, fourD_slice_cut, single_slice_cut, figsize, out_path, cmap)</code>
+<boxed-text>
+  <graphic mimetype="image" mime-subtype="png" xlink:href="Figures_files/figure-jats/cell-17-output-1.png" />
+</boxed-text>
+<boxed-text>
+  <preformat>'/home/weberam2/Dropbox/AssistantProf_BCCHRI/Projects/Gavin_CSVO2/Quarto_Chisep_CSVO2_Manuscript/images/ChiDilated.png'</preformat>
+</boxed-text>
+</sec>
+<sec id="cell-035da911-c6af-4858-b43a-7ecfb8af54dc-nb-2" specific-use="notebook-content">
+<code language="python">
+colors = ['black', 'red']
+custom_cmap = ListedColormap(colors)
+
+nii_gz_relpath = 'QSM_SSS/calc_chi/sub-AMWCER18/STISuite_Last3Echos/sss_dil7_echo5_mask.nii.gz'
+nii_gz_path = basepath + nii_gz_relpath
+
+sssmask_path=&quot;SSSMask.png&quot;
+out_path=figpath + sssmask_path
+
+plot_and_save_nifti_slice(nii_gz_path, slice_cut, single_slice_cut, figsize, out_path, custom_cmap)</code>
+<boxed-text>
+  <graphic mimetype="image" mime-subtype="png" xlink:href="Figures_files/figure-jats/cell-18-output-1.png" />
+</boxed-text>
+<boxed-text>
+  <preformat>'/home/weberam2/Dropbox/AssistantProf_BCCHRI/Projects/Gavin_CSVO2/Quarto_Chisep_CSVO2_Manuscript/images/SSSMask.png'</preformat>
+</boxed-text>
+</sec>
+<sec id="e43cb9e7-75ea-496c-b262-e4344cd9befb-nb-2" specific-use="notebook-content">
+<code language="python">nii_gz_path=basepath+'QSM_SSS/calc_chi/sub-AMWCER18/STISuite_Last3Echos/sss_dil7_echo5_mask.nii.gz'
+
+# Load the NIfTI image
+nii_img = nib.load(nii_gz_path)
+nii_data = nii_img.get_fdata()
+
+# Extract a single slice
+subregion_data = nii_data[slice_cut[0], slice_cut[1], slice_cut[2]]
+single_slice_data = subregion_data[single_slice_cut]
+
+# Create a new figure with the specified figsize
+plt.figure(figsize=figsize)
+
+colors = ['black', 'red']
+custom_cmap = ListedColormap(colors)
+
+# Display the single slice with the specified colormap
+plt.imshow(single_slice_data.T, cmap=custom_cmap, origin='lower')
+
+nii_gz_path=basepath+'QSM_SSS/calc_chi/sub-AMWCER18/STISuite_Last3Echos/mag_echo5_sqr_brain_mask.nii.gz'
+
+# Load the NIfTI image
+nii_img = nib.load(nii_gz_path)
+nii_data = nii_img.get_fdata()
+
+subregion_data = nii_data[slice_cut[0], slice_cut[1], slice_cut[2]]
+
+# Extract a single slice
+single_slice_data2 = subregion_data[single_slice_cut]
+mycmap = plt.cm.gray
+mycmap.set_bad(alpha=0)
+plt.imshow(single_slice_data2.T, cmap='gray', alpha=single_slice_data2.T, origin='lower', interpolation='none')
+
+# Remove x-axis and y-axis ticks
+plt.xticks([])
+plt.yticks([])
+
+finalmask_name=&quot;finalmask.png&quot;
+finalmask_path=figpath+finalmask_name
+# Save the plot as a PNG file
+plt.savefig(finalmask_path, dpi=300, bbox_inches=&quot;tight&quot;, pad_inches=0)
+
+# Show the plot (optional)
+plt.show()
+</code>
+<boxed-text>
+  <graphic mimetype="image" mime-subtype="png" xlink:href="Figures_files/figure-jats/cell-19-output-1.png" />
+</boxed-text>
+</sec>
+<sec id="cell-84f629c5-0d75-4527-bc9d-adcf02a0e631-nb-2" specific-use="notebook-content">
+<code language="python">
+def resize_image_to_png(original_path, resize_percent, output_png_name):
+    &quot;&quot;&quot;
+    Resize an image file and save it as a PNG file.
+
+    Parameters:
+    - sssmask_path (str): Path to the input image file.
+    - resize_percent (float): Percentage by which to resize the image (e.g., 30 for 30%).
+    - output_png_name (str): Desired name for the output PNG file (without the file extension).
+
+    Returns:
+    - str: Path to the saved PNG file.
+    &quot;&quot;&quot;
+    # Load the image using Pillow
+    img = Image.open(original_path)
+
+    # Get the original width and height
+    original_width, original_height = img.size
+
+    # Calculate the new dimensions based on the percentage
+    new_width = int(original_width * (resize_percent / 100))
+    new_height = int(original_height * (resize_percent / 100))
+
+    # Resize the image
+    resized_img = img.resize((new_width, new_height))
+
+    # Set the output file path for the resized image
+    output_png_path = f&quot;{output_png_name}.png&quot;
+
+    # Save the resized image as a PNG file
+    resized_img.save(output_png_path)
+
+    # Return the path to the saved PNG file
+    return output_png_path</code>
+</sec>
+<sec id="cell-fig-graph-nb-2" specific-use="notebook-content">
+<code language="python"># Create a new graph
+graph = graphviz.Graph(engine='neato')
+
+# Add nodes with text and images
+#graph.node('A', 'NifTI image file', shape='box', pos='0,0!')
+
+resized_mag5_path = resize_image_to_png(figpath + magechofive_path, 30, figpath + &quot;initialmag5_resized&quot;)
+node_a_label = f'&lt;&lt;TABLE BORDER=&quot;0&quot; CELLBORDER=&quot;0&quot; CELLPADDING=&quot;1&quot; CELLSPACING=&quot;0&quot;&gt;&lt;TR&gt;&lt;TD&gt;&lt;IMG SRC=&quot;{resized_mag5_path}&quot; /&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;TR&gt;&lt;TD ALIGN=&quot;CENTER&quot;&gt;SWI magnitude, 5th echo&lt;/TD&gt;&lt;/TR&gt;&lt;/TABLE&gt;&gt;'
+graph.node('A', label=node_a_label, shape='none', pos='0,0!')
+
+graph.node('B', 'Create initial \nbrain mask', shape='ellipse', pos='2.5,0!')
+graph.node('1', f'&lt;&lt;b&gt;1&lt;/b&gt;&gt;', shape='none', pos='1.5,.3!')
+
+resized_mask_path = resize_image_to_png(figpath + initialmask_path, 30, figpath + &quot;initialmask_resized&quot;)
+node_c_label = f'&lt;&lt;TABLE BORDER=&quot;0&quot; CELLBORDER=&quot;0&quot; CELLPADDING=&quot;1&quot; CELLSPACING=&quot;0&quot;&gt;&lt;TR&gt;&lt;TD&gt;&lt;IMG SRC=&quot;{resized_mask_path}&quot; /&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;TR&gt;&lt;TD ALIGN=&quot;CENTER&quot;&gt;Brain mask&lt;/TD&gt;&lt;/TR&gt;&lt;/TABLE&gt;&gt;'
+graph.node('C', label=node_c_label, shape='none', pos='5,0!')
+
+graph.node('D', 'Dilate', shape='ellipse', pos='6.7,0!')
+graph.node('2', f'&lt;&lt;b&gt;2&lt;/b&gt;&gt;', shape='none', pos='6.3,.3!')
+
+dilmaskresized_image_path = resize_image_to_png(figpath + dilatedmask_path, 30, figpath + &quot;dilmask_resized&quot;)
+node_e_label = f'&lt;&lt;TABLE BORDER=&quot;0&quot; CELLBORDER=&quot;0&quot; CELLPADDING=&quot;1&quot; CELLSPACING=&quot;0&quot;&gt;&lt;TR&gt;&lt;TD&gt;&lt;IMG SRC=&quot;{dilmaskresized_image_path}&quot;/&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;TR&gt;&lt;TD ALIGN=&quot;CENTER&quot;&gt;Dilated brain mask&lt;/TD&gt;&lt;/TR&gt;&lt;/TABLE&gt;&gt;'
+graph.node('E', label=node_e_label, shape='none', pos='8.5,0!')
+
+graph.node('F', 'Calculate QSM with \ndilated mask', shape='ellipse', pos='8.5,-1.7!')
+graph.node('3', f'&lt;&lt;b&gt;3&lt;/b&gt;&gt;', shape='none', pos='7.3,-1.3!')
+
+dilchiresized_image_path = resize_image_to_png(figpath + chidil_path, 30, figpath + 'dilchi_resized')
+node_e_label = f'&lt;&lt;TABLE BORDER=&quot;0&quot; CELLBORDER=&quot;0&quot; CELLPADDING=&quot;1&quot; CELLSPACING=&quot;0&quot;&gt;&lt;TR&gt;&lt;TD&gt;&lt;IMG SRC=&quot;{dilchiresized_image_path}&quot;/&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;TR&gt;&lt;TD ALIGN=&quot;CENTER&quot;&gt;Dilated QSM image&lt;/TD&gt;&lt;/TR&gt;&lt;/TABLE&gt;&gt;'
+graph.node('G', label=node_e_label, shape='none', pos='8.5,-3.4!')
+
+graph.node('H', 'SSS segmentation',  shape='ellipse', pos='8.5,-5!')
+graph.node('4', f'&lt;&lt;b&gt;4&lt;/b&gt;&gt;', shape='none', pos='7.3,-4.75!')
+
+sssmaskresized_image_path = resize_image_to_png(figpath + sssmask_path, 30, figpath + 'sssmask_resized')
+node_i_label = f'&lt;&lt;TABLE BORDER=&quot;0&quot; CELLBORDER=&quot;0&quot; CELLPADDING=&quot;1&quot; CELLSPACING=&quot;0&quot;&gt;&lt;TR&gt;&lt;TD&gt;&lt;IMG SRC=&quot;{sssmaskresized_image_path}&quot;/&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;TR&gt;&lt;TD ALIGN=&quot;CENTER&quot;&gt;SSS mask&lt;/TD&gt;&lt;/TR&gt;&lt;/TABLE&gt;&gt;'
+graph.node('I', label=node_i_label, shape='none', pos='5,-5!')
+
+graph.node('J', 'Combine masks',  shape='ellipse', pos='5,-2.5!')
+graph.node('5', f'&lt;&lt;b&gt;5&lt;/b&gt;&gt;', shape='none', pos='4.2,-2.2!')
+
+finalmaskresized_image_path = resize_image_to_png(figpath + finalmask_name, 30, figpath + 'finalmask_resized')
+node_k_label = f'&lt;&lt;TABLE BORDER=&quot;0&quot; CELLBORDER=&quot;0&quot; CELLPADDING=&quot;1&quot; CELLSPACING=&quot;0&quot;&gt;&lt;TR&gt;&lt;TD&gt;&lt;IMG SRC=&quot;{finalmaskresized_image_path}&quot;/&gt;&lt;/TD&gt;&lt;/TR&gt;&lt;TR&gt;&lt;TD ALIGN=&quot;CENTER&quot;&gt;Final mask with SSS&lt;/TD&gt;&lt;/TR&gt;&lt;/TABLE&gt;&gt;'
+graph.node('K', label=node_k_label, shape='none', pos='2,-2.5!')
+
+# Add edges between nodes
+graph.edge('A', 'B', label='', constraint='false')
+graph.edge('B', 'C', dir='forward', label='', constraint='false')
+graph.edge('C', 'D', label='', constraint='false')
+graph.edge('D', 'E', dir='forward', label='', constraint='false')
+graph.edge('E', 'F',  label='', constraint='false')
+graph.edge('F', 'G', dir='forward', label='', constraint='false')
+graph.edge('G', 'H',  label='', constraint='false')
+graph.edge('C', 'J',  label='', constraint='false')
+graph.edge('I', 'J',  label='', constraint='false')
+graph.edge('H', 'I', dir='forward', label='', constraint='false')
+graph.edge('J', 'K', dir='forward', label='', constraint='false')
+
+# Attributes
+graph.attr(dpi='300', bgcolor='white', forcelabels='true')
+
+# Render the graph
+graph.render(figpath + 'example_graph', format='png', engine='neato', cleanup=True)
+
+from IPython.display import Image as Ipmage
+from IPython.display import display
+from io import BytesIO
+
+# Render the graph to a BytesIO object
+png_bytes = graph.pipe(format='png')
+
+# Display the graph using IPython.display
+display(Ipmage(png_bytes))</code>
+<boxed-text>
+  <fig id="fig-graph-nb-2">
+    <caption><p>Figure 2: Pipeline for generating subject-specific brain
+    masks that include the superior sagittal sinus (SSS). Initial steps
+    involved (1) creating brain a mask from the magnitude of the fifth
+    echo of the susceptibility weighted scan. Subsequently, the brain
+    mask is dilated and then (2) utilized in conjunction with a
+    quantitative susceptibility mapping (QSM) script to generate a
+    preliminary QSM image. Further refinement involved (3) segmenting
+    the SSS from the QSM image manually to create a tissue mask of the
+    SSS region. Finally, (4) the vascular mask of the SSS is integrated
+    with the initial brain mask, forming the comprehensive brain mask
+    essential for obtaining susceptibility data that includes the
+    SSS.</p></caption>
+    <graphic mimetype="image" mime-subtype="png" xlink:href="Figures_files/figure-jats/fig-graph-output-1.png" />
+  </fig>
+</boxed-text>
 </sec>
 </body>
 
