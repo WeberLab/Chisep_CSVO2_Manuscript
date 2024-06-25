@@ -199,6 +199,7 @@ sn-nature
 \@ifpackageloaded{caption}{}{\usepackage{caption}}
 \@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
 \makeatother
+
 \ifLuaTeX
   \usepackage{selnolig}  % disable illegal ligatures
 \fi
@@ -217,6 +218,7 @@ Mapping, Preterm, Newborn, Cerebral Venous Oxygen Saturation},
   citecolor={Blue},
   urlcolor={Blue},
   pdfcreator={LaTeX via pandoc}}
+
 
 \title[The Application of Magnetic Susceptibility Separation for
 Measuring Cerebral Oxygenation in Preterm Neonates]{The Application of
@@ -288,6 +290,7 @@ Mapping,  Preterm,  Newborn,  Cerebral Venous Oxygen Saturation}
 \begin{document}
 \maketitle
 
+
 \section{Introduction}\label{sec-intro}
 
 Preterm birth
@@ -357,34 +360,42 @@ the scanning process. Additionally, a pulse oximeter was affixed to the
 subject's foot to monitor arterial oxygen saturation and heart rate
 throughout the scan.
 
-\begin{table}
+\begingroup\fontsize{8}{10}\selectfont
+
+\begin{ThreePartTable}
+\begin{TableNotes}[para]
+\item T1w = T1-weighted; T2w = T2-weighted; pcASL = pseudo-continuous arterial spin labelling; SWI = susceptibility weighted imaging; FSPG = fast spoiled gradient echo; CUBE = General Electric name of sequence, not an acronym; GRE = gradient echo; ZIP2 = through-plane zero filling interpolation
+\end{TableNotes}
+
+\begin{longtable}[t]{>{\raggedright\arraybackslash}p{8em}ll>{\raggedright\arraybackslash}p{9em}>{\raggedright\arraybackslash}p{9em}}
 
 \caption{\label{tbl-mri}Technical parameters for MR imaging pulse
 sequences}
 
-\centering{
+\tabularnewline
 
-    \begin{tabular*}{\textwidth}{@{}p{2.5cm}llp{2.5cm}p{2.5cm}@{}}
-    \toprule
-        ~ & T1w & T2w & pcASL & SWI \\ \midrule
-        Sequence & 3D FSPGR & 3D CUBE & Multi-shot 3D fast spin-echo & 3D spoiled GRE flow-compensated \\
-        Phase-encoding direction & Coronal & Sagittal & Axial & Axial \\
-        TR (ms) & 7.74 & 2,300 & 4,680 & 30.9 \\
-        TE (ms) & 2.97 & 66.29 & 10.55 & 5.24 \\
-        Flip angle & 12$^{\circ}$ & 90$^{\circ}$ & 111$^{\circ}$ & 20$^{\circ}$ \\
-        FOV (cm) & 20 & 20 & 24 & 25 \\
-        Acquisition matrix & 512 x 512 & 256 x 256 & 128 x 128 & 256 x 256 \\
-        In-plane resolution (mm) & 0.39 x 0.39 & 0.78 x 0.78 & 1.875 x 1.875 & 0.977 x 0.977 \\
-        Slice thickness (mm) & 1 & 1 & 4 & 2, reconstructed to 1 with zero filling (ZIP2) \\
-        Number of slices & 126 & 106 & 50 & 92 \\
-        Additional parameters & n/a & n/a & 1,450 ms label period; 2,025 ms pulse label; 24 control-label pairs & n/a \\
-        Scan duration & 4 min 39 s & 5 min 1 s & 5 min 26 s & 5 min 29 s \\ \botrule
-    \end{tabular*}
-    \footnotetext{T1w = T1-weighted; T2w = T2-weighted; pcASL = pseudo-continuous arterial spin labelling; SWI = susceptibility weighted imaging; FSPG = fast spoiled gradient echo; CUBE = General Electric name of sequence, not an acronym; GRE = gradient echo; ZIP2 = through-plane zero filling interpolation}
+\toprule
+ & T1w & T2w & pcASL & SWI\\
+\midrule
+Sequence & 3D FSPGR & 3D CUBE & Multi-shot 3D fast spin-echo & 3D spoiled GRE flow-compensated\\
+Phase-encoding direction & Coronal & Sagittal & Axial & Axial\\
+TR (ms) & 7.74 & 2,300 & 4,680 & 30.9\\
+TE (ms) & 2.97 & 66.29 & 10.55 & 5.24\\
+Flip angle & 12° & 90° & 111° & 20°\\
+FOV (cm) & 20 & 20 & 24 & 25\\
+Acquisition matrix & 512 x 512 & 256 x 256 & 128 x 128 & 256 x 256\\
+In-plane resolution (mm) & 0.39 x 0.39 & 0.78 x 0.78 & 1.875 x 1.875 & 0.977 x 0.977\\
+Slice thickness (mm) & 1 & 1 & 4 & 2, reconstructed to 1 with zero filling (ZIP2)\\
+Number of slices & 126 & 106 & 50 & 92\\
+Additional parameters & n/a & n/a & 1,450 ms label period;\newline  2,025 ms pulse label;\newline  24 control-label pairs & n/a\\
+Scan duration & 4 min 39 s & 5 min 1 s & 5 min 26 s & 5 min 29 s\\
+\bottomrule
+\insertTableNotes
 
-}
+\end{longtable}
 
-\end{table}%
+\end{ThreePartTable}
+\endgroup{}
 
 The MRI scan protocol comprised of the following sequences: a
 T1-weighted scan, a T2-weighted scan, a pseudo-continuous arterial spin
@@ -534,31 +545,37 @@ mean birth weight of 1276.05 \(\pm\) 294.87 grams. A comprehensive
 summary of neonatal characteristics, including additional demographic
 and clinical data, is provided in Table~\ref{tbl-dem} for reference.
 
-\begin{table}
+\begingroup\fontsize{9}{11}\selectfont
+
+\begin{ThreePartTable}
+\begin{TableNotes}[para]
+\item SD = standard deviation; IQR = inter quartile range
+\end{TableNotes}
+
+\begin{longtable}[t]{lc}
 
 \caption{\label{tbl-dem}Demographic and clinical characteristic of the
 study sample.}
 
-\centering{
+\tabularnewline
 
-\begin{tabular}{@{}ll@{}}
-    \toprule
-Variable & Subject Data (n=19) \\
-  \midrule
-Gestational age, weeks (mean $\pm$ SD)                       & 28.8 $\pm$ 1.68                                                     \\
-Corrected gestational age on scan day, weeks (mean $\pm$ SD) & 40.36 $\pm$ 1.4                                 \\
-Number of male neonates (%)                                  & 10 (52.63)                          \\
-Birth weight, g (mean $\pm$ SD)                              & 1276.05 $\pm$ 294.87                                                     \\
-Weight on scan day, g (mean $\pm$ SD)                        & 3396.58 $\pm$ 597.72 \\
-Days spent in NICU (median, IQR)                             & 53, 23                                               \\
-Days on ventilation (median, IQR)                            & 31, 28.5                                 \\
-\botrule
-\end{tabular}
-\footnotetext{SD = standard deviation; IQR = inter quartile range}
+\toprule
+Variable & Subject data (n = 19)\\
+\midrule
+Gestational age, weeks (mean ± SD) & 28.8 ± 1.68\\
+Corrected gestational age on scan day, weeks (mean ± SD) & 40.36 ± 1.4\\
+Number of male neonates (\%) & 10 (52.63)\\
+Birth weight, g (mean ± SD) & 1276.05 ± 294.87\\
+Weight on scan day, g (mean ± SD) & 3396.58 ± 597.72\\
+Days spent in NICU (median, IQR) & 53, 23\\
+Days on ventilation (median, IQR) & 31, 28.5\\
+\bottomrule
+\insertTableNotes
 
-}
+\end{longtable}
 
-\end{table}%
+\end{ThreePartTable}
+\endgroup{}
 
 The mean SvO\textsubscript{2} values for the SSS and the CCV were found
 to be 0.72 \(\pm\) 0.03 and 0.69 \(\pm\) 0.03 ppm, respectively, when
@@ -568,29 +585,37 @@ to be 0.58 \(\pm\) 0.07 \%, respectively. A summary of the measured
 physiological parameters, including the chi values used to calculate
 SvO\textsubscript{2}, can found in Table~\ref{tbl-chistats}.
 
-\begin{table}
+\begingroup\fontsize{9}{11}\selectfont
+
+\begin{ThreePartTable}
+\begin{TableNotes}[para]
+\item QSM = quantitative susceptibility mapping; CI = confidence interval; SSS = superior sagitall sinus; CCV = central cerebral vein
+\end{TableNotes}
+
+\begin{longtable}[t]{llcccc}
 
 \caption{\label{tbl-chistats}Summary of acquired physiological
-parameters. Mean ± SD is shown for chi and SvO\textsubscript{2} values.
-The P-value and 95\% confidence interval (CI) were obtained through the
-comparison of values between QSM and paramagnetic maps; (n=19).}
+parameters. Mean \(\pm\) SD is shown for chi and SvO\textsubscript{2}
+values. The P-value and 95\% confidence interval (CI) were obtained
+through the comparison of values between QSM and paramagnetic maps;
+(n=19).}
 
-\centering{
+\tabularnewline
 
-    \begin{tabular}{@{}lllp{2cm}ll@{}}
-    \toprule
-        Region & Measure & QSM & Paramagnetic map & p-value & 95\% CI \\ \midrule
-        \multirow{ 2}{*}{SSS} & Chi (ppm)     & 0.1 \pm 0.02                     & 0.21 \pm 0.05                     & \ensuremath{2.84\times 10^{-11}}                        & -0.13, -0.09           \\
-                              & SvO$_{2}$(\%) & 72.46 \pm 3.43 & 58.14 \pm 7.3 & \ensuremath{6.12\times 10^{-10}} & 11.78, 16.85 \\
-        \multirow{ 2}{*}{CCV} & Chi (ppm)     & 0.13 \pm 0.02             & 0.22 \pm 0.05             & \ensuremath{6.25\times 10^{-9}}                        & -0.1, -0.07           \\
-                              & SvO$_{2}$(\%) & 68.71 \pm 3.46 & 57.69 \pm 6.97 & \ensuremath{2.16\times 10^{-9}} & 8.9, 13.13 \\
-        \botrule
-    \end{tabular}
-    \footnotetext{QSM = quantitative susceptibility mapping; CI = confidence interval; SSS = superior sagitall sinus; CCV = central cerebral vein}
+\toprule
+Region & Measure & QSM & Paramagnetic map & p-value & 95\% CI\\
+\midrule
+SSS & Chi (ppm) & 0.1 ± 0.02 & 0.21 ± 0.05 & 2.84e-11 & -0.13, -0.09\\
+SSS & SvO₂ (\%) & 72.46 ± 3.43 & 58.14 ± 7.3 & 6.12e-10 & 0.12, 0.17\\
+CCV & Chi (ppm) & 0.13 ± 0.02 & 0.22 ± 0.05 & 6.25e-09 & -0.1, -0.07\\
+CCV & SvO₂ (\%) & 68.71 ± 3.46 & 57.69 ± 6.97 & 2.16e-09 & 0.09, 0.13\\
+\bottomrule
+\insertTableNotes
 
-}
+\end{longtable}
 
-\end{table}%
+\end{ThreePartTable}
+\endgroup{}
 
 Region-specific \(\chi\) and SvO\textsubscript{2} values acquired from
 QSM were compared to values acquired from paramagnetic maps. In both the
@@ -789,6 +814,7 @@ Respiratory Support in Preterm Neonates.''} \emph{Pediatric Research},
 May.
 
 \end{CSLReferences}
+
 
 
 

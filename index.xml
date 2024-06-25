@@ -153,10 +153,10 @@ Institute</institution>
 <corresp id="cor-4">aweber@bcchr.ca</corresp>
 </author-notes>
 
-<pub-date date-type="pub" publication-format="electronic" iso-8601-date="2024-06-11">
+<pub-date date-type="pub" publication-format="electronic" iso-8601-date="2024-06-25">
 <year>2024</year>
 <month>6</month>
-<day>11</day>
+<day>25</day>
 </pub-date>
 
 
@@ -298,122 +298,6 @@ studies.</p>
     <fig id="tbl-mri">
       <caption><p>Table 1: Technical parameters for MR imaging pulse
       sequences</p></caption>
-      <table-wrap>
-        <table>
-          <thead>
-            <tr>
-              <th align="left"> </th>
-              <th align="left">T1w</th>
-              <th align="left">T2w</th>
-              <th align="left">pcASL</th>
-              <th align="left">SWI</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td align="left">Sequence</td>
-              <td align="left">3D FSPGR</td>
-              <td align="left">3D CUBE</td>
-              <td align="left">Multi-shot 3D fast spin-echo</td>
-              <td align="left">3D spoiled GRE flow-compensated</td>
-            </tr>
-            <tr>
-              <td align="left">Phase-encoding direction</td>
-              <td align="left">Coronal</td>
-              <td align="left">Sagittal</td>
-              <td align="left">Axial</td>
-              <td align="left">Axial</td>
-            </tr>
-            <tr>
-              <td align="left">TR (ms)</td>
-              <td align="left">7.74</td>
-              <td align="left">2,300</td>
-              <td align="left">4,680</td>
-              <td align="left">30.9</td>
-            </tr>
-            <tr>
-              <td align="left">TE (ms)</td>
-              <td align="left">2.97</td>
-              <td align="left">66.29</td>
-              <td align="left">10.55</td>
-              <td align="left">5.24</td>
-            </tr>
-            <tr>
-              <td align="left">Flip angle</td>
-              <td align="left">12<inline-formula><alternatives>
-              <tex-math><![CDATA[^{\circ}]]></tex-math>
-              <mml:math display="inline" xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msup><mml:mi></mml:mi><mml:mo>∘</mml:mo></mml:msup></mml:math></alternatives></inline-formula></td>
-              <td align="left">90<inline-formula><alternatives>
-              <tex-math><![CDATA[^{\circ}]]></tex-math>
-              <mml:math display="inline" xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msup><mml:mi></mml:mi><mml:mo>∘</mml:mo></mml:msup></mml:math></alternatives></inline-formula></td>
-              <td align="left">111<inline-formula><alternatives>
-              <tex-math><![CDATA[^{\circ}]]></tex-math>
-              <mml:math display="inline" xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msup><mml:mi></mml:mi><mml:mo>∘</mml:mo></mml:msup></mml:math></alternatives></inline-formula></td>
-              <td align="left">20<inline-formula><alternatives>
-              <tex-math><![CDATA[^{\circ}]]></tex-math>
-              <mml:math display="inline" xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msup><mml:mi></mml:mi><mml:mo>∘</mml:mo></mml:msup></mml:math></alternatives></inline-formula></td>
-            </tr>
-            <tr>
-              <td align="left">FOV (cm)</td>
-              <td align="left">20</td>
-              <td align="left">20</td>
-              <td align="left">24</td>
-              <td align="left">25</td>
-            </tr>
-            <tr>
-              <td align="left">Acquisition matrix</td>
-              <td align="left">512 x 512</td>
-              <td align="left">256 x 256</td>
-              <td align="left">128 x 128</td>
-              <td align="left">256 x 256</td>
-            </tr>
-            <tr>
-              <td align="left">In-plane resolution (mm)</td>
-              <td align="left">0.39 x 0.39</td>
-              <td align="left">0.78 x 0.78</td>
-              <td align="left">1.875 x 1.875</td>
-              <td align="left">0.977 x 0.977</td>
-            </tr>
-            <tr>
-              <td align="left">Slice thickness (mm)</td>
-              <td align="left">1</td>
-              <td align="left">1</td>
-              <td align="left">4</td>
-              <td align="left">2, reconstructed to 1 with zero filling
-              (ZIP2)</td>
-            </tr>
-            <tr>
-              <td align="left">Number of slices</td>
-              <td align="left">126</td>
-              <td align="left">106</td>
-              <td align="left">50</td>
-              <td align="left">92</td>
-            </tr>
-            <tr>
-              <td align="left">Additional parameters</td>
-              <td align="left">n/a</td>
-              <td align="left">n/a</td>
-              <td align="left">1,450 ms label period; 2,025 ms pulse
-              label; 24 control-label pairs</td>
-              <td align="left">n/a</td>
-            </tr>
-            <tr>
-              <td align="left">Scan duration</td>
-              <td align="left">4 min 39 s</td>
-              <td align="left">5 min 1 s</td>
-              <td align="left">5 min 26 s</td>
-              <td align="left">5 min 29 s</td>
-            </tr>
-            <tr>
-              <td align="left"></td>
-              <td align="left"></td>
-              <td align="left"></td>
-              <td align="left"></td>
-              <td align="left"></td>
-            </tr>
-          </tbody>
-        </table>
-      </table-wrap>
     </fig>
     <p>The MRI scan protocol comprised of the following sequences: a
     T1-weighted scan, a T2-weighted scan, a pseudo-continuous arterial
@@ -619,74 +503,6 @@ studies.</p>
   <fig id="tbl-dem">
     <caption><p>Table 2: Demographic and clinical characteristic of the
     study sample.</p></caption>
-    <table-wrap>
-      <table>
-        <thead>
-          <tr>
-            <th align="left">Variable</th>
-            <th align="left">Subject Data (n=19)</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td align="left">Gestational age, weeks (mean
-            <inline-formula><alternatives>
-            <tex-math><![CDATA[\pm]]></tex-math>
-            <mml:math display="inline" xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mi>±</mml:mi></mml:math></alternatives></inline-formula>
-            SD)</td>
-            <td align="left">28.8 <inline-formula><alternatives>
-            <tex-math><![CDATA[\pm]]></tex-math>
-            <mml:math display="inline" xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mi>±</mml:mi></mml:math></alternatives></inline-formula>
-            1.68</td>
-          </tr>
-          <tr>
-            <td align="left">Corrected gestational age on scan day,
-            weeks (mean <inline-formula><alternatives>
-            <tex-math><![CDATA[\pm]]></tex-math>
-            <mml:math display="inline" xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mi>±</mml:mi></mml:math></alternatives></inline-formula>
-            SD)</td>
-            <td align="left">40.36 <inline-formula><alternatives>
-            <tex-math><![CDATA[\pm]]></tex-math>
-            <mml:math display="inline" xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mi>±</mml:mi></mml:math></alternatives></inline-formula>
-            1.4</td>
-          </tr>
-          <tr>
-            <td align="left">Number of male neonates ( Birth weight, g
-            (mean <inline-formula><alternatives>
-            <tex-math><![CDATA[\pm]]></tex-math>
-            <mml:math display="inline" xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mi>±</mml:mi></mml:math></alternatives></inline-formula>
-            SD)</td>
-            <td align="left">1276.05 <inline-formula><alternatives>
-            <tex-math><![CDATA[\pm]]></tex-math>
-            <mml:math display="inline" xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mi>±</mml:mi></mml:math></alternatives></inline-formula>
-            294.87</td>
-          </tr>
-          <tr>
-            <td align="left">Weight on scan day, g (mean
-            <inline-formula><alternatives>
-            <tex-math><![CDATA[\pm]]></tex-math>
-            <mml:math display="inline" xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mi>±</mml:mi></mml:math></alternatives></inline-formula>
-            SD)</td>
-            <td align="left">3396.58 <inline-formula><alternatives>
-            <tex-math><![CDATA[\pm]]></tex-math>
-            <mml:math display="inline" xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mi>±</mml:mi></mml:math></alternatives></inline-formula>
-            597.72</td>
-          </tr>
-          <tr>
-            <td align="left">Days spent in NICU (median, IQR)</td>
-            <td align="left">53, 23</td>
-          </tr>
-          <tr>
-            <td align="left">Days on ventilation (median, IQR)</td>
-            <td align="left">31, 28.5</td>
-          </tr>
-          <tr>
-            <td align="left"></td>
-            <td align="left"></td>
-          </tr>
-        </tbody>
-      </table>
-    </table-wrap>
   </fig>
   <p>The mean SvO<sub>2</sub> values for the SSS and the CCV were found
   to be 0.72 <inline-formula><alternatives>
@@ -707,68 +523,12 @@ studies.</p>
   <xref alt="Table 3" rid="tbl-chistats">Table 3</xref>.</p>
   <fig id="tbl-chistats">
     <caption><p>Table 3: Summary of acquired physiological parameters.
-    Mean ± SD is shown for chi and SvO<sub>2</sub> values. The P-value
-    and 95% confidence interval (CI) were obtained through the
-    comparison of values between QSM and paramagnetic maps;
-    (n=19).</p></caption>
-    <table-wrap>
-      <table>
-        <thead>
-          <tr>
-            <th align="left">Region</th>
-            <th align="left">Measure</th>
-            <th align="left">QSM</th>
-            <th align="left">Paramagnetic map</th>
-            <th align="left">p-value</th>
-            <th align="left">95% CI</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td align="left" rowspan="2">SSS</td>
-            <td align="left">Chi (ppm)</td>
-            <td align="left">0.1</td>
-            <td align="left">0.21</td>
-            <td align="left">2.84^-11</td>
-            <td align="left">-0.13, -0.09</td>
-          </tr>
-          <tr>
-            <td align="left">SvO<inline-formula><alternatives>
-            <tex-math><![CDATA[_{2}]]></tex-math>
-            <mml:math display="inline" xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi></mml:mi><mml:mn>2</mml:mn></mml:msub></mml:math></alternatives></inline-formula>(%)</td>
-            <td align="left">72.46</td>
-            <td align="left">58.14</td>
-            <td align="left">6.12^-10</td>
-            <td align="left">11.78, 16.85</td>
-          </tr>
-          <tr>
-            <td align="left" rowspan="2">CCV</td>
-            <td align="left">Chi (ppm)</td>
-            <td align="left">0.13</td>
-            <td align="left">0.22</td>
-            <td align="left">6.25^-9</td>
-            <td align="left">-0.1, -0.07</td>
-          </tr>
-          <tr>
-            <td align="left">SvO<inline-formula><alternatives>
-            <tex-math><![CDATA[_{2}]]></tex-math>
-            <mml:math display="inline" xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi></mml:mi><mml:mn>2</mml:mn></mml:msub></mml:math></alternatives></inline-formula>(%)</td>
-            <td align="left">68.71</td>
-            <td align="left">57.69</td>
-            <td align="left">2.16^-9</td>
-            <td align="left">8.9, 13.13</td>
-          </tr>
-          <tr>
-            <td align="left"></td>
-            <td align="left"></td>
-            <td align="left"></td>
-            <td align="left"></td>
-            <td align="left"></td>
-            <td align="left"></td>
-          </tr>
-        </tbody>
-      </table>
-    </table-wrap>
+    Mean <inline-formula><alternatives>
+    <tex-math><![CDATA[\pm]]></tex-math>
+    <mml:math display="inline" xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mi>±</mml:mi></mml:math></alternatives></inline-formula>
+    SD is shown for chi and SvO<sub>2</sub> values. The P-value and 95%
+    confidence interval (CI) were obtained through the comparison of
+    values between QSM and paramagnetic maps; (n=19).</p></caption>
   </fig>
   <p>Region-specific <inline-formula><alternatives>
   <tex-math><![CDATA[\chi]]></tex-math>
@@ -1440,7 +1200,8 @@ Attaching package: 'Rmpfr'</preformat>
 
     cbind, pmax, pmin, rbind</preformat>
 </boxed-text>
-<code language="r script"># library(reticulate) # incorporate Python
+<code language="r script">library(gt)
+# library(reticulate) # incorporate Python
 # use_virtualenv('./pythonvenv', required = TRUE) # load pythong venv from path
 # library(neurobase)</code>
 </sec>
@@ -1448,7 +1209,8 @@ Attaching package: 'Rmpfr'</preformat>
 <code language="r script">load(&quot;notebooks/results.RData&quot;)</code>
 </sec>
 <sec specific-use="notebook-content">
-<code language="r script">rndmean &lt;- function(clm) {
+<code language="r script"># function to make rounding means and sd easier
+rndmean &lt;- function(clm) {
   return(round(mean(clm),2))
 }
 rndsd &lt;- function(clm) {
@@ -1528,126 +1290,57 @@ rndsd &lt;- function(clm) {
     scanning process. Additionally, a pulse oximeter was affixed to the
     subject’s foot to monitor arterial oxygen saturation and heart rate
     throughout the scan.</p>
+    <sec specific-use="notebook-content">
+    <code language="r script">df &lt;- data.frame(Scan = character(), T1w = character(), T2w = character(), pcASL = character(), SWI = character(), stringsAsFactors = FALSE)
+df[1,] &lt;- c(&quot;Sequence&quot;, &quot;3D FSPGR&quot;, &quot;3D CUBE&quot;, &quot;Multi-shot 3D fast spin-echo&quot;, &quot;3D spoiled GRE flow-compensated&quot;)
+df[2,] &lt;- c(&quot;Phase-encoding direction&quot;, &quot;Coronal&quot;, &quot;Sagittal&quot;, &quot;Axial&quot;, &quot;Axial&quot;)
+df[3,] &lt;- c(&quot;TR (ms)&quot;, &quot;7.74&quot;, &quot;2,300&quot;, &quot;4,680&quot;, &quot;30.9&quot;)
+df[4,] &lt;- c(&quot;TE (ms)&quot;, &quot;2.97&quot;, &quot;66.29&quot;, &quot;10.55&quot;, &quot;5.24&quot;)
+df[5,] &lt;- c(&quot;Flip angle&quot;, &quot;12\U00B0&quot;, &quot;90\U00B0&quot;, &quot;111\U00B0&quot;, &quot;20\U00B0&quot;)
+df[6,] &lt;- c(&quot;FOV (cm)&quot;, &quot;20&quot;, &quot;20&quot;, &quot;24&quot;, &quot;25&quot;)
+df[7,] &lt;- c(&quot;Acquisition matrix&quot;, &quot;512 x 512&quot;, &quot;256 x 256&quot;, &quot;128 x 128&quot;, &quot;256 x 256&quot;)
+df[8,] &lt;- c(&quot;In-plane resolution (mm)&quot;, &quot;0.39 x 0.39&quot;, &quot;0.78 x 0.78&quot;, &quot;1.875 x 1.875&quot;, &quot;0.977 x 0.977&quot;)
+df[9,] &lt;- c(&quot;Slice thickness (mm)&quot;, &quot;1&quot;, &quot;1&quot;, &quot;4&quot;, &quot;2, reconstructed to 1 with zero filling (ZIP2)&quot;)
+df[10,] &lt;- c(&quot;Number of slices&quot;, &quot;126&quot;, &quot;106&quot;, &quot;50&quot;, &quot;92&quot;)
+df[11,] &lt;- c(&quot;Additional parameters&quot;, &quot;n/a&quot;, &quot;n/a&quot;, &quot;1,450 ms label period;\n 2,025 ms pulse label;\n 24 control-label pairs&quot;, &quot;n/a&quot;)
+df[12,] &lt;- c(&quot;Scan duration&quot;, &quot;4 min 39 s&quot;, &quot;5 min 1 s&quot;, &quot;5 min 26 s&quot;, &quot;5 min 29 s&quot;)
+
+footnotetext=&quot;T1w = T1-weighted; T2w = T2-weighted; pcASL = pseudo-continuous arterial spin labelling; SWI = susceptibility weighted imaging; FSPG = fast spoiled gradient echo; CUBE = General Electric name of sequence, not an acronym; GRE = gradient echo; ZIP2 = through-plane zero filling interpolation&quot;
+
+if (knitr::is_latex_output()) {
+colnames(df)[1] &lt;- &quot;&quot;
+df[11,] &lt;- linebreak(df[11,])
+df |&gt;
+  kbl(format = &quot;latex&quot;,
+    booktabs = TRUE,
+    longtable = TRUE,
+    linesep = &quot;&quot;,
+    align = &quot;l&quot;,
+    escape = FALSE) |&gt;
+    kable_styling(font_size = 8, position = &quot;center&quot;, latex_options = c(&quot;hold_position&quot;, &quot;scale_down&quot;), full_width = FALSE) |&gt;
+    footnote(general_title = &quot;&quot;, 
+           footnote_as_chunk = TRUE,
+           threeparttable = TRUE,
+           general = footnotetext) |&gt;
+    column_spec(1, width=&quot;8em&quot;) |&gt;
+    column_spec(4, width=&quot;9em&quot;) |&gt;
+    column_spec(5, width=&quot;9em&quot;)
+} else {
+df |&gt; 
+    mutate(across(everything(), ~ str_replace_all(., &quot;\n&quot;, &quot;&lt;br&gt;&quot;))) |&gt; 
+    gt(rowname_col = &quot;Scan&quot;) |&gt; tab_footnote(footnotetext) |&gt;
+    fmt_markdown(columns = TRUE) |&gt;
+    tab_options(quarto.disable_processing = TRUE)
+}</code>
+    <boxed-text>
+      <preformat>Warning: Since gt v0.3.0, `columns = TRUE` has been deprecated.
+• Please use `columns = everything()` instead.</preformat>
+    </boxed-text>
     <fig id="tbl-mri-nb-article">
       <caption><p>Table 1: Technical parameters for MR imaging pulse
       sequences</p></caption>
-      <table-wrap>
-        <table>
-          <thead>
-            <tr>
-              <th align="left"> </th>
-              <th align="left">T1w</th>
-              <th align="left">T2w</th>
-              <th align="left">pcASL</th>
-              <th align="left">SWI</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td align="left">Sequence</td>
-              <td align="left">3D FSPGR</td>
-              <td align="left">3D CUBE</td>
-              <td align="left">Multi-shot 3D fast spin-echo</td>
-              <td align="left">3D spoiled GRE flow-compensated</td>
-            </tr>
-            <tr>
-              <td align="left">Phase-encoding direction</td>
-              <td align="left">Coronal</td>
-              <td align="left">Sagittal</td>
-              <td align="left">Axial</td>
-              <td align="left">Axial</td>
-            </tr>
-            <tr>
-              <td align="left">TR (ms)</td>
-              <td align="left">7.74</td>
-              <td align="left">2,300</td>
-              <td align="left">4,680</td>
-              <td align="left">30.9</td>
-            </tr>
-            <tr>
-              <td align="left">TE (ms)</td>
-              <td align="left">2.97</td>
-              <td align="left">66.29</td>
-              <td align="left">10.55</td>
-              <td align="left">5.24</td>
-            </tr>
-            <tr>
-              <td align="left">Flip angle</td>
-              <td align="left">12<inline-formula><alternatives>
-              <tex-math><![CDATA[^{\circ}]]></tex-math>
-              <mml:math display="inline" xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msup><mml:mi></mml:mi><mml:mo>∘</mml:mo></mml:msup></mml:math></alternatives></inline-formula></td>
-              <td align="left">90<inline-formula><alternatives>
-              <tex-math><![CDATA[^{\circ}]]></tex-math>
-              <mml:math display="inline" xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msup><mml:mi></mml:mi><mml:mo>∘</mml:mo></mml:msup></mml:math></alternatives></inline-formula></td>
-              <td align="left">111<inline-formula><alternatives>
-              <tex-math><![CDATA[^{\circ}]]></tex-math>
-              <mml:math display="inline" xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msup><mml:mi></mml:mi><mml:mo>∘</mml:mo></mml:msup></mml:math></alternatives></inline-formula></td>
-              <td align="left">20<inline-formula><alternatives>
-              <tex-math><![CDATA[^{\circ}]]></tex-math>
-              <mml:math display="inline" xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msup><mml:mi></mml:mi><mml:mo>∘</mml:mo></mml:msup></mml:math></alternatives></inline-formula></td>
-            </tr>
-            <tr>
-              <td align="left">FOV (cm)</td>
-              <td align="left">20</td>
-              <td align="left">20</td>
-              <td align="left">24</td>
-              <td align="left">25</td>
-            </tr>
-            <tr>
-              <td align="left">Acquisition matrix</td>
-              <td align="left">512 x 512</td>
-              <td align="left">256 x 256</td>
-              <td align="left">128 x 128</td>
-              <td align="left">256 x 256</td>
-            </tr>
-            <tr>
-              <td align="left">In-plane resolution (mm)</td>
-              <td align="left">0.39 x 0.39</td>
-              <td align="left">0.78 x 0.78</td>
-              <td align="left">1.875 x 1.875</td>
-              <td align="left">0.977 x 0.977</td>
-            </tr>
-            <tr>
-              <td align="left">Slice thickness (mm)</td>
-              <td align="left">1</td>
-              <td align="left">1</td>
-              <td align="left">4</td>
-              <td align="left">2, reconstructed to 1 with zero filling
-              (ZIP2)</td>
-            </tr>
-            <tr>
-              <td align="left">Number of slices</td>
-              <td align="left">126</td>
-              <td align="left">106</td>
-              <td align="left">50</td>
-              <td align="left">92</td>
-            </tr>
-            <tr>
-              <td align="left">Additional parameters</td>
-              <td align="left">n/a</td>
-              <td align="left">n/a</td>
-              <td align="left">1,450 ms label period; 2,025 ms pulse
-              label; 24 control-label pairs</td>
-              <td align="left">n/a</td>
-            </tr>
-            <tr>
-              <td align="left">Scan duration</td>
-              <td align="left">4 min 39 s</td>
-              <td align="left">5 min 1 s</td>
-              <td align="left">5 min 26 s</td>
-              <td align="left">5 min 29 s</td>
-            </tr>
-            <tr>
-              <td align="left"></td>
-              <td align="left"></td>
-              <td align="left"></td>
-              <td align="left"></td>
-              <td align="left"></td>
-            </tr>
-          </tbody>
-        </table>
-      </table-wrap>
     </fig>
+    </sec>
     <p>The MRI scan protocol comprised of the following sequences: a
     T1-weighted scan, a T2-weighted scan, a pseudo-continuous arterial
     spin labeling (ASL) scan, a multi-echo susceptibility-weighted
@@ -1989,78 +1682,49 @@ plt.show()
   294.87 grams. A comprehensive summary of neonatal characteristics,
   including additional demographic and clinical data, is provided in
   <xref alt="Table 2" rid="tbl-dem-nb-article">Table 2</xref> for reference.</p>
+  <sec specific-use="notebook-content">
+  <code language="r script">df &lt;- data.frame(Variable = character(), &quot;Subject&quot; = character(), stringsAsFactors = FALSE)
+df[1,] &lt;- c(&quot;Gestational age, weeks (mean \U00B1 SD)&quot;, paste0(rndmean(newdata$GA), &quot; \U00B1 &quot;, rndsd(newdata$GA)))
+df[2,] &lt;- c(&quot;Corrected gestational age on scan day, weeks (mean \U00B1 SD) &quot;, paste0(rndmean(newdata$CGAonScanDay), &quot; \U00B1 &quot;, rndsd(newdata$CGAonScanDay)))
+df[3,] &lt;- c(&quot;Number of male neonates (\\%)&quot;, paste0(sum(newdata$Sex == &quot;M&quot;), &quot; (&quot;, (round(sum(newdata$Sex == &quot;M&quot;)/length(newdata$Sex)*100,2)), &quot;)&quot;))
+df[4,] &lt;- c(&quot;Birth weight, g (mean \U00B1 SD)&quot;, paste0(rndmean(newdata$BW), &quot; \U00B1 &quot;, rndsd(newdata$BW)))
+df[5,] &lt;- c(&quot;Weight on scan day, g (mean \U00B1 SD)&quot;, paste0(rndmean(newdata$Weight.on.Scan.Day..kg.*1000), &quot; \U00B1 &quot;, rndsd(newdata$Weight.on.Scan.Day..kg.*1000)))
+df[6,] &lt;- c(&quot;Days spent in NICU (median, IQR)&quot;, paste0(median(newdata$Total_Days_NICU), &quot;, &quot;, IQR(newdata$Total_Days_NICU)))
+df[7,] &lt;- c(&quot;Days on ventilation (median, IQR)&quot;, paste0(median(newdata$Total_Days_Ventilation), &quot;, &quot;, IQR(newdata$Total_Days_Ventilation)))
+df &lt;- df |&gt; rename(&quot;Subject data (n = 19)&quot; = Subject)
+footnotetext=&quot;SD = standard deviation; IQR = inter quartile range&quot;
+
+if (knitr::is_latex_output()) {
+df |&gt;
+  kbl(format = &quot;latex&quot;,
+    booktabs = TRUE,
+    longtable = TRUE,
+    linesep = &quot;&quot;,
+    align = &quot;lc&quot;,
+    escape = FALSE) |&gt;
+    kable_styling(font_size = 9, position = &quot;center&quot;, latex_options = c(&quot;hold_position&quot;, &quot;scale_down&quot;), full_width = FALSE) |&gt;
+    footnote(general_title = &quot;&quot;, 
+           footnote_as_chunk = TRUE,
+           threeparttable = TRUE,
+           general = footnotetext)
+} else {
+df |&gt; 
+    mutate(across(everything(), ~ str_replace_all(., &quot;\n&quot;, &quot;&lt;br&gt;&quot;))) |&gt; 
+    gt() |&gt; 
+    cols_align(align = &quot;center&quot;, columns = c(&quot;Subject data (n = 19)&quot;)) |&gt;
+    tab_footnote(footnotetext) |&gt;
+    fmt_markdown(columns = TRUE) |&gt;
+    tab_options(quarto.disable_processing = TRUE)
+}</code>
+  <boxed-text>
+    <preformat>Warning: Since gt v0.3.0, `columns = TRUE` has been deprecated.
+• Please use `columns = everything()` instead.</preformat>
+  </boxed-text>
   <fig id="tbl-dem-nb-article">
     <caption><p>Table 2: Demographic and clinical characteristic of the
     study sample.</p></caption>
-    <table-wrap>
-      <table>
-        <thead>
-          <tr>
-            <th align="left">Variable</th>
-            <th align="left">Subject Data (n=19)</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td align="left">Gestational age, weeks (mean
-            <inline-formula><alternatives>
-            <tex-math><![CDATA[\pm]]></tex-math>
-            <mml:math display="inline" xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mi>±</mml:mi></mml:math></alternatives></inline-formula>
-            SD)</td>
-            <td align="left">28.8 <inline-formula><alternatives>
-            <tex-math><![CDATA[\pm]]></tex-math>
-            <mml:math display="inline" xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mi>±</mml:mi></mml:math></alternatives></inline-formula>
-            1.68</td>
-          </tr>
-          <tr>
-            <td align="left">Corrected gestational age on scan day,
-            weeks (mean <inline-formula><alternatives>
-            <tex-math><![CDATA[\pm]]></tex-math>
-            <mml:math display="inline" xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mi>±</mml:mi></mml:math></alternatives></inline-formula>
-            SD)</td>
-            <td align="left">40.36 <inline-formula><alternatives>
-            <tex-math><![CDATA[\pm]]></tex-math>
-            <mml:math display="inline" xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mi>±</mml:mi></mml:math></alternatives></inline-formula>
-            1.4</td>
-          </tr>
-          <tr>
-            <td align="left">Number of male neonates ( Birth weight, g
-            (mean <inline-formula><alternatives>
-            <tex-math><![CDATA[\pm]]></tex-math>
-            <mml:math display="inline" xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mi>±</mml:mi></mml:math></alternatives></inline-formula>
-            SD)</td>
-            <td align="left">1276.05 <inline-formula><alternatives>
-            <tex-math><![CDATA[\pm]]></tex-math>
-            <mml:math display="inline" xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mi>±</mml:mi></mml:math></alternatives></inline-formula>
-            294.87</td>
-          </tr>
-          <tr>
-            <td align="left">Weight on scan day, g (mean
-            <inline-formula><alternatives>
-            <tex-math><![CDATA[\pm]]></tex-math>
-            <mml:math display="inline" xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mi>±</mml:mi></mml:math></alternatives></inline-formula>
-            SD)</td>
-            <td align="left">3396.58 <inline-formula><alternatives>
-            <tex-math><![CDATA[\pm]]></tex-math>
-            <mml:math display="inline" xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mi>±</mml:mi></mml:math></alternatives></inline-formula>
-            597.72</td>
-          </tr>
-          <tr>
-            <td align="left">Days spent in NICU (median, IQR)</td>
-            <td align="left">53, 23</td>
-          </tr>
-          <tr>
-            <td align="left">Days on ventilation (median, IQR)</td>
-            <td align="left">31, 28.5</td>
-          </tr>
-          <tr>
-            <td align="left"></td>
-            <td align="left"></td>
-          </tr>
-        </tbody>
-      </table>
-    </table-wrap>
   </fig>
+  </sec>
   <p>The mean SvO<sub>2</sub> values for the SSS and the CCV were found
   to be 0.72 <inline-formula><alternatives>
   <tex-math><![CDATA[\pm]]></tex-math>
@@ -2078,71 +1742,52 @@ plt.show()
   parameters, including the chi values used to calculate
   SvO<sub>2</sub>, can found in
   <xref alt="Table 3" rid="tbl-chistats-nb-article">Table 3</xref>.</p>
+  <sec specific-use="notebook-content">
+  <code language="r script">df &lt;- data.frame(Region = character(), Measure = character(), QSM = character(), pmap = character(), pvalue = character(), CI = character(), stringsAsFactors = FALSE)
+df[1,] &lt;- c(&quot;SSS&quot;, &quot;Chi (ppm)&quot;, paste0(rndmean(newdata$Gavin_SSS_Chi), &quot; \U00B1 &quot;, rndsd(newdata$Gavin_SSS_Chi)), paste0(rndmean(newdata$Chisep_SSS_Chi), &quot; \U00B1 &quot;, rndsd(newdata$Chisep_SSS_Chi)), signif(SSSChi.t$p.value,3), paste0(round(SSSChi.t$conf.low,2), &quot;, &quot;, round(SSSChi.t$conf.high,2)))
+df[2,] &lt;- c(&quot;SSS&quot;, &quot;SvO\U2082 (\\%)&quot;, paste0(rndmean(newdata$Gavin_SSSVein_CSvO2*100), &quot; \U00B1 &quot;, rndsd(newdata$Gavin_SSSVein_CSvO2*100)), paste0(rndmean(newdata$Chisep_SSSVein_CSvO2*100), &quot; \U00B1 &quot;, rndsd(newdata$Chisep_SSSVein_CSvO2*100)), signif(SSSSvO2.t$p.value,3), paste0(round(SSSSvO2.t$conf.low,2), &quot;, &quot;, round(SSSSvO2.t$conf.high,2)))
+df[3,] &lt;- c(&quot;CCV&quot;, &quot;Chi (ppm)&quot;, paste0(rndmean(newdata$Gavin_IntVein_Chi), &quot; \U00B1 &quot;, rndsd(newdata$Gavin_IntVein_Chi)), paste0(rndmean(newdata$Chisep_IntVein_Chi), &quot; \U00B1 &quot;, rndsd(newdata$Chisep_IntVein_Chi)), signif(CCVChi.t$p.value,3), paste0(round(CCVChi.t$conf.low,2), &quot;, &quot;, round(CCVChi.t$conf.high,2)))
+df[4,] &lt;- c(&quot;CCV&quot;, &quot;SvO\U2082 (\\%)&quot;, paste0(rndmean(newdata$Gavin_IntVein_CSvO2*100), &quot; \U00B1 &quot;, rndsd(newdata$Gavin_IntVein_CSvO2*100)), paste0(rndmean(newdata$Chisep_IntVein_CSvO2*100), &quot; \U00B1 &quot;, rndsd(newdata$Chisep_IntVein_CSvO2*100)), signif(CCVSvO2.t$p.value,3), paste0(round(CCVSvO2.t$conf.low,2), &quot;, &quot;, round(CCVSvO2.t$conf.high,2)))
+footnotetext=&quot;QSM = quantitative susceptibility mapping; CI = confidence interval; SSS = superior sagitall sinus; CCV = central cerebral vein&quot;
+
+if (knitr::is_latex_output()) {
+df &lt;- df |&gt; rename(&quot;Paramagnetic map&quot; = pmap, &quot;p-value&quot; = pvalue, &quot;95\\\U0025 CI&quot; = CI)
+df |&gt;
+  kbl(format = &quot;latex&quot;,
+    booktabs = TRUE,
+    longtable = TRUE,
+    linesep = &quot;&quot;,
+    align = &quot;llcccc&quot;,
+    escape = FALSE) |&gt;
+    kable_styling(font_size = 9, position = &quot;center&quot;, latex_options = c(&quot;hold_position&quot;, &quot;scale_down&quot;), full_width = FALSE) |&gt;
+    footnote(general_title = &quot;&quot;, 
+           footnote_as_chunk = TRUE,
+           threeparttable = TRUE,
+           general = footnotetext)
+} else {
+df &lt;- df |&gt; rename(&quot;Paramagnetic map&quot; = pmap, &quot;p-value&quot; = pvalue, &quot;95\U0025 CI&quot; = CI)
+df |&gt; 
+    mutate(across(everything(), ~ str_replace_all(., &quot;\n&quot;, &quot;&lt;br&gt;&quot;))) |&gt; 
+    gt() |&gt; 
+    cols_align(align = &quot;center&quot;, columns = c(&quot;QSM&quot;, &quot;Paramagnetic map&quot;, &quot;p-value&quot;, &quot;95\U0025 CI&quot;)) |&gt;
+    tab_footnote(footnotetext) |&gt;
+    fmt_markdown(columns = TRUE) |&gt;
+    tab_options(quarto.disable_processing = TRUE)
+}</code>
+  <boxed-text>
+    <preformat>Warning: Since gt v0.3.0, `columns = TRUE` has been deprecated.
+• Please use `columns = everything()` instead.</preformat>
+  </boxed-text>
   <fig id="tbl-chistats-nb-article">
     <caption><p>Table 3: Summary of acquired physiological parameters.
-    Mean ± SD is shown for chi and SvO<sub>2</sub> values. The P-value
-    and 95% confidence interval (CI) were obtained through the
-    comparison of values between QSM and paramagnetic maps;
-    (n=19).</p></caption>
-    <table-wrap>
-      <table>
-        <thead>
-          <tr>
-            <th align="left">Region</th>
-            <th align="left">Measure</th>
-            <th align="left">QSM</th>
-            <th align="left">Paramagnetic map</th>
-            <th align="left">p-value</th>
-            <th align="left">95% CI</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td align="left" rowspan="2">SSS</td>
-            <td align="left">Chi (ppm)</td>
-            <td align="left">0.1</td>
-            <td align="left">0.21</td>
-            <td align="left">2.84^-11</td>
-            <td align="left">-0.13, -0.09</td>
-          </tr>
-          <tr>
-            <td align="left">SvO<inline-formula><alternatives>
-            <tex-math><![CDATA[_{2}]]></tex-math>
-            <mml:math display="inline" xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi></mml:mi><mml:mn>2</mml:mn></mml:msub></mml:math></alternatives></inline-formula>(%)</td>
-            <td align="left">72.46</td>
-            <td align="left">58.14</td>
-            <td align="left">6.12^-10</td>
-            <td align="left">11.78, 16.85</td>
-          </tr>
-          <tr>
-            <td align="left" rowspan="2">CCV</td>
-            <td align="left">Chi (ppm)</td>
-            <td align="left">0.13</td>
-            <td align="left">0.22</td>
-            <td align="left">6.25^-9</td>
-            <td align="left">-0.1, -0.07</td>
-          </tr>
-          <tr>
-            <td align="left">SvO<inline-formula><alternatives>
-            <tex-math><![CDATA[_{2}]]></tex-math>
-            <mml:math display="inline" xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:msub><mml:mi></mml:mi><mml:mn>2</mml:mn></mml:msub></mml:math></alternatives></inline-formula>(%)</td>
-            <td align="left">68.71</td>
-            <td align="left">57.69</td>
-            <td align="left">2.16^-9</td>
-            <td align="left">8.9, 13.13</td>
-          </tr>
-          <tr>
-            <td align="left"></td>
-            <td align="left"></td>
-            <td align="left"></td>
-            <td align="left"></td>
-            <td align="left"></td>
-            <td align="left"></td>
-          </tr>
-        </tbody>
-      </table>
-    </table-wrap>
+    Mean <inline-formula><alternatives>
+    <tex-math><![CDATA[\pm]]></tex-math>
+    <mml:math display="inline" xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mi>±</mml:mi></mml:math></alternatives></inline-formula>
+    SD is shown for chi and SvO<sub>2</sub> values. The P-value and 95%
+    confidence interval (CI) were obtained through the comparison of
+    values between QSM and paramagnetic maps; (n=19).</p></caption>
   </fig>
+  </sec>
   <p>Region-specific <inline-formula><alternatives>
   <tex-math><![CDATA[\chi]]></tex-math>
   <mml:math display="inline" xmlns:mml="http://www.w3.org/1998/Math/MathML"><mml:mi>χ</mml:mi></mml:math></alternatives></inline-formula>
