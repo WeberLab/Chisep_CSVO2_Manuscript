@@ -1,26 +1,25 @@
 project:
   type: manuscript
-  render: 
-    - "*.qmd"
-    - "!pyvenv_csvo/"
+  # render: 
+  #   - "*.qmd"
+  #   - "!pyvenv_csvo/"
+  #   - "*.ipynb"
 
 execute:
   freeze: auto
 
 format:
   html:
-    embed-resources: true
+    # embed-resources: true
     toc: true
     comments:
       hypothesis: true
-      
   docx: default
   jats: default
-  
   nature-pdf:
     journal: "sn-nature"
     keep-tex: true
 
-# filters:
-#   - parse-latex
+filters:
+  - parse-latex
 
