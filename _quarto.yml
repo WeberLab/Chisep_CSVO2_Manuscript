@@ -21,6 +21,6 @@ format:
     journal: "sn-nature"
     keep-tex: true
 
-filters:
-  - parse-latex
+# filters:
+#   - parse-latex
 
