@@ -5,6 +5,10 @@ project:
   #   - "!pyvenv_csvo/"
   #   - "*.ipynb"
 
+code-links:
+  - repo
+  - binder
+
 execute:
   freeze: auto
 
@@ -12,7 +16,6 @@ format:
   html:
     # embed-resources: true
     toc: true
-    code-links: true
     comments:
       hypothesis: true
   docx: default
