@@ -11,17 +11,22 @@ code-links:
 
 execute:
   freeze: auto
+  cache: true
 
 format:
-  html:
-    # embed-resources: true
-    toc: true
-    comments:
-      hypothesis: true
-  docx: default
-  jats: default
+  # html:
+  #   # embed-resources: true
+  #   toc: true
+  #   comments:
+  #     hypothesis: true
+  # docx: default
+  docx:
+    reference-doc: custom-reference.docx
+  # jats: default
   nature-pdf:
-    journal: "sn-nature"
+    journal: 
+      cite-style: sn-jnl
+    cite-method: natbib
     keep-tex: true
 
 filters:
