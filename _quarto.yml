@@ -8,18 +8,17 @@ project:
 # code-links:
 #   - repo
 #   - binder
-notebook-links: false
 
 execute:
   freeze: auto
   cache: false
 
 format:
-  # html:
-  #   # embed-resources: true
-  #   toc: true
-  #   comments:
-  #     hypothesis: true
+  html:
+    embed-resources: true
+    toc: true
+    comments:
+      hypothesis: true
   # docx: default
   docx:
     reference-doc: custom-reference.docx
