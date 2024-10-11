@@ -5,13 +5,14 @@ project:
   #   - "!pyvenv_csvo/"
   #   - "*.ipynb"
 
-code-links:
-  - repo
-  - binder
+# code-links:
+#   - repo
+#   - binder
+notebook-links: false
 
 execute:
   freeze: auto
-  cache: true
+  cache: false
 
 format:
   # html:
