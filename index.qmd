@@ -87,6 +87,11 @@ abstract: |
 filters:
   - authors-block
 
+notebook-links: false
+number-sections: false
+citation:
+  container-title: Unpublished
+date: laste-modified
 bibliography: Gavin_Thesis_Ref.bib
 csl: pediatric-research.csl
 
