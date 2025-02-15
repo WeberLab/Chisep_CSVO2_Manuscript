@@ -68,21 +68,14 @@ affiliations:
     name: BC Children's Hospital Research Institute, The University of British Columbia, Vancouver, BC, Canada
   - id: 3
     name: Pediatrics, The University of British Columbia, Vancouver, BC, Canada
+  - id: 4
+    name: Physics and Astronomy, The University of British Columbia, Vancouver, BC, Canada
 
 keywords:
   - Quantitative Susceptbility Mapping
   - Preterm
   - Newborn
   - Cerebral Venous Oxygen Saturation
-
-abstract: |
-  **Background**: Quantitative susceptibility mapping (QSM), an magnetic resonance imaging (MRI) modality sensitive to deoxyhemoglobin, is a promising method for measuring cerebral oxygenation in human neonates. Paramagnetic sources, like deoxyhemoglobin, however, can be obscured by diamagnetic sources such as water and myelin. This study evaluated whether QSM images, or isolated paramagnetic components, are more accurate for measuring oxygenation of cerebral veins of preterm neonates, and explored oxygenation differences between the major cerebral veins.
-  
-  **Methods**: 19 preterm neonates were scanned on at term equivalent age on a 3T MRI using a multi-echo susceptibility-weighted imaging sequence. Susceptibility values were calculated from QSM images to determine oxygen saturation (SvO~2~) in the superior sagittal sinus (SSS) and central cerebral veins (CCV). The paramagnetic components of QSM images were isolated, and SvO~2~ values were recalculated.
-  
-  **Results**: The mean SvO~2~ values from QSM were 72.4% (SD, 3.4%) for the SSS and and 68.7% (SD, 3.5%) for the CCV. SvO~2~ values for paramagnetic components were 58.1% (SD, 7.3%) for the SSS and 57.7% (SD, 7.0%) for the CCV.
-  
-  **Conclusion**: While paramagnetic component decomposition yielded more accurate SSS values, it increased variability. No significant oxygenation differences were found between the SSS and CCV, contrasting with prior studies.
 
 filters:
   - authors-block
@@ -91,9 +84,9 @@ notebook-links: false
 number-sections: false
 citation:
   container-title: Unpublished
-date: laste-modified
+# date: last-modified
 bibliography: Gavin_Thesis_Ref.bib
-csl: pediatric-research.csl
+csl: nature.csl
 
 crossref:
   fig-title: '**Figure**'
@@ -101,14 +94,28 @@ crossref:
   title-delim: "**.**"
 ---
 
-**Category of Study:** basic science
-
 ## Impact Statement
 
-- This study evaluated the accuracy of using QSM and its paramagnetic components to measure cerebral oxygenation in neonates.
-- By comparing susceptibility-derived oxygen saturation (SvO~2~) in the superior sagittal sinus (SSS) and central cerebral veins (CCV), it adds to the field of neonatal cerebral oxygenation measurement.
-- Decomposing QSM into paramagnetic components shows potential for improving SvO~2~ accuracy, particularly in the SSS, though variability remains a challenge.
-- The results suggest no significant oxygenation difference between the SSS and CCV, contrasting with previous findings, indicating a need for further research on neonatal venous oxygenation.
+-   This study evaluated the use of QSM and its paramagnetic components to measure cerebral oxygenation in neonates.
+-   By comparing susceptibility-derived oxygen saturation (SvO~2~) in the superior sagittal sinus (SSS) and central cerebral veins (CCV), it adds to the field of neonatal cerebral oxygenation measurement.
+-   Decomposing QSM into paramagnetic components shows potential for improving SvO~2~ accuracy, particularly in the SSS, though variability remains a challenge.
+-   The results suggest no significant oxygenation difference between the SSS and CCV, contrasting with previous findings, indicating a need for further research on neonatal venous oxygenation.
+
+**Category of Study:** basic science
+
+{{< pagebreak >}}
+
+## Abstract:
+
+**Background**: Quantitative susceptibility mapping (QSM), a magnetic resonance imaging (MRI) modality sensitive to deoxyhemoglobin, is a promising method for measuring cerebral oxygenation in human neonates. Paramagnetic sources, like deoxyhemoglobin, however, can be obscured by diamagnetic sources such as water and myelin. This study evaluated whether QSM images, or isolated paramagnetic components, are more accurate for measuring oxygenation of cerebral veins of preterm neonates, and explored oxygenation differences between the major cerebral veins.
+  
+**Methods**: 19 preterm neonates were scanned on at term equivalent age on a 3T MRI using a multi-echo susceptibility-weighted imaging sequence. Susceptibility values were calculated from QSM images to determine oxygen saturation (SvO~2~) in the superior sagittal sinus (SSS) and central cerebral veins (CCV). The paramagnetic components of QSM images were isolated, and SvO~2~ values were recalculated.
+  
+**Results**: The mean SvO~2~ values from QSM were 72.4% (SD, 3.4%) for the SSS and and 68.7% (SD, 3.5%) for the CCV. SvO~2~ values for paramagnetic components were 58.1% (SD, 7.3%) for the SSS and 57.7% (SD, 7.0%) for the CCV.
+  
+**Conclusion**: While paramagnetic component decomposition yielded SSS values closer to those found in the literature, it increased variability. No significant oxygenation differences were found between the SSS and CCV, contrasting with prior studies.
+
+
 
 ```{r setup, include=FALSE}
 # options
@@ -155,26 +162,6 @@ rndsd <- function(clm) {
 }
 ```
 
-## Acknowledgments
-
-We wish to acknowledge the work of and thank Victoria Tapics (Research Nurse); Vicki Goh (Research Nurse); Chacko Anil (Neonatologist); and Michael A. Sargent (Radiologist).
-
-## Funding
-
-Authors AMW and REG were co-primary applicants for a BC Children’s Hospital Research Institute - Brain, Behaviour and Development Catalyst Grant ($20,000). AMW was supported by an establishment award from BCCHRI. Scanning was partly funded through a special award to AMW from BCCHRI .
-
-## Author contributions
-
-TGC wrote the original draft, performed the formal analysis, and contributed to methodology, validation, and visualization. AR helped with writing, reviewing & editing. REG helped with writing, reviewing & editing, and with initial funding acquisition. AMW was involved in project administration, supervision, validation, visualization, resources, methodology, formal analysis, funding acquisition, writing, reviewing & editing, conceptualization, data curation, and investigation.
-
-## Competing interests
-
-The authors have no competing interests to declare.
-
-## Consent statement
-
-The study was approved by the Clinical Research Ethics Board at the University of British Columbia and Children's & Women's Hospital (H21-00655) and written informed consent was obtained from the parent/guardian for each infant.
-
 {{< pagebreak >}}
 
 # Introduction {#sec-intro}
@@ -185,10 +172,9 @@ With advances in neonatal medical care, more infants born preterm are surviving 
 
 Unfortunately, there exist many challenges in measuring cerebral oxygen metabolism in neonates. Cerebral metabolic rate of oxygen (CMRO~2~) using oxygen-15 positron emission tomography (PET) [@mintunBrainOxygenUtilization1984], has been measured in infants [@altmanCerebralBloodFlow1988], and is considered the gold standard. However, this method is invasive, requiring ionizing radiation, which limits its suitability for neonates. A less invasive option for evaluating brain hemodynamics is near-infrared spectroscopy (NIRS), which uses the attenuation of near-infrared light (\~650–950 nm) as it passes through biological tissue [@skovEstimationCerebralVenous1993]. Deoxygenated and oxygenated hemoglobin absorb this light differently, allowing NIRS to estimate changes in deoxyhemoglobin and oxyhemoglobin [@wrayCharacterizationInfraredAbsorption1988] and thus provide an estimate of cerebral venous oxygen saturation (SvO~2~). While NIRS offers the advantage of being non-invasive and continuous bedside monitoring, it is limited to regional assessments where the probe is placed and is sensitive only to superficial brain tissue due to the shallow penetration depth of near-infrared light [@boasDiffuseOpticalImaging2004].
 
-For the preceding reasons, non-invasive MRI-based techniques are actively being explored to assess regional and whole-brain blood oxygenation. MRI based methods have been developed for adults [@jainRapidMagneticResonance2011; @luQuantitativeEvaluationOxygenation2008; @xuNoninvasiveQuantificationWholebrain2009] and are only beginning to be explored in neonates [@devisNoninvasiveMRIMeasurements2014; @liuQuantitativeAssessmentGlobal2014; @qiHemodynamicMetabolicAssessment2018; @jainCerebralOxygenMetabolism2014; @jiangVesselspecificQuantificationNeonatal2019]. These methods almost all rely on T2 relaxation to estimate CSvO~2~ [@devisNoninvasiveMRIMeasurements2014; @liuQuantitativeAssessmentGlobal2014; @qiHemodynamicMetabolicAssessment2018; @jiangVesselspecificQuantificationNeonatal2019] with the exception of @jainCerebralOxygenMetabolism2014 which used susceptometry [@jainMRIEstimationGlobal2010]. One limitation of these T2 relaxation methods, however, is the fact that SvO~2~ is often measured using a single imaging slice, averaging values across several voxels, and only in the superior sagittal sinus (SSS). In the case of @jainCerebralOxygenMetabolism2014, they obtained regional and whole-brain data, but with thick slices (5mm), and still only estimated CSvO~2~ in the SSS. An alternative MRI method using quantitative susceptibility mapping (QSM) has been proposed, which can measure SvO~2~ regionally and across the whole-brain at high resolution (< 1mm^3^ per voxel) [@weberQuantitativeSusceptibilityMapping2021]. However, this method left room for improvement, as it removed the SSS (averaging CSvO~2~ across the internal veins), and required an arbitrary threshold value of 0.15 ppm in order to acquire realistic results [@weberQuantitativeSusceptibilityMapping2021].
+For the preceding reasons, non-invasive MRI-based techniques are actively being explored to assess regional and whole-brain blood oxygenation. While MRI-based methods have been developed for adults [@jainRapidMagneticResonance2011; @luQuantitativeEvaluationOxygenation2008; @xuNoninvasiveQuantificationWholebrain2009], their application in neonates is only beginning to be explored [@devisNoninvasiveMRIMeasurements2014; @liuQuantitativeAssessmentGlobal2014; @qiHemodynamicMetabolicAssessment2018; @jainCerebralOxygenMetabolism2014; @jiangVesselspecificQuantificationNeonatal2019]. This delay is likely due to the unique challenges posed by neonates, including their smaller anatomies, distinct hemodynamic profiles, susceptibility to motion artifacts, and the difficulties associated with recruiting this population for research. These methods have almost all relied on T2 relaxation to estimate CSvO~2~ [@devisNoninvasiveMRIMeasurements2014; @liuQuantitativeAssessmentGlobal2014; @qiHemodynamicMetabolicAssessment2018; @jiangVesselspecificQuantificationNeonatal2019] with the exception of @jainCerebralOxygenMetabolism2014 which used susceptometry [@jainMRIEstimationGlobal2010]. One limitation of these T2 relaxation methods, however, is the fact that SvO~2~ is often measured using a single imaging slice, averaging values across several voxels, and only in the superior sagittal sinus (SSS). In the case of @jainCerebralOxygenMetabolism2014, they obtained regional and whole-brain data, but with thick slices (5mm), and still only estimated CSvO~2~ in the SSS. An alternative MRI method using quantitative susceptibility mapping (QSM) has been proposed, which can measure SvO~2~ regionally and across the whole-brain at high resolution (\< 1mm^3^ per voxel) [@weberQuantitativeSusceptibilityMapping2021]. However, this method left room for improvement, as it removed the SSS (averaging CSvO~2~ across the internal veins), and required an arbitrary threshold value of 0.15 ppm in order to acquire realistic results [@weberQuantitativeSusceptibilityMapping2021]. Furthermore, QSM tends to underestimates parametric components due to the inclusion of diamagnetic tissue, and vice versa, as the opposing magnetic susceptibilities effectively subtract from one another [@kimHSeparationImagingDiagnosis2023].
 
 In the present study, we set out to determine whether decomposing the QSM image into its paramagnetic and diamagnetic components would allow for a more accurate assessment of SvO~2~ in the central cerebral veins (CCV) of a cohort of preterm neonates. We also had a secondary aim of preserving the SSS vessel in our QSM images and using this data to determine whether a difference in oxygenation existed between the SSS and the CCV.
-
 
 # Methods {#sec-data-methods}
 
@@ -196,35 +182,36 @@ The study was approved by the Clinical Research Ethics Board at the University o
 
 ## Study population
 
-Participant data comes from a previous study *** <!-- [@zhu-etal-cmro2] (submitted) -->. Participants consisted of preterm neonates born between 25- and 31-weeks gestational age (GA) who were admitted to the level III NICU at *** <!-- BC Women’s Hospital -->. Recruitment took place over a span of one year, from February 2021 to January 2022, facilitated by a dedicated research nurse. Parents of eligible infants were approached by the research nurse prior to discharge from the NICU to explain the study objectives and seek their consent for participation. Infants meeting the criteria for inclusion were scanned for the study if they had already been discharged from the NICU, were in stable condition, and had reached a term equivalent age of 37 to 44 weeks GA. However, certain exclusion criteria were applied to ensure the homogeneity and integrity of the study sample: infants were excluded if there was clinical evidence of a congenital malformation or syndrome, a TORCH infection, or ultrasound evidence of large parenchymal hemorrhagic infarction (\>2 cm, Grade 4 intraventricular hemorrhage).
+Participant data comes from a previous study \*\*\* <!-- [@zhu-etal-cmro2] (submitted) -->. Participants consisted of preterm neonates born between 25- and 31-weeks gestational age (GA) who were admitted to the level III NICU at \*\*\* <!-- BC Women’s Hospital -->. Recruitment took place over a span of one year, from February 2021 to January 2022, facilitated by a dedicated research nurse. Parents of eligible infants were approached by the research nurse prior to discharge from the NICU to explain the study objectives and seek their consent for participation. Infants meeting the criteria for inclusion were scanned for the study if they had already been discharged from the NICU, were in stable condition, and had reached a term equivalent age of 37 to 44 weeks GA. However, certain exclusion criteria were applied to ensure the homogeneity and integrity of the study sample: infants were excluded if there was clinical evidence of a congenital malformation or syndrome, a TORCH infection, or ultrasound evidence of large parenchymal hemorrhagic infarction (\>2 cm, Grade 4 intraventricular hemorrhage).
 
 ## Image acquisition
 
-MR imaging was performed on a 3.0 Tesla General Electric Discovery MR750 scanner (scanner software version DV26.0_R03) equipped with a SREE Medical Systems (Cleveland, OH, USA) single-channel neonatal head coil (@tbl-mri). The scans were conducted at the *** <!-- BC Children -->’s MRI Research Facility. Prior to the scanning procedure, subjects were carefully prepared by a research nurse. Swaddling and feeding were used to ensure the comfort and cooperation of the subjects during the scan. Importantly, no sedatives or invasive markers were utilized throughout the procedure. Subjects were placed within a specially designed SREE Medical Systems MRI compatible incubator, which facilitated both safety and motion minimization. Molded foam was strategically positioned around the head and body within the incubator to further restrict subject movement. To protect against potential hearing damage, ear plugs were employed during the scanning process. Additionally, a pulse oximeter was affixed to the subject’s foot to monitor arterial oxygen saturation and heart rate throughout the scan.
-
+MR imaging was performed on a 3.0 Tesla General Electric Discovery MR750 scanner (scanner software version DV26.0_R03) equipped with a SREE Medical Systems (Cleveland, OH) single-channel neonatal head coil (@tbl-mri). The scans were conducted at the \*\*\* <!-- BC Children -->’s MRI Research Facility. Prior to the scanning procedure, subjects were carefully prepared by a research nurse. Swaddling and feeding were used to ensure the comfort and cooperation of the subjects during the scan. Importantly, no sedatives or invasive markers were utilized throughout the procedure. Subjects were placed within a specially designed SREE Medical Systems MRI compatible incubator, which facilitated both safety and motion minimization. Molded foam was strategically positioned around the head and body within the incubator to further restrict subject movement. To protect against potential hearing damage, ear plugs were employed during the scanning process. Additionally, a pulse oximeter was affixed to the subject’s foot to monitor arterial oxygen saturation and heart rate throughout the scan.
 
 ```{r}
 #| label: tbl-mri
 #| tbl-cap: "**Technical parameters for MR imaging pulse sequences**"
 df <- data.frame(Scan = character(), T1w = character(), T2w = character(), pcASL = character(), SWI = character(), stringsAsFactors = FALSE)
 df[1,] <- c("Sequence", "3D FSPGR", "3D CUBE", "Multi-shot 3D fast spin-echo", "3D spoiled GRE flow-compensated")
-df[2,] <- c("Phase-encoding direction", "Coronal", "Sagittal", "Axial", "Axial")
-df[3,] <- c("TR (ms)", "7.74", "2,300", "4,680", "30.9")
-df[4,] <- c("TE (ms)", "2.97", "66.29", "10.55", "5 echoes; first echo: 5; echo spacing: 5.24")
-df[5,] <- c("Flip angle", "12\U00B0", "90\U00B0", "111\U00B0", "20\U00B0")
-df[6,] <- c("FOV (cm)", "20", "20", "24", "25")
-df[7,] <- c("Acquisition matrix", "512 x 512", "256 x 256", "128 x 128", "256 x 256")
-df[8,] <- c("In-plane resolution (mm)", "0.39 x 0.39", "0.78 x 0.78", "1.875 x 1.875", "0.977 x 0.977")
-df[9,] <- c("Slice thickness (mm)", "1", "1", "4", "2, reconstructed to 1 with zero filling (ZIP2)")
-df[10,] <- c("Number of slices", "126", "106", "50", "92")
-df[11,] <- c("Additional parameters", "n/a", "n/a", "1,450 ms label period;\n 2,025 ms pulse label;\n 24 control-label pairs", "n/a")
-df[12,] <- c("Scan duration", "4 min 39 s", "5 min 1 s", "5 min 26 s", "5 min 29 s")
+df[2,] <- c("Acquisition plane", "Coronal", "Sagittal", "Axial", "Axial")
+df[3,] <- c("Phase-encoding direction", "Left-Right", "Posterior-Anterior", "Posterior-Anterior", "Left-Right")
+df[4,] <- c("TR (ms)", "7.74", "2,300", "4,680", "30.9")
+df[5,] <- c("TE (ms)", "2.97", "66.29", "10.55", "5 echoes; first echo: 5; echo spacing: 5.24")
+df[6,] <- c("Flip angle", "12\U00B0", "90\U00B0", "111\U00B0", "20\U00B0")
+df[7,] <- c("FOV (cm)", "20", "20", "24", "25")
+df[8,] <- c("Acquisition matrix", "512 x 512", "256 x 256", "128 x 128", "256 x 256")
+df[9,] <- c("In-plane resolution (mm)", "0.39 x 0.39", "0.78 x 0.78", "1.875 x 1.875", "0.977 x 0.977")
+df[10,] <- c("Slice thickness (mm)", "1", "1", "4", "2, reconstructed to 1 with zero filling (ZIP2)")
+df[11,] <- c("Number of slices", "126", "106", "50", "92")
+df[12,] <- c("Additional parameters", "n/a", "n/a", "1,450 ms label period;\n 2,025 ms pulse label;\n 24 control-label pairs", "n/a")
+df[13,] <- c("Scan duration", "4 min 39 s", "5 min 1 s", "5 min 26 s", "5 min 29 s")
 
 footnotetext="T1w = T1-weighted; T2w = T2-weighted; pcASL = pseudo-continuous arterial spin labelling; SWI = susceptibility weighted imaging; FSPG = fast spoiled gradient echo; CUBE = General Electric name of sequence, not an acronym; GRE = gradient echo; ZIP2 = through-plane zero filling interpolation"
 
 if (knitr::is_latex_output()) {
-colnames(df)[1] <- ""
-df[11,] <- linebreak(df[11,])
+#colnames(df)[1] <- ""
+colnames(df) <- c("", "\\textbf{T1w}", "\\textbf{T2w}", "\\textbf{pcASL}", "\\textbf{SWI}")
+df[12,] <- linebreak(df[12,])
 df |>
   kbl(format = "latex",
     booktabs = TRUE,
@@ -244,26 +231,28 @@ df |>
 df |> 
     mutate(across(everything(), ~ str_replace_all(., "\n", "<br>"))) |> 
     gt(rowname_col = "Scan") |> tab_footnote(footnotetext) |>
-    fmt_markdown(columns = TRUE) |>
+    fmt_markdown(columns = everything()) |>
+    cols_label(
+      T1w = md("**T1w**"),
+      T2w = md("**T2w**"),
+      pcASL = md("**pcASL**"),
+      SWI = md("**SWI**")
+    ) |>
     tab_options(quarto.disable_processing = TRUE)
 }
 ```
 
-The MRI scan protocol comprised of the following sequences: a T1-weighted scan, a T2-weighted scan, a pseudo-continuous arterial spin labeling (ASL) scan [@alsopRecommendedImplementationArterial2015], a multi-echo susceptibility-weighted imaging scan [@denkSusceptibilityWeightedImaging2010], and a diffusion-weighted imaging (DWI) spin-echo echo planar imaging (EPI) sequence. The DWI sequence was not used for the present study.
+The MRI scan protocol comprised of the following sequences (plane of acquisition in parentheses): a T1-weighted scan (coronal), a T2-weighted scan (sagittal), a pseudo-continuous arterial spin labeling (ASL) scan [@alsopRecommendedImplementationArterial2015] (axial), a multi-echo susceptibility-weighted imaging scan [@denkSusceptibilityWeightedImaging2010] (axial), and a diffusion-weighted imaging (DWI) spin-echo echo planar imaging (EPI) sequence (axial). The DWI sequence was not used for the present study.
 
 ## Image analysis
 
-The raw DICOM files acquired from the scanning procedure were converted to NIfTI (Neuroimaging Informatics Technology Initiative) format using Chris Rorden’s `dcmniix` tool [@liFirstStepNeuroimaging2016]. SWI magnitude data files were then used to create subject-specific brain masks that would not erode the SSS during QSM processing, an issue faced by our group in the past *** <!-- [@weberQuantitativeSusceptibilityMapping2021] -->. A step-by-step summary of the pipeline used is shown in @fig-graph.
+The raw DICOM files acquired from the scanning procedure were converted to NIfTI (Neuroimaging Informatics Technology Initiative) format using Chris Rorden’s `dcmniix` tool [@liFirstStepNeuroimaging2016]. SWI magnitude data files were then used to create subject-specific brain masks that would not erode the SSS during QSM processing, an issue faced by our group in the past \*\*\* <!-- [@weberQuantitativeSusceptibilityMapping2021] -->. A step-by-step summary of the pipeline used is shown in @fig-graph.
 
-{{< embed notebooks/Figures.ipynb#fig-graph >}}
+First, the fifth echo (TE = 25.96 ms) SWI magnitude file was processed using FSL’s (v. 6.0.7.3) [@woolrichBayesianAnalysisNeuroimaging2009] `fslroi`, `fslmaths`, and `bet` [@smithFastRobustAutomated2002] to create a preliminary brain mask, similar to our previous efforts, which does not contain the SSS. The last echo is used to generate the brain mask as it reliably removes artifacts from air-tissue and bone-tissue interfaces, e.g., sinuses, without the need for manual erosion. The reason for this is at longer echo times, tissues with rapid signal decay (such as bone, air, and sinuses) lose their MRI signal due to dephasing caused by greater magnetic field inhomogeneities. `Fslroi` was used to isolate the fifth echo of the magnitude data, which was then squared using `fslmaths` and the option `-sqr`. Squaring the magnitude image was found to dramatically improve subsequent brain extraction. The resulting image was then used to create the preliminary brain mask using `bet` with the options `-m` and `-R`. The former flag generated a binary brain mask, while the latter performed a more robust brain centre estimation. The brain mask was then dilated by 7 voxels using `fslmaths` and the options `-kernel boxv` and `-dilM` in order for the dilated mask to contain the SSS (along with unwanted tissue as well). This mask was then used, along with the phase images, in a MATLAB script for QSM calculation from Christian Kames [@kamesRapidTwostepDipole2018] to produce a preliminary QSM image that contained the SSS, albeit with fairly low signal-to-noise ratio and other unwanted tissue. Given the high contrast in voxel intensity between the SSS and surrounding tissue, the select by intensity tool in `FSLeyes` [@mccarthyFSLeyes2023] was then used to segment the SSS from the QSM image and create a 3D mask of the selected region. Using `fslmaths` and the options `-add` and `-bin`, the SSS mask was then combined with the original brain mask of the fifth echo. This resulted in a brain mask that contained only brain and SSS signal. Finally, this mask was used in a final QSM post-processing step to create a QSM image that includes the SSS while maintaining a high signal-to-noise ratio, making it suitable to obtain accurate susceptibility values.
 
-First, the fifth echo (TE = 25.96 ms) SWI magnitude file was processed using FSL’s (v. 6.0.7.3) [@woolrichBayesianAnalysisNeuroimaging2009] `fslroi`, `fslmaths`, and `bet` [@smithFastRobustAutomated2002] to create a preliminary brain mask, similar to our previous efforts, which does not contain the SSS. `Fslroi` was used to isolate the fifth echo of the magnitude data, which was then squared using `fslmaths` and the option `-sqr`. Squaring the magnitude image was found to dramatically improve subsequent brain extraction. The resulting image was then used to create the preliminary brain mask using bet with the options `-m` and `-R`. The former flag generated a binary brain mask, while the latter performed a more robust brain centre estimation. The brain mask was then dilated by 7 voxels using `fslmaths` and the options `-kernel boxv` and `-dilM` in order for the dilated mask to contain the SSS (along with unwanted tissue as well). This mask was then used, along with the phase images, in a MATLAB script for QSM calculation from Christian Kames [@kamesRapidTwostepDipole2018] to produce a preliminary QSM image that contained the SSS, albeit with fairly low signal-to-noise ratio and other unwanted tissue. Given the high contrast in voxel intensity between the SSS and surrounding tissue, the select by intensity tool in `FSLeyes` [@mccarthyFSLeyes2023] was then used to segment the SSS from the QSM image and create a 3D mask of the selected region. Using `fslmaths` and the options `-add` and `-bin`, the SSS mask was then combined with the original brain mask of the fifth echo. This resulted in a brain mask that contained only brain and SSS signal. Finally, this mask was used in a final QSM post-processing step to create a QSM image that includes the SSS while maintaining a high signal-to-noise ratio, making it suitable to obtain accurate susceptibility values.
+STI Suite (v. 3.0) [@liIntegratedLaplacianbasedPhase2014], was used to process the final QSM images as it produced the images with the least amount of artifacts (based on a visual assessment by the authors) without eroding the SSS. The finalized brain mask along with all five echoes of the magnitude and phase images were used in STI Suite along with the following parameters: 0.9766 x 0.9766 x 1 mm^3^ voxel size, 5 ms TE1, 5.24 ms $\Delta$TE, and 77.4 ms sum TE, B0 strength = 3, and B0 direction = \[0, 0, 1\]. The 3D GRE data option was selected for the phase processing stage, and STAR-QSM was selected for the QSM stage. STAR-QSM outputs a single QSM map for each echo (i.e. five total). The last three echoes of the QSM maps were then averaged to create the final QSM image using `fslmaths`, as the accumulation of phase due to susceptibility is small in early echoes and artifacts dominate the phase [@zhangQuantitativeAnalysisPunctate2019]. Finally, the \`select by intensity' tool in `FSLeyes` was then used to semi-automatically make vascular masks of the SSS and CCV from each subject’s QSM image (@fig-masks). The vascular masks were used to calculate the mean susceptibility of each subject’s SSS and CCV from their QSM image with `fslstats`.
 
-STI Suite (v. 3.0) [@liIntegratedLaplacianbasedPhase2014], was used to process the final QSM images as it produced the cleanest images without eroding the SSS. The finalized brain mask and the last three echoes of the magnitude and phase images were used in STI Suite along with the following parameters: 0.9766 x 0.9766 x 1 mm^3^ voxel size, 5 ms TE1, 5.3 ms $\Delta$TE, and 77.4 ms sum TE, B0 strength = 3, and B0 direction = \[0, 0, 1\]. The 3D GRE data option was selected for the phase processing stage, and STAR-QSM was selected for the QSM stage. Finally, the \`select by intensity' tool in `FSLeyes` was then used to semi-automatically make vascular masks of the SSS and CCV from each subject’s QSM image. The vascular masks were used to calculate the mean susceptibility of each subject’s SSS and CCV from their QSM image with `fslstats`.
-
-To isolate the paramagnetic component of subjects’ QSM data, the $\chi$-separation toolbox [@shinHseparationMagneticSusceptibility2021] from the Laboratory for Imaging Science and Technology was used. Each subject’s magnitude and phase SWI data were used along with the following parameters: 0.9766 x 0.9766 x 1 mm^3^ voxel size; TE (s) = \[0.005, 0.0102, 0.0155, 0.0207, 0.026\]; delta TE (s) = 0.0052; B0 strength = 3; B0 direction = \[0, 0, 1\]. The mean susceptibility of each subject’s SSS and CCV in their paramagnetic maps was calculated with the same vascular masks used for the QSM images. Sample images showing the magnitude, final QSM, and final paramagnetic component images are shown in @fig-sample.
-
-{{< embed notebooks/Figures.ipynb#fig-sample >}}
+To isolate the paramagnetic component of subjects’ QSM data, the $\chi$-separation toolbox [@shinHseparationMagneticSusceptibility2021] from the Laboratory for Imaging Science and Technology was used. All five echoes of each subject’s magnitude and phase SWI data were used along with the following parameters: 0.9766 x 0.9766 x 1 mm^3^ voxel size; TE (ms) = \[5, 10.24, 15.48, 20.72, 26.96\]; $\Delta$TE (ms) = 5.24; B0 strength = 3; B0 direction = \[0, 0, 1\]. The $\chi$-separation toolbox outputs a single negative (diamagnetic), positive (paramagnetic), and total $\chi$ map (QSM). The mean susceptibility of each subject’s SSS and CCV in their paramagnetic maps was calculated with the same vascular masks used for the QSM images. Sample images showing the magnitude, final QSM, and final paramagnetic component images are shown in @fig-sample.
 
 Once the mean susceptibility values of the SSS and CCV were obtained from the subjects’ QSM images or paramagnetic maps, venous oxygen saturation (SvO~2~) was calculated with the following equation [@bergInvestigatingEffectFlow2021]:
 
@@ -299,6 +288,7 @@ df <- df |> rename("Subject data (n = 19)" = Subject)
 footnotetext="SD = standard deviation; IQR = inter quartile range"
 
 if (knitr::is_latex_output()) {
+  colnames(df) <- c("\\textbf{Variable}", "\\textbf{Subject data (n=19)}")
 df |>
   kbl(format = "latex",
     booktabs = TRUE,
@@ -318,11 +308,15 @@ df |>
     cols_align(align = "right", columns = c("Subject data (n = 19)")) |>
     tab_footnote(footnotetext) |>
     fmt_markdown(columns = TRUE) |>
+    cols_label(
+      Variable = md("**Variable**"),
+      "Subject data (n = 19)" = md("**Subject data (n = 19)**")
+    )|>
     tab_options(quarto.disable_processing = TRUE)
 }
 ```
 
-The mean SvO~2~ values for the SSS and the CCV were found to be `r rndmean(newdata$Gavin_SSSVein_CSvO2)` $\pm$ `r rndsd(newdata$Gavin_SSSVein_CSvO2)`% and `r rndmean(newdata$Gavin_IntVein_CSvO2)` $\pm$  `r rndsd(newdata$Gavin_IntVein_CSvO2)`%, respectively, when determined from the QSM data. When determined from the paramagnetic map, the mean SvO~2~ values for the SSS and the CCV were found to be `r rndmean(newdata$Chisep_SSSVein_CSvO2)` $\pm$ `r rndsd(newdata$Chisep_SSSVein_CSvO2)`% and `r rndmean(newdata$Chisep_IntVein_CSvO2)` $\pm$ `r rndsd(newdata$Chisep_IntVein_CSvO2)`%, respectively. A summary of the measured physiological parameters, including the chi values used to calculate SvO~2~, can found in @tbl-chistats.
+The mean SvO~2~ values for the SSS and the CCV were found to be `r rndmean(newdata$Gavin_SSSVein_CSvO2)` $\pm$ `r rndsd(newdata$Gavin_SSSVein_CSvO2)`% and `r rndmean(newdata$Gavin_IntVein_CSvO2)` $\pm$ `r rndsd(newdata$Gavin_IntVein_CSvO2)`%, respectively, when determined from the QSM data. When determined from the paramagnetic map, the mean SvO~2~ values for the SSS and the CCV were found to be `r rndmean(newdata$Chisep_SSSVein_CSvO2)` $\pm$ `r rndsd(newdata$Chisep_SSSVein_CSvO2)`% and `r rndmean(newdata$Chisep_IntVein_CSvO2)` $\pm$ `r rndsd(newdata$Chisep_IntVein_CSvO2)`%, respectively. A summary of the measured physiological parameters, including the chi values used to calculate SvO~2~, can found in @tbl-chistats.
 
 ```{r}
 #| label: tbl-chistats
@@ -336,7 +330,7 @@ df[4,] <- c("CCV", "SvO\U2082 (\\%)", paste0(rndmean(newdata$Gavin_IntVein_CSvO2
 footnotetext="QSM = quantitative susceptibility mapping; CI = confidence interval; SSS = superior sagitall sinus; CCV = central cerebral vein"
 
 if (knitr::is_latex_output()) {
-df <- df |> rename("Paramagnetic map" = pmap, "p-value" = pvalue, "95\\\U0025 CI" = CI)
+df <- df |> rename("\\textbf{Region}" = Region, "\\textbf{Measure}" = Measure, "\\textbf{QSM}" = QSM, "\\textbf{Paramagnetic map}" = pmap, "\\textbf{p-value}" = pvalue, "\\textbf{95\\\U0025 CI}" = CI)
 df |>
   kbl(format = "latex",
     booktabs = TRUE,
@@ -357,17 +351,21 @@ df |>
     cols_align(align = "center", columns = c("QSM", "Paramagnetic map", "p-value", "95\U0025 CI")) |>
     tab_footnote(footnotetext) |>
     fmt_markdown(columns = TRUE) |>
+    cols_label(
+      Region = md("**Region**"),
+      Measure = md("**Measure**"),
+      QSM = md("**QSM**"),
+      "Paramagnetic map" = md("**Paramagnetic map**"),
+      "p-value" = md("**p-value**"),
+      "95\U0025 CI" = md("**95\U0025 CI**")
+    )|>
     tab_options(quarto.disable_processing = TRUE)
 }
 ```
 
-Region-specific $\chi$ and SvO~2~ values acquired from QSM were compared to values acquired from paramagnetic maps. In both the SSS and CCV, it was found that a significant difference existed between values acquired ($\chi$ and SvO~2~) from QSM and paramagnetic maps (p < 0.05). A boxplot showing the comparisons made is shown in @fig-methodplot.
+Region-specific $\chi$ and SvO~2~ values acquired from QSM were compared to values acquired from paramagnetic maps. In both the SSS and CCV, it was found that a significant difference existed between values acquired ($\chi$ and SvO~2~) from QSM and paramagnetic maps (p \< 0.05). Violin plots of the comparisons are shown in @fig-methodplot.
 
-{{< embed notebooks/gavin_thesis_markdown.qmd#fig-methodplot >}}
-
-The acquired $\chi$ and SvO~2~ values were additionally compared between veins. In data created from QSM, a significant difference was found between the CCV and SSS in mean $\chi$ (p < 0.05; 95% CI [`r round(RegionQSMChi.t$conf.low,3)`, `r round(RegionQSMChi.t$conf.high,3)`]) and mean SvO~2~ (p < 0.05; 95% CI [`r round(RegionQSMSvO2.t$conf.low,3)`, `r round(RegionQSMSvO2.t$conf.high,3)`]). In data acquired from paramagnetic maps, no significant difference was observed between the CCV and the SSS in either mean $\chi$ (p = `r round(RegionChisepChi.t$p.value,3)`; 95% CI [`r round(RegionChisepChi.t$conf.low,3)`, `r round(RegionChisepChi.t$conf.high,3)`]) or mean SvO~2~ (p = `r round(RegionChisepSvO2.t$p.value,3)`; 95% CI [`r round(RegionChisepSvO2.t$conf.low,3)`, `r round(RegionChisepChi.t$conf.high,3)`]). A summary of these comparisons is represented in @fig-regionplot.
-
-{{< embed notebooks/gavin_thesis_markdown.qmd#fig-regionplot >}}
+The acquired $\chi$ and SvO~2~ values were additionally compared between veins. In data created from QSM, a significant difference was found between the CCV and SSS in mean $\chi$ (p \< 0.05; 95% CI \[`r round(RegionQSMChi.t$conf.low,3)`, `r round(RegionQSMChi.t$conf.high,3)`\]) and mean SvO~2~ (p \< 0.05; 95% CI \[`r round(RegionQSMSvO2.t$conf.low,3)`, `r round(RegionQSMSvO2.t$conf.high,3)`\]). In data acquired from paramagnetic maps, no significant difference was observed between the CCV and the SSS in either mean $\chi$ (p = `r round(RegionChisepChi.t$p.value,3)`; 95% CI \[`r round(RegionChisepChi.t$conf.low,3)`, `r round(RegionChisepChi.t$conf.high,3)`\]) or mean SvO~2~ (p = `r round(RegionChisepSvO2.t$p.value,3)`; 95% CI \[`r round(RegionChisepSvO2.t$conf.low,3)`, `r round(RegionChisepChi.t$conf.high,3)`\]). A summary of these comparisons is represented in @fig-regionplot.
 
 # Discussion {#sec-discussion}
 
@@ -387,19 +385,23 @@ df[2,] <- c("Whole-brain", "Skov et al. \n(1993)    ", "Asphyxiated term \nneona
 df[3,] <- c("Whole-brain", "Altman et al. \n(1993)    ", "Preterm and term \nneonates with HIE \n(n=11)", "PET            ", "21.6 \U00B1 21.0 ")
 df[4,] <- c("SSS        ", "Gou et al. \n(2024)     ", "Healthy neonates \n(n=37)                    ", "MRI: \nTRUST   ", "66.7 \U00B1 4.9  ")
 df[5,] <- c("SSS        ", "Jiang et al. \n(2019)   ", "Healthy neonates \n(n=4)                     ", "MRI: \naTRUPC  ", "64.8 \U00B1 2.9  ")
-df[6,] <- c("SSS        ", "De Vis et al. \n(2014)  ", "PT-TEA \neonates (n=18)                      ", "MRI: \nT2-TRIR ", "52.0 \U00B1 12.0 ")
+df[6,] <- c("SSS        ", "De Vis et al. \n(2014)  ", "PT-TEA \nneonates (n=18)                      ", "MRI: \nT2-TRIR ", "52.0 \U00B1 12.0 ")
 df[7,] <- c("SSS", "Yadav et al. \n(2020)", "Late third \ntrimester fetuses \n(n=33)", "MRI: \nSusceptometry", "58.6 \U00B1 4.8")
-df[8,] <- c("SSS", "\\textbf{This study}", "PT-TEA \nneonates \nn=19", "MRI: \nQSM", paste0(rndmean(newdata$Gavin_SSSVein_CSvO2*100), " \U00B1 ", rndsd(newdata$Gavin_SSSVein_CSvO2*100)))
-df[9,] <- c("SSS", "\\textbf{This study}", "PT-TEA \nneonates \nn=19", "MRI: \n$\\chi$-separation", paste0(rndmean(newdata$Chisep_SSSVein_CSvO2*100), " \U00B1 ", rndsd(newdata$Chisep_SSSVein_CSvO2*100)))
+df[8,] <- c("SSS", "**This study**", "PT-TEA \nneonates \nn=19", "MRI: \nQSM", paste0(rndmean(newdata$Gavin_SSSVein_CSvO2*100), " \U00B1 ", rndsd(newdata$Gavin_SSSVein_CSvO2*100)))
+df[9,] <- c("SSS", "**This study**", "PT-TEA \nneonates \nn=19", "MRI: \n \U03C7-separation", paste0(rndmean(newdata$Chisep_SSSVein_CSvO2*100), " \U00B1 ", rndsd(newdata$Chisep_SSSVein_CSvO2*100)))
 df[10,] <- c("CCV", "Weber et al. (2021)", "Preterm neonates \nwith HIE (n=8)", "MRI: \nQSM", "72.2 \U00B1 6.0")
 df[11,] <- c("CCV", "Weber et al. (2021)", "Healthy neonates \n(n=8)", "MRI: \nQSM", "73.6 \U00B1 2.8")
 df[12,] <- c("CCV", "Jiang et al. (2019)", "Healthy neonates \n(n=4)", "MRI: \naTRUPC", "70.2 \U00B1 3.3")
-df[13,] <- c("CCV", "\\textbf{This study}", "PT-TEA \nneonates \nn=19", "MRI: \nQSM", paste0(rndmean(newdata$Gavin_IntVein_CSvO2*100), " \U00B1 ", rndsd(newdata$Gavin_IntVein_CSvO2)))
-df[14,] <- c("CCV", "\\textbf{This study}", "PT-TEA \nneonates \nn=19", "MRI: \n$\\chi$-separation", paste0(rndmean(newdata$Chisep_IntVein_CSvO2*100), " \U00B1 ", rndsd(newdata$Chisep_IntVein_CSvO2*100)))
+df[13,] <- c("CCV", "**This study**", "PT-TEA \nneonates \nn=19", "MRI: \nQSM", paste0(rndmean(newdata$Gavin_IntVein_CSvO2*100), " \U00B1 ", rndsd(newdata$Gavin_IntVein_CSvO2)))
+df[14,] <- c("CCV", "**This study**", "PT-TEA \nneonates \nn=19", "MRI: \n \U03C7-separation", paste0(rndmean(newdata$Chisep_IntVein_CSvO2*100), " \U00B1 ", rndsd(newdata$Chisep_IntVein_CSvO2*100)))
 footnotetext="PT-TEA = born preterm and scanned at term-equivalent age; late third trimester = >35 weeks gestational age; HIE = hypoxic-ischemic encephalopathy; TRUST = T2-relaxation-under-spin tagging; aTRUPC = accelerated T2-relaxation-under-phase-contrast; T2-TRIR = T2-tissue-relaxation-inversion-recovery; SWI = susceptibility weighted imaging."
 
 if (knitr::is_latex_output()) {
-df <- df |> rename("SvO$_{2}$ (\\\U0025)" = SvO2)
+df <- df |> rename("\\textbf{SvO$_{2}$ (\\\U0025)}" = SvO2, "\\textbf{Region}" = Region, "\\textbf{Study}" = Study, "\\textbf{Subjects}" = Subjects, "\\textbf{Method}" = Method)
+df[8,2] <- "\\textbf{This study}"
+df[9,2] <- "\\textbf{This study}"
+df[13,2] <- "\\textbf{This study}"
+df[14,2] <- "\\textbf{This study}"
 df[1,] <- linebreak(df[1,])
 df[2,] <- linebreak(df[2,])
 df[3,] <- linebreak(df[3,])
@@ -428,17 +430,24 @@ df |>
            threeparttable = TRUE,
            general = footnotetext)
 } else {
-df <- df |> rename("SvO~2~ (\\\U0025)" = SvO2)
 df |> 
     mutate(across(everything(), ~ str_replace_all(., "\n", "<br>"))) |> 
     gt() |> 
     cols_align(align = "center", columns = c("Region", "Study")) |>
     tab_footnote(footnotetext) |>
     fmt_markdown(columns = TRUE) |>
+    cols_label(
+      Region = md("**Region**"),
+      Study = md("**Study**"),
+      Subjects = md("**Subjects**"),
+      Method = md("**Method**"),
+      SvO2 = md("**SvO~2~ (%)**")
+    )|>
     tab_options(quarto.disable_processing = TRUE)
 }
 ```
-As shown in @tbl-litvalues, the infants observed in MRI studies investigating cerebral vein oxygenation noticeably differ in clinical status, with three studies involving healthy neonates [@weberQuantitativeSusceptibilityMapping2021; @gouAutomaticRejectionBased2024; @jiangVesselspecificQuantificationNeonatal2019], three studies (including the present study) involving preterm neonates [@weberQuantitativeSusceptibilityMapping2021; @devisNoninvasiveMRIMeasurements2014], and one study involving late third trimester fetuses [@portnoyHumanUmbilicalCord2018]. In the studies involving healthy neonates, the SvO~2~ of the SSS fell within the range of 64.8% – 66.6% [@gouAutomaticRejectionBased2024; @jiangVesselspecificQuantificationNeonatal2019], while the SvO~2~ of the CCV fell within the range of 70.2% - 73.6% [@weberQuantitativeSusceptibilityMapping2021; @jiangVesselspecificQuantificationNeonatal2019]. Notably, the SvO~2~ value of the SSS we obtained from susceptibility separation (`r paste0(rndmean(newdata$Chisep_SSSVein_CSvO2*100))`%) was closest to values obtained from the studies involving late third trimester fetuses [@yadavImagingPutativeFoetal2018] or pre-term neonates [@devisNoninvasiveMRIMeasurements2014], each finding an SSS SvO~2~ value of 58.6% and 52.0%, respectively. It is important to note the difference in MRI modalities used to obtain these values. For their study, @yadavImagingPutativeFoetal2018 used MR susceptometry, which involves measuring the difference in phase between the chosen vessel and its background in imaging data from an SWI scanning sequence [@yadavImagingPutativeFoetal2018]. In @devisNoninvasiveMRIMeasurements2014, the authors used T2-TRIR, which allowed them to determine the transverse relaxation rate of blood within the vessel, which can be used alongside hematocrit data to estimate SvO~2~.  Additionally, the GA of infants scanned in our study ranged between 37 and 44 weeks, while the GA of the fetuses scanned in @yadavImagingPutativeFoetal2018 was ≥35 weeks and the GA of infants scanned in @devisNoninvasiveMRIMeasurements2014 ranged between 38 and 40 weeks. As such, our SSS SvO~2~ values found through susceptibility separation show promise given their similarity to the SvO~2~ values found by @yadavImagingPutativeFoetal2018 and @devisNoninvasiveMRIMeasurements2014, two studies that involved comparable subject populations and used considerably different methods. 
+
+As shown in @tbl-litvalues, the infants observed in MRI studies investigating cerebral vein oxygenation noticeably differ in clinical status, with three studies involving healthy neonates [@weberQuantitativeSusceptibilityMapping2021; @gouAutomaticRejectionBased2024; @jiangVesselspecificQuantificationNeonatal2019], three studies (including the present study) involving preterm neonates [@weberQuantitativeSusceptibilityMapping2021; @devisNoninvasiveMRIMeasurements2014], and one study involving late third trimester fetuses [@portnoyHumanUmbilicalCord2018]. In the studies involving healthy neonates, the SvO~2~ of the SSS fell within the range of 64.8% – 66.6% [@gouAutomaticRejectionBased2024; @jiangVesselspecificQuantificationNeonatal2019], while the SvO~2~ of the CCV fell within the range of 70.2% - 73.6% [@weberQuantitativeSusceptibilityMapping2021; @jiangVesselspecificQuantificationNeonatal2019]. Notably, the SvO~2~ value of the SSS we obtained from susceptibility separation (`r paste0(rndmean(newdata$Chisep_SSSVein_CSvO2*100))`%) was closest to values obtained from the studies involving late third trimester fetuses [@yadavImagingPutativeFoetal2018] or pre-term neonates [@devisNoninvasiveMRIMeasurements2014], each finding an SSS SvO~2~ value of 58.6% and 52.0%, respectively. It is important to note the difference in MRI modalities used to obtain these values. For their study, @yadavImagingPutativeFoetal2018 used MR susceptometry, which involves measuring the difference in phase between the chosen vessel and its background in imaging data from an SWI scanning sequence [@yadavImagingPutativeFoetal2018]. In @devisNoninvasiveMRIMeasurements2014, the authors used T2-TRIR, which allowed them to determine the transverse relaxation rate of blood within the vessel, which can be used alongside hematocrit data to estimate SvO~2~. Additionally, the GA of infants scanned in our study ranged between 37 and 44 weeks, while the GA of the fetuses scanned in @yadavImagingPutativeFoetal2018 was ≥35 weeks and the GA of infants scanned in @devisNoninvasiveMRIMeasurements2014 ranged between 38 and 40 weeks. As such, our SSS SvO~2~ values found through susceptibility separation show promise given their similarity to the SvO~2~ values found by @yadavImagingPutativeFoetal2018 and @devisNoninvasiveMRIMeasurements2014, two studies that involved comparable subject populations and used considerably different methods.
 
 Conversely, the SvO~2~ value of the CCV we obtained through QSM (`r paste0(rndmean(newdata$Gavin_IntVein_CSvO2*100))`%) was closest to values from similar studies in the literature. In @weberQuantitativeSusceptibilityMapping2021, QSM was used to measure an SvO~2~ of 71.5% in preterm neonates with HIE and an SvO~2~ of 73.6% in healthy neonates. In their study, @jiangVesselspecificQuantificationNeonatal2019 also involved healthy neonates and obtained an SvO~2~ of 70.2% through an accelerated TRUPC sequence. In contrast, the SvO~2~ of the CCV we obtained through susceptibility separation was `r paste0(rndmean(newdata$Chisep_IntVein_CSvO2*100))`%. This disparity from the literature, however, may not undermine the value we obtained, as the study design of @weberQuantitativeSusceptibilityMapping2021 and @jiangVesselspecificQuantificationNeonatal2019 may prevent their values from being representative of the study demographic. In @weberQuantitativeSusceptibilityMapping2021, the authors utilized an arbitrary 0.15 ppm threshold and included all $\chi$ values above 0.15 when measuring the mean $\chi$ of the CCV, which potentially led to the introduction of $\chi$ from veins outside the CCV. In @jiangVesselspecificQuantificationNeonatal2019, the authors acquired their data from 4 subjects, a notably small sample size. Given the limitations of the existing literature and the similarity of the mean paramagnetic CCV SvO~2~ value (`r paste0(rndmean(newdata$Chisep_IntVein_CSvO2*100))`%) to the mean paramagnetic SSS SvO~2~ value (`r paste0(rndmean(newdata$Chisep_SSSVein_CSvO2*100))`%), it is plausible that susceptibility separation provides more accurate measurements of oxygenation in both cortical and subcortical veins. One reason for this is due to its ability to mitigate partial volume effects, which are likely to contaminate other methods resulting in inaccurate CSvO~2~ values [@shinHseparationMagneticSusceptibility2021].
 
@@ -446,13 +455,53 @@ Another notable distinction between our findings and those of the existing liter
 
 ## Limitations and future directions
 
-This study has a few limitations that should be considered for future research. Firstly, only 19 infants were recruited for scanning. Given the emotional toll placed on parents when their child is born preterm, it is understandable that they may show reluctance in consenting to further testing that is not medically necessary. Obtaining a larger sample size in future studies, however, may provide greater insight into the efficacy of susceptibility separation. Secondly, this study did not include healthy neonates born at term, resulting in a lack of a control cohort. This is because recruiting healthy controls when there is no contraindication is very difficult. The addition of such a group may provide further validity to any findings and may reveal potential differences in cerebral oxygen consumption between term and preterm neonates. Finally, future studies should consider the use of multi-echo T2 imaging data when performing the decomposition of QSM images. The toolbox applied by this study for QSM decomposition [@shinHseparationMagneticSusceptibility2021] utilizes R2 data, which can be obtained from multi-echo T2 imaging. Our study protocol involved the collection of multi-echo SWI imaging data, and as such, we could only use R2^\*^ data to perform the decomposition. Furthermore, this may account for the reduced precision of SvO~2~ values obtained through susceptibility separation. 
+This study has a few limitations that should be considered for future research. Firstly, only 19 infants were recruited for scanning. Given the emotional toll placed on parents when their child is born preterm, it is understandable that they may show reluctance in consenting to further testing that is not medically necessary. Obtaining a larger sample size in future studies, however, may provide greater insight into the efficacy of susceptibility separation. Secondly, this study did not include healthy neonates born at term, resulting in a lack of a control cohort. This is because recruiting healthy controls when there is no contraindication is very difficult. The addition of such a group may provide further validity to any findings and may reveal potential differences in cerebral oxygen consumption between term and preterm neonates. Finally, future studies should consider the use of multi-echo T2 imaging data when performing the decomposition of QSM images. The toolbox applied by this study for QSM decomposition [@shinHseparationMagneticSusceptibility2021] utilizes R2 data, which can be obtained from multi-echo T2 imaging. Our study protocol involved the collection of multi-echo SWI imaging data, and as such, we could only use R2^\*^ data to perform the decomposition. Furthermore, this may account for the reduced precision of SvO~2~ values obtained through susceptibility separation.
 
 # Conclusion {#sec-conclusion}
 
-This study aimed to evaluate how the use of susceptibility separation on preterm neonatal QSM images in order to  provide greater accuracy in determining the oxygenation of cerebral venous vessels. We compared venous specific SvO~2~ values obtained from QSM images and their respective paramagnetic components to SvO~2~ values from neonatal MRI studies. We found that susceptibility separation provided SvO~2~ values of the SSS that were comparable to values found in the literature, providing evidence that this processing technique may be a valid tool for measuring regional cerebral oxygen consumption. Additionally, we were able to simultaneously measure SvO~2~ in both the SSS and CCV, which permitted us to observe no difference in oxygenation between the two vessels when considering data from isolated paramagnetic components. Ultimately, we hope our work inspires future studies that seek to explore and improve the capabilities of magnetic susceptibility separation, culminating in the development of a tool for clinicians and researchers alike.
+This study aimed to evaluate how the use of susceptibility separation on preterm neonatal QSM images could be used in determining the oxygenation of cerebral venous vessels. We compared venous specific SvO~2~ values obtained from QSM images and their respective paramagnetic components to SvO~2~ values from neonatal MRI studies. We found that susceptibility separation provided SvO~2~ values of the SSS that were comparable to values found in the literature, providing evidence that this processing technique may be a valid tool for measuring regional cerebral oxygen consumption. Additionally, we were able to simultaneously measure SvO~2~ in both the SSS and CCV, which permitted us to observe no difference in oxygenation between the two vessels when considering data from isolated paramagnetic components. Ultimately, we hope our work inspires future studies that seek to explore and improve the capabilities of magnetic susceptibility separation, culminating in the development of a tool for clinicians and researchers alike.
+
+{{< pagebreak >}}
+
+## Data availability
+
+The manuscript was written in a 'reproducible manner'. The entire manuscript, including statistics reported, figures, and tables, can be reproduced here: [https://github.com/WeberLab/Chisep_CSVO2_Manuscript](https://github.com/WeberLab/Chisep_CSVO2_Manuscript) 
+
+Unfortunately, we can not upload our MRI images to an open repository as we did not obtain permission in our consent forms.
 
 # References {.unnumbered}
 
 ::: {#refs}
 :::
+
+## Acknowledgments
+
+We wish to acknowledge the work of and thank Victoria Tapics (Research Nurse); Vicki Goh (Research Nurse); Chacko Anil (Neonatologist); and Michael A. Sargent (Radiologist).
+
+## Author contributions
+
+TGC wrote the original draft, performed the formal analysis, and contributed to methodology, validation, and visualization. AR helped with writing, reviewing & editing. REG helped with writing, reviewing & editing, and with initial funding acquisition. AMW was involved in project administration, supervision, validation, visualization, resources, methodology, formal analysis, funding acquisition, writing, reviewing & editing, conceptualization, data curation, and investigation.
+
+## Funding
+
+Authors AMW and REG were co-primary applicants for a BC Children’s Hospital Research Institute - Brain, Behaviour and Development Catalyst Grant (\$20,000). AMW was supported by an establishment award from BCCHRI. Scanning was partly funded through a special award to AMW from BCCHRI .
+
+## Competing interests
+
+The authors have no competing interests to declare.
+
+## Consent statement
+
+The study was approved by the Clinical Research Ethics Board at the University of British Columbia and Children's & Women's Hospital (H21-00655) and written informed consent was obtained from the parent/guardian for each infant.
+
+{{< pagebreak >}}
+
+{{< embed notebooks/Figures.ipynb#fig-graph >}}
+
+{{< embed notebooks/Figures.ipynb#fig-masks >}}
+
+{{< embed notebooks/Figures.ipynb#fig-sample >}}
+
+{{< embed notebooks/gavin_thesis_markdown.qmd#fig-methodplot >}}
+
+{{< embed notebooks/gavin_thesis_markdown.qmd#fig-regionplot >}}
