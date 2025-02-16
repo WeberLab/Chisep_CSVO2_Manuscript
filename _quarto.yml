@@ -10,7 +10,7 @@ code-links:
   - binder
 
 execute:
-  freeze: false
+  freeze: true
   cache: false
 
 format:
