@@ -83,7 +83,10 @@ filters:
 notebook-links: false
 number-sections: false
 citation:
-  container-title: Unpublished
+  container-title: Pediatric Research
+  volume: 97
+  issue: 2
+  doi:
 # date: last-modified
 bibliography: Gavin_Thesis_Ref.bib
 csl: nature.csl
