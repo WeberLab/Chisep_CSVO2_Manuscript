@@ -86,7 +86,7 @@ citation:
   container-title: Pediatric Research
   volume: 97
   issue: 2
-  doi:
+  doi: "not yet assigned"
 # date: last-modified
 bibliography: Gavin_Thesis_Ref.bib
 csl: nature.csl
