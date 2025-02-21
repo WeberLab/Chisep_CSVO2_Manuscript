@@ -2,4 +2,4 @@
 
 This is a repo for generating our manuscript.
 
-Please visit this repo's webpage: [weberlab.github.io/Chisep_CSVO2_Manuscript/](urlhttps://weberlab.github.io/Chisep_CSVO2_Manuscript/)
+Please visit this repo's webpage: [weberlab.github.io/Chisep_CSVO2_Manuscript/](https://weberlab.github.io/Chisep_CSVO2_Manuscript/)

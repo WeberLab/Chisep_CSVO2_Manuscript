@@ -1,26 +1,20 @@
 project:
   type: manuscript
-  # render: 
-  #   - "*.qmd"
-  #   - "!pyvenv_csvo/"
-  #   - "*.ipynb"
 
-# code-links:
-#   - repo
-#   - binder
+code-links:
+  - repo
+  - binder
 
 execute:
   freeze: auto
-  # cache: false
 
 format:
   html:
-    # embed-resources: true
-    # notebook-links: true
+    # embed-resources: false
+    # notebook-links: false
     toc: true
     comments:
       hypothesis: true
-  # docx: default
   docx:
     reference-doc: custom-reference.docx
     line-numbers: false
