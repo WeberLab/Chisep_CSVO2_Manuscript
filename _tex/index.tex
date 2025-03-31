@@ -79,17 +79,15 @@ true
 \makesavenoteenv{longtable}
 \usepackage{graphicx}
 \makeatletter
-\newsavebox\pandoc@box
-\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
-  \sbox\pandoc@box{#1}%
-  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
-  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
-  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
-  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
-  \else\usebox{\pandoc@box}%
-  \fi%
-}
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
 % Set default figure placement to htbp
+\makeatletter
 \def\fps@figure{htbp}
 \makeatother
 
@@ -169,7 +167,9 @@ true
 \@ifpackageloaded{caption}{}{\usepackage{caption}}
 \@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
 \makeatother
-
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
 \usepackage[]{natbib}
 \bibliographystyle{plainnat}
 \usepackage{bookmark}
@@ -187,7 +187,6 @@ Mapping, Preterm, Newborn, Cerebral Venous Oxygen Saturation},
   citecolor={Blue},
   urlcolor={Blue},
   pdfcreator={LaTeX via pandoc}}
-
 
 \title[The Application of Magnetic Susceptibility Separation for
 Measuring Cerebral Oxygenation in Preterm Neonates]{The Application of
@@ -215,7 +214,6 @@ Mapping,  Preterm,  Newborn,  Cerebral Venous Oxygen Saturation}
 
 \begin{document}
 \maketitle
-
 
 \textsuperscript{1} Integrated Sciences, The University of British
 Columbia, Vancouver, BC, Canada\\
@@ -287,15 +285,15 @@ variability. No significant oxygenation differences were found between
 the SSS and CCV, contrasting with prior studies.
 
 \textsubscript{Source:
-\href{https://WeberLab.github.io/Chisep_CSVO2_Manuscript/index.qmd.html}{Article
+\href{https://WeberLab.github.io/Chisep_CSVO2_Manuscript/index-preview.html}{Article
 Notebook}}
 
 \textsubscript{Source:
-\href{https://WeberLab.github.io/Chisep_CSVO2_Manuscript/index.qmd.html}{Article
+\href{https://WeberLab.github.io/Chisep_CSVO2_Manuscript/index-preview.html}{Article
 Notebook}}
 
 \textsubscript{Source:
-\href{https://WeberLab.github.io/Chisep_CSVO2_Manuscript/index.qmd.html}{Article
+\href{https://WeberLab.github.io/Chisep_CSVO2_Manuscript/index-preview.html}{Article
 Notebook}}
 
 \newpage{}
@@ -462,7 +460,7 @@ Scan duration & 4 min 39 s & 5 min 1 s & 5 min 26 s & 5 min 29 s\\
 \endgroup{}
 
 \textsubscript{Source:
-\href{https://WeberLab.github.io/Chisep_CSVO2_Manuscript/index.qmd.html}{Article
+\href{https://WeberLab.github.io/Chisep_CSVO2_Manuscript/index-preview.html}{Article
 Notebook}}
 
 The MRI scan protocol comprised of the following sequences (plane of
@@ -489,7 +487,7 @@ summary of the pipeline used is shown in Figure~\ref{fig-graph}.
 
 \centering{
 
-\pandocbounded{\includegraphics[keepaspectratio]{index_files/figure-latex/notebooks-Figures-fig-graph-output-1.png}}
+\includegraphics{index_files/figure-latex/notebooks-Figures-fig-graph-output-1.png}
 
 }
 
@@ -508,7 +506,7 @@ mask essential for obtaining susceptibility data that includes the SSS.}
 \end{figure}%
 
 \textsubscript{Source:
-\href{https://WeberLab.github.io/Chisep_CSVO2_Manuscript/notebooks/Figures-preview.html\#cell-fig-graph}{Python
+\href{https://WeberLab.github.io/Chisep_CSVO2_Manuscript/notebooks/Figures.ipynb.html\#cell-fig-graph}{Python
 Figures}}
 
 First, the fifth echo (TE = 25.96 ms) SWI magnitude file was processed
@@ -573,7 +571,7 @@ with \texttt{fslstats}.
 
 \centering{
 
-\pandocbounded{\includegraphics[keepaspectratio]{index_files/figure-latex/notebooks-Figures-fig-masks-output-1.png}}
+\includegraphics{index_files/figure-latex/notebooks-Figures-fig-masks-output-1.png}
 
 }
 
@@ -586,7 +584,7 @@ the underlay. y, x and z values represent the slice number in each plane
 \end{figure}%
 
 \textsubscript{Source:
-\href{https://WeberLab.github.io/Chisep_CSVO2_Manuscript/notebooks/Figures-preview.html\#cell-fig-masks}{Python
+\href{https://WeberLab.github.io/Chisep_CSVO2_Manuscript/notebooks/Figures.ipynb.html\#cell-fig-masks}{Python
 Figures}}
 
 To isolate the paramagnetic component of subjects' QSM data, the
@@ -608,7 +606,7 @@ component images are shown in Figure~\ref{fig-sample}.
 
 \centering{
 
-\pandocbounded{\includegraphics[keepaspectratio]{index_files/figure-latex/notebooks-Figures-fig-sample-output-1.png}}
+\includegraphics{index_files/figure-latex/notebooks-Figures-fig-sample-output-1.png}
 
 }
 
@@ -625,7 +623,7 @@ respectively).}
 \end{figure}%
 
 \textsubscript{Source:
-\href{https://WeberLab.github.io/Chisep_CSVO2_Manuscript/notebooks/Figures-preview.html\#cell-fig-sample}{Python
+\href{https://WeberLab.github.io/Chisep_CSVO2_Manuscript/notebooks/Figures.ipynb.html\#cell-fig-sample}{Python
 Figures}}
 
 Once the mean susceptibility values of the SSS and CCV were obtained
@@ -700,7 +698,7 @@ Days on ventilation (median, IQR) & 31, 28.5\\
 \endgroup{}
 
 \textsubscript{Source:
-\href{https://WeberLab.github.io/Chisep_CSVO2_Manuscript/index.qmd.html}{Article
+\href{https://WeberLab.github.io/Chisep_CSVO2_Manuscript/index-preview.html}{Article
 Notebook}}
 
 The mean SvO\textsubscript{2} values for the SSS and the CCV were found
@@ -744,7 +742,7 @@ CCV & SvO₂ (\%) & 68.71 ± 3.46 & 57.69 ± 6.97 & 2.16e-09 & 0.09, 0.13\\
 \endgroup{}
 
 \textsubscript{Source:
-\href{https://WeberLab.github.io/Chisep_CSVO2_Manuscript/index.qmd.html}{Article
+\href{https://WeberLab.github.io/Chisep_CSVO2_Manuscript/index-preview.html}{Article
 Notebook}}
 
 Region-specific \(\chi\) and SvO\textsubscript{2} values acquired from
@@ -758,7 +756,7 @@ are shown in Figure~\ref{fig-methodplot}.
 
 \centering{
 
-\pandocbounded{\includegraphics[keepaspectratio]{index_files/figure-latex/notebooks-gavin_thesis_markdown-fig-methodplot-output-1.png}}
+\includegraphics{index_files/figure-latex/notebooks-gavin_thesis_markdown-fig-methodplot-output-1.png}
 
 }
 
@@ -774,7 +772,7 @@ single subject. (***) indicates P\textless0.05.}
 \end{figure}%
 
 \textsubscript{Source:
-\href{https://WeberLab.github.io/Chisep_CSVO2_Manuscript/notebooks/gavin_thesis_markdown-preview.html\#cell-fig-methodplot}{gavin\_thesis\_R}}
+\href{https://WeberLab.github.io/Chisep_CSVO2_Manuscript/notebooks/gavin_thesis_markdown.qmd.html\#cell-fig-methodplot}{gavin\_thesis\_R}}
 
 The acquired \(\chi\) and SvO\textsubscript{2} values were additionally
 compared between veins. In data created from QSM, a significant
@@ -791,7 +789,7 @@ represented in Figure~\ref{fig-regionplot}.
 
 \centering{
 
-\pandocbounded{\includegraphics[keepaspectratio]{index_files/figure-latex/notebooks-gavin_thesis_markdown-fig-regionplot-output-1.png}}
+\includegraphics{index_files/figure-latex/notebooks-gavin_thesis_markdown-fig-regionplot-output-1.png}
 
 }
 
@@ -808,7 +806,7 @@ difference.}
 \end{figure}%
 
 \textsubscript{Source:
-\href{https://WeberLab.github.io/Chisep_CSVO2_Manuscript/notebooks/gavin_thesis_markdown-preview.html\#cell-fig-regionplot}{gavin\_thesis\_R}}
+\href{https://WeberLab.github.io/Chisep_CSVO2_Manuscript/notebooks/gavin_thesis_markdown.qmd.html\#cell-fig-regionplot}{gavin\_thesis\_R}}
 
 \section{Discussion}\label{sec-discussion}
 
@@ -892,7 +890,7 @@ CCV & \textbf{This study} & \makecell[l]{PT-TEA \\neonates \\n=19} & \makecell[l
 \endgroup{}
 
 \textsubscript{Source:
-\href{https://WeberLab.github.io/Chisep_CSVO2_Manuscript/index.qmd.html}{Article
+\href{https://WeberLab.github.io/Chisep_CSVO2_Manuscript/index-preview.html}{Article
 Notebook}}
 
 As shown in Table~\ref{tbl-litvalues}, the infants observed in MRI
@@ -1073,7 +1071,6 @@ The study was approved by the Clinical Research Ethics Board at the
 University of British Columbia and Children's \& Women's Hospital
 (H21-00655) and written informed consent was obtained from the
 parent/guardian for each infant.
-
 
 
 

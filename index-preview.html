@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
     <meta charset="utf-8">
-    <meta name="generator" content="quarto-1.7.13">
+    <meta name="generator" content="quarto-99.9.9">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
     <meta name="author" content="Thomas Gavin Carmichael1,2, Alexander Rauscher3, Ruth E Grunau2,3, and Alexander Mark Weber2,3,✉">
-    <meta name="dcterms.date" content="2025-02-21">
+    <meta name="dcterms.date" content="2025-03-31">
     <meta name="keywords" content="Quantitative Susceptbility Mapping, Preterm, Newborn, Cerebral Venous Oxygen Saturation">
 
     <title>The Application of Magnetic Susceptibility Separation for Measuring Cerebral Oxygenation in Preterm Neonates</title>
@@ -170,16 +170,15 @@
     
 <script src="site_libs/manuscript-notebook/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-66ab7fd5e73b7f0a764e0d49b3e29ab1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-2c88cddbe429b4d834f83549c26762d7.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
@@ -195,13 +194,11 @@
 <meta name="citation_author" content="Alexander Rauscher">
 <meta name="citation_author" content="Ruth E Grunau">
 <meta name="citation_author" content="Alexander Mark Weber">
-<meta name="citation_publication_date" content="2025-02-21">
-<meta name="citation_cover_date" content="2025-02-21">
+<meta name="citation_publication_date" content="2025">
+<meta name="citation_cover_date" content="2025">
 <meta name="citation_year" content="2025">
-<meta name="citation_online_date" content="2025-02-21">
-<meta name="citation_issue" content="2">
-<meta name="citation_doi" content="not yet assigned">
-<meta name="citation_volume" content="97">
+<meta name="citation_online_date" content="2025-03-31">
+<meta name="citation_doi" content="10.1038/s41390-025-03966-6">
 <meta name="citation_language" content="en">
 <meta name="citation_journal_title" content="Pediatric Research">
 <meta name="citation_reference" content="citation_title=The diamagnetic component map from quantitative susceptibility mapping (QSM) source separation reveals pathological alteration in Alzheimer’s disease-driven neurodegeneration;,citation_abstract=A sensitive and accurate imaging technique capable of tracking the disease progression of Alzheimer’s Disease (AD) driven amnestic dementia would be beneficial. A currently available method for pathology detection in AD with high accuracy is Positron Emission Tomography (PET) imaging, despite certain limitations such as low spatial resolution, off-targeting error, and radiation exposure. Non-invasive MRI scanning with quantitative magnetic susceptibility measurements can be used as a complementary tool. To date, quantitative susceptibility mapping (QSM) has widely been used in tracking deep gray matter iron accumulation in AD. The present work proposes that by compartmentalizing quantitative susceptibility into paramagnetic and diamagnetic components, more holistic information about AD pathogenesis can be acquired. Particularly, diamagnetic component susceptibility (DCS) can be a powerful indicator for tracking protein accumulation in the gray matter (GM), demyelination in the white matter (WM), and relevant changes in the cerebrospinal fluid (CSF). In the current work, voxel-wise group analysis of the WM and the CSF regions show significantly lower DCS (the absolute value of DCS) value for amnestic dementia patients compared to healthy controls. Additionally, DCS and $\tau$ PET standardized uptake value ratio (SUVr) were found to be associated in several GM regions typically affected by $\tau$ deposition in AD. Therefore, we propose that the separated diamagnetic susceptibility can be used to track pathological neurodegeneration in different tissue types and regions of the brain. With the initial evidence, we believe the usage of compartmentalized susceptibility demonstrates substantive potential as an MRI-based technique for tracking AD-driven neurodegeneration.;,citation_author=Maruf Ahmed;,citation_author=Jingjia Chen;,citation_author=Arvin Arani;,citation_author=Matthew L. Senjem;,citation_author=Petrice M. Cogswell;,citation_author=Clifford R. Jack;,citation_author=Chunlei Liu;,citation_publication_date=2023-10;,citation_cover_date=2023-10;,citation_year=2023;,citation_doi=10.1016/j.neuroimage.2023.120357;,citation_issn=1095-9572;,citation_pmid=37661080;,citation_volume=280;,citation_language=en-US;,citation_journal_title=NeuroImage;">
@@ -377,7 +374,7 @@
                 <div>
             <div class="quarto-title-meta-heading">Published</div>
             <div class="quarto-title-meta-contents">
-              <p class="date">February 21, 2025</p>
+              <p class="date">March 31, 2025</p>
             </div>
           </div>
           
@@ -1225,7 +1222,7 @@ The following objects are masked from 'package:base':
 <section id="image-analysis" class="level2">
 <h2 class="anchored" data-anchor-id="image-analysis">Image analysis</h2>
 <p>The raw DICOM files acquired from the scanning procedure were converted to NIfTI (Neuroimaging Informatics Technology Initiative) format using Chris Rorden’s <code>dcmniix</code> tool<span class="citation" data-cites="liFirstStepNeuroimaging2016"><sup><a href="#ref-liFirstStepNeuroimaging2016" role="doc-biblioref">23</a></sup></span>. SWI magnitude data files were then used to create subject-specific brain masks that would not erode the SSS during QSM processing, an issue faced by our group in the past<span class="citation" data-cites="weberQuantitativeSusceptibilityMapping2021"><sup><a href="#ref-weberQuantitativeSusceptibilityMapping2021" role="doc-biblioref">18</a></sup></span>. A step-by-step summary of the pipeline used is shown in <a href="#fig-graph" class="quarto-xref">Figure&nbsp;1</a>.</p>
-<div class="quarto-embed-nb-cell" data-notebook="/home/runner/work/Chisep_CSVO2_Manuscript/Chisep_CSVO2_Manuscript/notebooks/Figures.ipynb" data-notebook-title="Python Figures" data-notebook-cellid="cell-fig-graph">
+<div class="quarto-embed-nb-cell" data-notebook="/home/weberam2/Dropbox/AssistantProf_BCCHRI/Projects/aaaPublished/Gavin_CSVO2/Quarto_Chisep_CSVO2_Manuscript/notebooks/Figures.ipynb" data-notebook-title="Python Figures" data-notebook-cellid="cell-fig-graph">
 <div class="cell-container"><div class="cell-decorator"><pre>In [20]:</pre></div><div id="cell-fig-graph" class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a new graph</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>graph <span class="op">=</span> graphviz.Graph(engine<span class="op">=</span><span class="st">'neato'</span>)</span>
@@ -1316,7 +1313,7 @@ The following objects are masked from 'package:base':
 </div>
 <p>First, the fifth echo (TE = 25.96 ms) SWI magnitude file was processed using FSL’s (v. 6.0.7.3)<span class="citation" data-cites="woolrichBayesianAnalysisNeuroimaging2009"><sup><a href="#ref-woolrichBayesianAnalysisNeuroimaging2009" role="doc-biblioref">24</a></sup></span> <code>fslroi</code>, <code>fslmaths</code>, and <code>bet</code><span class="citation" data-cites="smithFastRobustAutomated2002"><sup><a href="#ref-smithFastRobustAutomated2002" role="doc-biblioref">25</a></sup></span> to create a preliminary brain mask, similar to our previous efforts, which does not contain the SSS. The last echo is used to generate the brain mask as it reliably removes artifacts from air-tissue and bone-tissue interfaces, e.g., sinuses, without the need for manual erosion. The reason for this is at longer echo times, tissues with rapid signal decay (such as bone, air, and sinuses) lose their MRI signal due to dephasing caused by greater magnetic field inhomogeneities. <code>Fslroi</code> was used to isolate the fifth echo of the magnitude data, which was then squared using <code>fslmaths</code> and the option <code>-sqr</code>. Squaring the magnitude image was found to dramatically improve subsequent brain extraction. The resulting image was then used to create the preliminary brain mask using <code>bet</code> with the options <code>-m</code> and <code>-R</code>. The former flag generated a binary brain mask, while the latter performed a more robust brain centre estimation. The brain mask was then dilated by 7 voxels using <code>fslmaths</code> and the options <code>-kernel boxv</code> and <code>-dilM</code> in order for the dilated mask to contain the SSS (along with unwanted tissue as well). This mask was then used, along with the phase images, in a MATLAB script for QSM calculation from Christian Kames<span class="citation" data-cites="kamesRapidTwostepDipole2018"><sup><a href="#ref-kamesRapidTwostepDipole2018" role="doc-biblioref">26</a></sup></span> to produce a preliminary QSM image that contained the SSS, albeit with fairly low signal-to-noise ratio and other unwanted tissue. Given the high contrast in voxel intensity between the SSS and surrounding tissue, the select by intensity tool in <code>FSLeyes</code><span class="citation" data-cites="mccarthyFSLeyes2023"><sup><a href="#ref-mccarthyFSLeyes2023" role="doc-biblioref">27</a></sup></span> was then used to segment the SSS from the QSM image and create a 3D mask of the selected region. Using <code>fslmaths</code> and the options <code>-add</code> and <code>-bin</code>, the SSS mask was then combined with the original brain mask of the fifth echo. This resulted in a brain mask that contained only brain and SSS signal. Finally, this mask was used in a final QSM post-processing step to create a QSM image that includes the SSS while maintaining a high signal-to-noise ratio, making it suitable to obtain accurate susceptibility values.</p>
 <p>STI Suite (v. 3.0)<span class="citation" data-cites="liIntegratedLaplacianbasedPhase2014"><sup><a href="#ref-liIntegratedLaplacianbasedPhase2014" role="doc-biblioref">28</a></sup></span>, was used to process the final QSM images as it produced the images with the least amount of artifacts (based on a visual assessment by the authors) without eroding the SSS. The finalized brain mask along with all five echoes of the magnitude and phase images were used in STI Suite along with the following parameters: 0.9766 x 0.9766 x 1 mm<sup>3</sup> voxel size, 5 ms TE1, 5.24 ms <span class="math inline">\(\Delta\)</span>TE, and 77.4 ms sum TE, B0 strength = 3, and B0 direction = [0, 0, 1]. The 3D GRE data option was selected for the phase processing stage, and STAR-QSM was selected for the QSM stage. STAR-QSM outputs a single QSM map for each echo (i.e.&nbsp;five total). The last three echoes of the QSM maps were then averaged to create the final QSM image using <code>fslmaths</code>, as the accumulation of phase due to susceptibility is small in early echoes and artifacts dominate the phase<span class="citation" data-cites="zhangQuantitativeAnalysisPunctate2019"><sup><a href="#ref-zhangQuantitativeAnalysisPunctate2019" role="doc-biblioref">29</a></sup></span>. Finally, the `select by intensity’ tool in <code>FSLeyes</code> was then used to semi-automatically make vascular masks of the SSS and CCV from each subject’s QSM image (<a href="#fig-masks" class="quarto-xref">Figure&nbsp;2</a>). The vascular masks were used to calculate the mean susceptibility of each subject’s SSS and CCV from their QSM image with <code>fslstats</code>.</p>
-<div class="quarto-embed-nb-cell" data-notebook="/home/runner/work/Chisep_CSVO2_Manuscript/Chisep_CSVO2_Manuscript/notebooks/Figures.ipynb" data-notebook-title="Python Figures" data-notebook-cellid="cell-fig-masks">
+<div class="quarto-embed-nb-cell" data-notebook="/home/weberam2/Dropbox/AssistantProf_BCCHRI/Projects/aaaPublished/Gavin_CSVO2/Quarto_Chisep_CSVO2_Manuscript/notebooks/Figures.ipynb" data-notebook-title="Python Figures" data-notebook-cellid="cell-fig-masks">
 <div class="cell-container"><div class="cell-decorator"><pre>In [23]:</pre></div><div id="cell-fig-masks" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>cut_coords_masks <span class="op">=</span> (<span class="dv">64</span>,<span class="dv">44</span>,<span class="dv">54</span>)</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -1375,7 +1372,7 @@ The following objects are masked from 'package:base':
 </div></div>
 </div>
 <p>To isolate the paramagnetic component of subjects’ QSM data, the <span class="math inline">\(\chi\)</span>-separation toolbox<span class="citation" data-cites="shinHseparationMagneticSusceptibility2021"><sup><a href="#ref-shinHseparationMagneticSusceptibility2021" role="doc-biblioref">30</a></sup></span> from the Laboratory for Imaging Science and Technology was used. All five echoes of each subject’s magnitude and phase SWI data were used along with the following parameters: 0.9766 x 0.9766 x 1 mm<sup>3</sup> voxel size; TE (ms) = [5, 10.24, 15.48, 20.72, 26.96]; <span class="math inline">\(\Delta\)</span>TE (ms) = 5.24; B0 strength = 3; B0 direction = [0, 0, 1]. The <span class="math inline">\(\chi\)</span>-separation toolbox outputs a single negative (diamagnetic), positive (paramagnetic), and total <span class="math inline">\(\chi\)</span> map (QSM). The mean susceptibility of each subject’s SSS and CCV in their paramagnetic maps was calculated with the same vascular masks used for the QSM images. Sample images showing the magnitude, final QSM, and final paramagnetic component images are shown in <a href="#fig-sample" class="quarto-xref">Figure&nbsp;3</a>.</p>
-<div class="quarto-embed-nb-cell" data-notebook="/home/runner/work/Chisep_CSVO2_Manuscript/Chisep_CSVO2_Manuscript/notebooks/Figures.ipynb" data-notebook-title="Python Figures" data-notebook-cellid="cell-fig-sample">
+<div class="quarto-embed-nb-cell" data-notebook="/home/weberam2/Dropbox/AssistantProf_BCCHRI/Projects/aaaPublished/Gavin_CSVO2/Quarto_Chisep_CSVO2_Manuscript/notebooks/Figures.ipynb" data-notebook-title="Python Figures" data-notebook-cellid="cell-fig-sample">
 <div class="cell-container"><div class="cell-decorator"><pre>In [24]:</pre></div><div id="cell-fig-sample" class="cell" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>cut_coords_qsm <span class="op">=</span> (<span class="dv">64</span>,<span class="dv">42</span>,<span class="dv">51</span>)</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -2574,7 +2571,7 @@ SvO_{2} = 1 - \frac{\Delta \chi _{blood} - (\Delta \chi _{oxy} * Hct)}{\Delta \c
 </div></div>
 </div></div>
 <p>Region-specific <span class="math inline">\(\chi\)</span> and SvO<sub>2</sub> values acquired from QSM were compared to values acquired from paramagnetic maps. In both the SSS and CCV, it was found that a significant difference existed between values acquired (<span class="math inline">\(\chi\)</span> and SvO<sub>2</sub>) from QSM and paramagnetic maps (p &lt; 0.05). Violin plots of the comparisons are shown in <a href="#fig-methodplot" class="quarto-xref">Figure&nbsp;4</a>.</p>
-<div class="quarto-embed-nb-cell" data-notebook="/home/runner/work/Chisep_CSVO2_Manuscript/Chisep_CSVO2_Manuscript/notebooks/gavin_thesis_markdown.qmd" data-notebook-title="gavin_thesis_R" data-notebook-cellid="cell-fig-methodplot">
+<div class="quarto-embed-nb-cell" data-notebook="/home/weberam2/Dropbox/AssistantProf_BCCHRI/Projects/aaaPublished/Gavin_CSVO2/Quarto_Chisep_CSVO2_Manuscript/notebooks/gavin_thesis_markdown.qmd" data-notebook-title="gavin_thesis_R" data-notebook-cellid="cell-fig-methodplot">
 <div class="cell-container"><div class="cell-decorator"><pre>In [11]:</pre></div><div id="cell-fig-methodplot" class="cell" data-fig-width="8" data-fig-height="5">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>patch1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
@@ -2592,7 +2589,7 @@ SvO_{2} = 1 - \frac{\Delta \chi _{blood} - (\Delta \chi _{oxy} * Hct)}{\Delta \c
 </div></div>
 </div>
 <p>The acquired <span class="math inline">\(\chi\)</span> and SvO<sub>2</sub> values were additionally compared between veins. In data created from QSM, a significant difference was found between the CCV and SSS in mean <span class="math inline">\(\chi\)</span> (p &lt; 0.05; 95% CI [0.017, 0.04]) and mean SvO<sub>2</sub> (p &lt; 0.05; 95% CI [-0.052, -0.023]). In data acquired from paramagnetic maps, no significant difference was observed between the CCV and the SSS in either mean <span class="math inline">\(\chi\)</span> (p = 0.711; 95% CI [-0.02, 0.029]) or mean SvO<sub>2</sub> (p = 0.752; 95% CI [-0.034, 0.029]). A summary of these comparisons is represented in <a href="#fig-regionplot" class="quarto-xref">Figure&nbsp;5</a>.</p>
-<div class="quarto-embed-nb-cell" data-notebook="/home/runner/work/Chisep_CSVO2_Manuscript/Chisep_CSVO2_Manuscript/notebooks/gavin_thesis_markdown.qmd" data-notebook-title="gavin_thesis_R" data-notebook-cellid="cell-fig-regionplot">
+<div class="quarto-embed-nb-cell" data-notebook="/home/weberam2/Dropbox/AssistantProf_BCCHRI/Projects/aaaPublished/Gavin_CSVO2/Quarto_Chisep_CSVO2_Manuscript/notebooks/gavin_thesis_markdown.qmd" data-notebook-title="gavin_thesis_R" data-notebook-cellid="cell-fig-regionplot">
 <div class="cell-container"><div class="cell-decorator"><pre>In [12]:</pre></div><div id="cell-fig-regionplot" class="cell" data-fig-width="8" data-fig-height="5">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>patch2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
@@ -3543,6 +3540,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
   clipboard.on('success', onCopySuccess);
   if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
     const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
       text: getTextToCopy,
       container: window.document.getElementById('quarto-embedded-source-code-modal')
@@ -3653,6 +3652,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
+      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {
@@ -3877,7 +3877,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script>  </div> <!-- /content -->  <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+</script>  </div> <!-- /content -->  <script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","openEffect":"zoom","descPosition":"bottom","selector":".lightbox","loop":false});
 (function() {
   let previousOnload = window.onload;
   window.onload = () => {
