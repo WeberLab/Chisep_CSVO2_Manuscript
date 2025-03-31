@@ -1,5 +1,8 @@
 project:
   type: manuscript
+  render:
+    - "!pyvenv_csvo/"
+    - "!PediatricResearchSubmission_Oct2024/"
 
 code-links:
   - repo
